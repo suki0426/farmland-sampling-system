@@ -1,0 +1,64 @@
+.ultra-theme {
+  color: var(--ul-text);
+  background: var(--ul-bg);
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
+
+.ultra-theme,
+.ultra-theme * {
+  box-sizing: border-box;
+}
+
+.ultra-theme .ul-muted {
+  color: var(--ul-muted);
+}
+
+.ultra-theme .ul-small {
+  font-size: var(--ul-text-sm);
+}
+
+.ultra-theme .ul-note {
+  color: var(--ul-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.ultra-theme .ul-page-head,
+.ultra-theme.ul-page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--ul-space-3);
+  margin-bottom: var(--ul-space-3);
+}
+
+.ultra-theme .ul-page-head--compact,
+.ultra-theme.ul-page-head--compact {
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.ultra-theme .ul-page-title {
+  margin: 0;
+  font-size: var(--ul-title-lg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ul-text);
+}
+
+.ultra-theme .ul-page-desc {
+  margin-top: 4px;
+  color: var(--ul-muted);
+  font-size: var(--ul-text-md);
+}

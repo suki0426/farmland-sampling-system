@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jeeplus.teaching.dexperimentdesign.mapper.DExperimentDesignMapper">
+
+
+	<sql id="dExperimentDesignColumns">
+		a.id AS "id",
+		a.experiment_name AS "experimentName",
+		a.course_name AS "courseName",
+		a.major_name AS "majorName",
+		a.experiment_type AS "experimentType",
+		a.scenario_name AS "scenarioName",
+		a.class_hours AS "classHours",
+		a.goal_text AS "goalText",
+		a.selected_devices_json AS "selectedDevicesJson",
+		a.content_source_id AS "contentSourceId",
+		a.content_source_type AS "contentSourceType",
+		a.content_text AS "contentText",
+		a.algorithm_type AS "algorithmType",
+		a.device_score AS "deviceScore",
+		a.content_score AS "contentScore",
+		a.final_score AS "finalScore",
+		a.status AS "status",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.del_flag AS "delFlag"
+	</sql>
+
+	<sql id="dExperimentDesignJoins">
+
+	</sql>
+
+
+
+	<select id="findById" resultType="com.jeeplus.teaching.dexperimentdesign.service.dto.DExperimentDesignDTO">
+		SELECT
+			<include refid="dExperimentDesignColumns"/>
+		FROM d_experiment_design a
+		<include refid="dExperimentDesignJoins"/>
+		WHERE a.id = #{id} and a.del_flag = 0
+	</select>
+
+	<select id="findList" resultType="com.jeeplus.teaching.dexperimentdesign.service.dto.DExperimentDesignDTO">
+		SELECT
+			<include refid="dExperimentDesignColumns"/>
+		FROM d_experiment_design a
+		<include refid="dExperimentDesignJoins"/>
+	    ${ew.customSqlSegment}
+	</select>
+
+
+</mapper>

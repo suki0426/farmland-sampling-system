@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration
+        status="INFO"
+        monitorInterval="0"
+        shutdownHook="enable"
+        packages="org.apache.logging.log4j.core"
+        xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</Property>
+        <Property name="log4j2.formatMsgNoLookups">true</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- 仅保留控制台输出 -->
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <!-- 根日志器：输出所有级别日志到控制台 -->
+        <Root level="DEBUG">
+            <AppenderRef ref="ConsoleAppender" />
+        </Root>
+    </Loggers>
+</Configuration>

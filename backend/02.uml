@@ -1,0 +1,2004 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>MAVEN</ID>
+  <OriginalElement>org.jeeplus:jeeplus-gencode-vue:8.0</OriginalElement>
+  <nodes>
+    <node x="8908.159134656296" y="1750.0">org.jeeplus:jeeplus-gencode-vue:8.0</node>
+    <node x="8242.530894750218" y="1490.0">org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE</node>
+    <node x="7616.2875" y="920.0">org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE</node>
+    <node x="7675.120833333334" y="770.0">org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE</node>
+    <node x="7957.3055932090065" y="560.0">org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3</node>
+    <node x="7932.0555932090065" y="400.0">org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3/ch.qos.logback:logback-core:jar:1.2.3</node>
+    <node x="8106.3055932090065" y="560.0">org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.11.2</node>
+    <node x="8091.0555932090065" y="400.0">org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.11.2/org.apache.logging.log4j:log4j-api:jar:2.11.2</node>
+    <node x="8627.788926542338" y="560.0">org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE/org.slf4j:jul-to-slf4j:jar:1.7.25</node>
+    <node x="8178.8055932090065" y="80.0">org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE</node>
+    <node x="8185.8055932090065" y="0.0">org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE/org.springframework:spring-jcl:jar:5.1.5.RELEASE</node>
+    <node x="7557.120833333334" y="770.0">org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.yaml:snakeyaml:jar:1.23</node>
+    <node x="8242.305593209006" y="320.0">org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE</node>
+    <node x="8291.005593209005" y="210.0">org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE/org.springframework:spring-beans:jar:5.1.5.RELEASE</node>
+    <node x="8278.864228083552" y="1400.0">org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.aspectj:aspectjweaver:jar:1.9.2</node>
+    <node x="7708.030894750218" y="1400.0">org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE</node>
+    <node x="8362.43892654234" y="1090.0">org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE</node>
+    <node x="4825.538301322964" y="400.0">org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE/org.springframework:spring-context:jar:5.1.5.RELEASE</node>
+    <node x="8969.659134656296" y="1490.0">org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE</node>
+    <node x="8917.420833333334" y="1400.0">org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE</node>
+    <node x="8947.02672808355" y="920.0">org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework.data:spring-data-keyvalue:jar:2.1.5.RELEASE</node>
+    <node x="9010.33922808355" y="560.0">org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework.data:spring-data-keyvalue:jar:2.1.5.RELEASE/org.springframework.data:spring-data-commons:jar:2.1.5.RELEASE</node>
+    <node x="8797.780894750218" y="770.0">org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework:spring-tx:jar:5.1.5.RELEASE</node>
+    <node x="9281.31999731432" y="320.0">org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework:spring-oxm:jar:5.1.5.RELEASE</node>
+    <node x="9464.205593209006" y="1400.0">org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE</node>
+    <node x="9487.528330647654" y="400.0">org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-common:jar:4.1.33.Final</node>
+    <node x="9512.94499731432" y="1090.0">org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final</node>
+    <node x="9570.778330647654" y="560.0">org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final/io.netty:netty-buffer:jar:4.1.33.Final</node>
+    <node x="9520.44499731432" y="920.0">org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final/io.netty:netty-codec:jar:4.1.33.Final</node>
+    <node x="9650.44499731432" y="770.0">org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-transport:jar:4.1.33.Final</node>
+    <node x="9725.94499731432" y="560.0">org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-transport:jar:4.1.33.Final/io.netty:netty-resolver:jar:4.1.33.Final</node>
+    <node x="9357.31999731432" y="1090.0">org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.projectreactor:reactor-core:jar:3.2.6.RELEASE</node>
+    <node x="9344.31999731432" y="920.0">org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.projectreactor:reactor-core:jar:3.2.6.RELEASE/org.reactivestreams:reactive-streams:jar:1.0.2</node>
+    <node x="7995.530894750218" y="1490.0">org.springframework.boot:spring-boot-starter-freemarker:jar:2.1.3.RELEASE</node>
+    <node x="8051.447561416885" y="1400.0">org.springframework.boot:spring-boot-starter-freemarker:jar:2.1.3.RELEASE/org.freemarker:freemarker:jar:2.3.28</node>
+    <node x="7780.947561416885" y="1090.0">org.springframework.boot:spring-boot-starter-jdbc:jar:2.1.3.RELEASE</node>
+    <node x="9202.33922808355" y="560.0">org.springframework.boot:spring-boot-starter-jdbc:jar:2.1.3.RELEASE/com.zaxxer:HikariCP:jar:3.2.0</node>
+    <node x="7919.679166666667" y="920.0">org.springframework.boot:spring-boot-starter-jdbc:jar:2.1.3.RELEASE/org.springframework:spring-jdbc:jar:5.1.5.RELEASE</node>
+    <node x="7205.064228083552" y="1490.0">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2</node>
+    <node x="7128.6805932090065" y="920.0">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2/org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:jar:1.3.2</node>
+    <node x="7146.514228083552" y="1400.0">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2/org.mybatis:mybatis:jar:3.4.6</node>
+    <node x="7267.014228083552" y="1400.0">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2/org.mybatis:mybatis-spring:jar:1.3.2</node>
+    <node x="4302.914228083551" y="1490.0">org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE</node>
+    <node x="5297.0972598756725" y="1400.0">org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE/org.apache.tomcat.embed:tomcat-embed-el:jar:9.0.16</node>
+    <node x="3973.3389265423393" y="1090.0">org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.14.Final</node>
+    <node x="4108.854166666667" y="920.0">org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.14.Final/javax.validation:validation-api:jar:2.0.1.Final</node>
+    <node x="2908.297259875673" y="920.0">org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.14.Final/com.fasterxml:classmate:jar:1.4.0</node>
+    <node x="4636.247561416885" y="1400.0">org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE</node>
+    <node x="5418.172259875673" y="1090.0">org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE</node>
+    <node x="5133.538301322964" y="920.0">org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.core:jackson-databind:jar:2.9.8</node>
+    <node x="5501.413301322964" y="920.0">org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.8</node>
+    <node x="5671.830894750218" y="770.0">org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.8/com.fasterxml.jackson.core:jackson-databind:jar:2.9.9</node>
+    <node x="5294.538301322964" y="920.0">org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.8</node>
+    <node x="5510.830894750218" y="770.0">org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.8/com.fasterxml.jackson.core:jackson-databind:jar:2.9.9</node>
+    <node x="5799.788301322964" y="920.0">org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.8</node>
+    <node x="6012.788301322964" y="770.0">org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.8/com.fasterxml.jackson.core:jackson-databind:jar:2.9.9</node>
+    <node x="4522.538301322964" y="920.0">org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-web:jar:5.1.5.RELEASE</node>
+    <node x="4974.622561416885" y="1090.0">org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-webmvc:jar:5.1.5.RELEASE</node>
+    <node x="4647.538301322964" y="320.0">org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-webmvc:jar:5.1.5.RELEASE/org.springframework:spring-expression:jar:5.1.5.RELEASE</node>
+    <node x="4055.9142280835517" y="1490.0">org.springframework.boot:spring-boot-starter-websocket:jar:2.1.3.RELEASE</node>
+    <node x="3791.547259875673" y="320.0">org.springframework.boot:spring-boot-starter-websocket:jar:2.1.3.RELEASE/org.springframework:spring-messaging:jar:5.1.5.RELEASE</node>
+    <node x="4350.254666448418" y="1090.0">org.springframework.boot:spring-boot-starter-websocket:jar:2.1.3.RELEASE/org.springframework:spring-websocket:jar:5.1.5.RELEASE</node>
+    <node x="6756.164228083551" y="1490.0">org.springframework.boot:spring-boot-starter-mail:jar:2.1.3.RELEASE</node>
+    <node x="6742.580894750219" y="1400.0">org.springframework.boot:spring-boot-starter-mail:jar:2.1.3.RELEASE/com.sun.mail:javax.mail:jar:1.6.2</node>
+    <node x="6742.080894750219" y="1090.0">org.springframework.boot:spring-boot-starter-mail:jar:2.1.3.RELEASE/com.sun.mail:javax.mail:jar:1.6.2/javax.activation:activation:jar:1.1</node>
+    <node x="8236.272259875674" y="920.0">org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE</node>
+    <node x="7363.722259875673" y="560.0">org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot:jar:2.1.3.RELEASE</node>
+    <node x="7107.114228083552" y="770.0">org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-autoconfigure:jar:2.1.3.RELEASE</node>
+    <node x="6389.830894750218" y="1490.0">org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.3.RELEASE</node>
+    <node x="6426.330894750218" y="770.0">org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.3.RELEASE/javax.annotation:javax.annotation-api:jar:1.3.2</node>
+    <node x="6476.830894750218" y="1090.0">org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.3.RELEASE/org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.16</node>
+    <node x="6526.580894750218" y="1400.0">org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.3.RELEASE/org.apache.tomcat.embed:tomcat-embed-websocket:jar:9.0.16</node>
+    <node x="8847.659134656296" y="1490.0">com.microsoft.sqlserver:mssql-jdbc:jar:6.4.0.jre8</node>
+    <node x="11899.644249781752" y="1490.0">mysql:mysql-connector-java:jar:8.0.15</node>
+    <node x="11148.980593209006" y="1490.0">org.postgresql:postgresql:jar:42.2.5</node>
+    <node x="6961.164228083551" y="1490.0">com.alibaba:druid-spring-boot-starter:jar:1.1.14</node>
+    <node x="6915.247561416885" y="1400.0">com.alibaba:druid-spring-boot-starter:jar:1.1.14/com.alibaba:druid:jar:1.1.14</node>
+    <node x="9233.31999731432" y="400.0">com.alibaba:druid-spring-boot-starter:jar:1.1.14/org.slf4j:slf4j-api:jar:1.7.25</node>
+    <node x="11639.644249781752" y="1490.0">cglib:cglib:jar:3.1</node>
+    <node x="11641.644249781752" y="1400.0">cglib:cglib:jar:3.1/org.ow2.asm:asm:jar:4.2</node>
+    <node x="10140.673061198635" y="1490.0">javax.servlet.jsp:jsp-api:jar:2.1</node>
+    <node x="4485.247561416885" y="1400.0">commons-dbcp:commons-dbcp:jar:1.4</node>
+    <node x="4144.338926542339" y="1090.0">commons-dbcp:commons-dbcp:jar:1.4/commons-pool:commons-pool:jar:1.6</node>
+    <node x="10382.24951923077" y="1090.0">org.apache.shiro:shiro-core:jar:1.4.1</node>
+    <node x="10263.830593209006" y="560.0">org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-lang:jar:1.4.1</node>
+    <node x="9977.858653887066" y="920.0">org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-cache:jar:1.4.1</node>
+    <node x="10279.858653887066" y="920.0">org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-crypto-hash:jar:1.4.1</node>
+    <node x="10196.858653887066" y="770.0">org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-crypto-hash:jar:1.4.1/org.apache.shiro:shiro-crypto-core:jar:1.4.1</node>
+    <node x="10104.858653887066" y="920.0">org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-crypto-cipher:jar:1.4.1</node>
+    <node x="10401.608653887066" y="770.0">org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-config-core:jar:1.4.1</node>
+    <node x="10696.108653887066" y="920.0">org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-config-ogdl:jar:1.4.1</node>
+    <node x="10689.608653887066" y="770.0">org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-config-ogdl:jar:1.4.1/commons-beanutils:commons-beanutils:jar:1.9.3</node>
+    <node x="10564.608653887066" y="770.0">org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-event:jar:1.4.1</node>
+    <node x="10316.858653887066" y="1490.0">org.apache.shiro:shiro-spring:jar:1.4.1</node>
+    <node x="12088.644249781752" y="1490.0">org.apache.shiro:shiro-cas:jar:1.4.0</node>
+    <node x="12109.644249781752" y="1400.0">org.apache.shiro:shiro-cas:jar:1.4.0/org.apache.shiro:shiro-web:jar:1.4.0</node>
+    <node x="11962.644249781752" y="1400.0">org.apache.shiro:shiro-cas:jar:1.4.0/org.jasig.cas.client:cas-client-core:jar:3.2.2</node>
+    <node x="10365.358653887066" y="1400.0">org.apache.shiro:shiro-web:jar:1.4.1</node>
+    <node x="9895.44499731432" y="1090.0">org.apache.shiro:shiro-ehcache:jar:1.4.1</node>
+    <node x="9866.94499731432" y="560.0">org.apache.shiro:shiro-ehcache:jar:1.4.1/net.sf.ehcache:ehcache-core:jar:2.6.11</node>
+    <node x="12389.644249781752" y="1490.0">commons-io:commons-io:jar:2.4</node>
+    <node x="5057.122561416885" y="1490.0">com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9</node>
+    <node x="5262.797259875673" y="770.0">com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9/com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0</node>
+    <node x="5878.788301322964" y="770.0">com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9/com.fasterxml.jackson.core:jackson-core:jar:2.9.8</node>
+    <node x="5108.122561416885" y="1400.0">com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9/com.fasterxml.jackson.core:jackson-databind:jar:2.9.9</node>
+    <node x="12200.644249781752" y="1490.0">com.alibaba:fastjson:jar:1.2.45</node>
+    <node x="11050.683477865303" y="1490.0">net.sf.dozer:dozer:jar:5.5.1</node>
+    <node x="11160.331749781752" y="1400.0">net.sf.dozer:dozer:jar:5.5.1/commons-beanutils:commons-beanutils:jar:1.9.1</node>
+    <node x="11155.331749781752" y="1090.0">net.sf.dozer:dozer:jar:5.5.1/commons-beanutils:commons-beanutils:jar:1.9.1/commons-collections:commons-collections:jar:3.2.1</node>
+    <node x="11006.331749781752" y="1400.0">net.sf.dozer:dozer:jar:5.5.1/org.apache.commons:commons-lang3:jar:3.8.1</node>
+    <node x="10939.831749781752" y="560.0">net.sf.dozer:dozer:jar:5.5.1/org.slf4j:jcl-over-slf4j:jar:1.7.25</node>
+    <node x="10576.916185897437" y="1490.0">com.google.guava:guava:jar:20.0</node>
+    <node x="11493.644249781752" y="1490.0">commons-lang:commons-lang:jar:2.6</node>
+    <node x="8693.659134656296" y="1490.0">org.apache.commons:commons-lang3:jar:3.5</node>
+    <node x="11353.644249781752" y="1490.0">net.sf.json-lib:json-lib:jar:jdk15:2.4</node>
+    <node x="11369.644249781752" y="1400.0">net.sf.json-lib:json-lib:jar:jdk15:2.4/net.sf.ezmorph:ezmorph:jar:1.0.6</node>
+    <node x="12304.644249781752" y="1490.0">com.mchange:c3p0:jar:0.9.2.1</node>
+    <node x="12244.144249781752" y="1400.0">com.mchange:c3p0:jar:0.9.2.1/com.mchange:mchange-commons-java:jar:0.2.3.4</node>
+    <node x="10667.916185897437" y="1490.0">com.google.code.maven-play-plugin.com.mchange:c3p0-oracle-thin-extras:jar:0.9.5</node>
+    <node x="10726.416185897437" y="1400.0">com.google.code.maven-play-plugin.com.mchange:c3p0-oracle-thin-extras:jar:0.9.5/com.mchange:c3p0:jar:0.9.5</node>
+    <node x="10447.858653887066" y="1490.0">dom4j:dom4j:jar:1.6</node>
+    <node x="2730.038301322965" y="1490.0">org.hibernate:hibernate-ehcache:jar:5.2.12.Final</node>
+    <node x="2758.1097598756724" y="920.0">org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.jboss.logging:jboss-logging:jar:3.3.2.Final</node>
+    <node x="2979.7883013229643" y="1400.0">org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final</node>
+    <node x="3582.547259875673" y="1090.0">org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/javax.persistence:javax.persistence-api:jar:2.2</node>
+    <node x="3766.547259875673" y="1090.0">org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/org.javassist:javassist:jar:3.23.1-GA</node>
+    <node x="3210.547259875673" y="1090.0">org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/net.bytebuddy:byte-buddy:jar:1.9.10</node>
+    <node x="3034.547259875673" y="1090.0">org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/antlr:antlr:jar:2.7.7</node>
+    <node x="3336.547259875673" y="1090.0">org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:jar:1.1.1.Final</node>
+    <node x="3116.547259875673" y="1090.0">org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/org.jboss:jandex:jar:2.0.5.Final</node>
+    <node x="2275.9620326029462" y="1090.0">org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/javax.activation:javax.activation-api:jar:1.2.0</node>
+    <node x="2942.547259875673" y="1090.0">org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/org.dom4j:dom4j:jar:2.1.1</node>
+    <node x="2633.8597598756724" y="1090.0">org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/org.hibernate.common:hibernate-commons-annotations:jar:5.0.4.Final</node>
+    <node x="2762.038301322965" y="1400.0">org.hibernate:hibernate-ehcache:jar:5.2.12.Final/net.sf.ehcache:ehcache:jar:2.10.6</node>
+    <node x="4972.538301322964" y="920.0">com.fasterxml.jackson.core:jackson-databind:jar:2.9.9</node>
+    <node x="6116.288301322964" y="1490.0">com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:jar:2.9.9</node>
+    <node x="6198.288301322964" y="1400.0">com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:jar:2.9.9/javax.transaction:jta:jar:1.1</node>
+    <node x="6037.288301322964" y="1400.0">com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:jar:2.9.9/com.fasterxml.jackson.core:jackson-databind:jar:2.9.9</node>
+    <node x="1625.0189521627044" y="1490.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0</node>
+    <node x="2376.5036992696123" y="1400.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2</node>
+    <node x="2141.9620326029462" y="1090.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2</node>
+    <node x="2108.9620326029462" y="920.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2</node>
+    <node x="2046.9620326029462" y="770.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2/com.baomidou:mybatis-plus-core:jar:3.4.2</node>
+    <node x="2356.183167477492" y="560.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2/com.baomidou:mybatis-plus-core:jar:3.4.2/com.baomidou:mybatis-plus-annotation:jar:3.4.2</node>
+    <node x="2047.2120326029462" y="560.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2/com.baomidou:mybatis-plus-core:jar:3.4.2/com.github.jsqlparser:jsqlparser:jar:4.0</node>
+    <node x="1945.2120326029462" y="560.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2/com.baomidou:mybatis-plus-core:jar:3.4.2/org.mybatis:mybatis:jar:3.5.6</node>
+    <node x="2213.9620326029462" y="770.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2/org.mybatis:mybatis-spring:jar:2.0.5</node>
+    <node x="1710.7189521627051" y="1400.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0</node>
+    <node x="1965.9620326029462" y="1090.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-beanutils:commons-beanutils:jar:1.7.0</node>
+    <node x="188.0" y="1090.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-betwixt:commons-betwixt:jar:0.8</node>
+    <node x="166.0" y="920.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-betwixt:commons-betwixt:jar:0.8/commons-beanutils:commons-beanutils-core:jar:1.7.0</node>
+    <node x="99.5" y="770.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-betwixt:commons-betwixt:jar:0.8/commons-beanutils:commons-beanutils-core:jar:1.7.0/commons-logging:commons-logging:jar:1.0</node>
+    <node x="265.5" y="770.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-betwixt:commons-betwixt:jar:0.8/commons-beanutils:commons-beanutils-core:jar:1.7.0/commons-collections:commons-collections:jar:2.0</node>
+    <node x="1467.9620326029462" y="1090.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-codec:commons-codec:jar:1.11</node>
+    <node x="968.9620326029462" y="1090.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-collections:commons-collections:jar:3.1</node>
+    <node x="1624.9620326029462" y="1090.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-dbcp:commons-dbcp:jar:1.2.1</node>
+    <node x="741.9620326029462" y="920.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-digester:commons-digester:jar:1.7</node>
+    <node x="803.5" y="770.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-digester:commons-digester:jar:1.7/commons-beanutils:commons-beanutils:jar:1.6</node>
+    <node x="637.5" y="770.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-digester:commons-digester:jar:1.7/commons-logging:commons-logging:jar:1.0.4</node>
+    <node x="451.5" y="770.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-digester:commons-digester:jar:1.7/commons-collections:commons-collections:jar:2.1</node>
+    <node x="1242.1831674774921" y="770.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-digester:commons-digester:jar:1.7/xml-apis:xml-apis:jar:1.4.01</node>
+    <node x="1154.9620326029462" y="1090.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-lang:commons-lang:jar:2.1</node>
+    <node x="1775.9620326029462" y="1090.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-logging:commons-logging-api:jar:1.0.4</node>
+    <node x="0.0" y="920.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-logging:commons-logging:jar:1.0.4</node>
+    <node x="1375.9620326029462" y="1090.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/dom4j:dom4j:jar:1.6.1</node>
+    <node x="572.25" y="1090.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/junit:junit:jar:4.12</node>
+    <node x="540.75" y="920.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/junit:junit:jar:4.12/org.hamcrest:hamcrest-core:jar:1.3</node>
+    <node x="864.9620326029462" y="1090.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/stax:stax-api:jar:1.0.1</node>
+    <node x="1300.9620326029462" y="1090.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/oro:oro:jar:2.0.8</node>
+    <node x="1495.7189521627051" y="1400.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/javax.xml.bind:jaxb-api:jar:2.3.1</node>
+    <node x="1598.7189521627051" y="1400.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.sun.xml.bind:jaxb-core:jar:2.3.0.1</node>
+    <node x="1385.7189521627051" y="1400.0">org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.sun.xml.bind:jaxb-impl:jar:2.3.0.1</node>
+    <node x="11724.644249781752" y="1490.0">jakarta.xml.bind:jakarta.xml.bind-api:jar:2.3.3</node>
+    <node x="11720.644249781752" y="1400.0">jakarta.xml.bind:jakarta.xml.bind-api:jar:2.3.3/jakarta.activation:jakarta.activation-api:jar:1.2.2</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.google.code.maven-play-plugin.com.mchange:c3p0-oracle-thin-extras:jar:0.9.5" target="com.google.code.maven-play-plugin.com.mchange:c3p0-oracle-thin-extras:jar:0.9.5/com.mchange:c3p0:jar:0.9.5">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final/io.netty:netty-codec:jar:4.1.33.Final" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final/io.netty:netty-buffer:jar:4.1.33.Final">
+      <point x="0.0" y="-15.0" />
+      <point x="9574.94499731432" y="900.0" />
+      <point x="9562.278330647654" y="900.0" />
+      <point x="9562.278330647654" y="750.0" />
+      <point x="9589.111663980988" y="750.0" />
+      <point x="-36.66666666666697" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.3.RELEASE/org.apache.tomcat.embed:tomcat-embed-websocket:jar:9.0.16">
+      <point x="76.5" y="-15.0" />
+      <point x="6568.330894750218" y="1470.0" />
+      <point x="6624.580894750218" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-cas:jar:1.4.0" target="org.apache.shiro:shiro-cas:jar:1.4.0/org.apache.shiro:shiro-web:jar:1.4.0">
+      <point x="23.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE">
+      <point x="-22.550000000000182" y="-15.0" />
+      <point x="8967.609134656297" y="1590.0" />
+      <point x="7806.530894750218" y="1590.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.14.Final">
+      <point x="-73.33333333333303" y="-15.0" />
+      <point x="4339.580894750219" y="1450.0" />
+      <point x="4259.997561416885" y="1450.0" />
+      <point x="4259.997561416885" y="1250.0" />
+      <point x="4011.0889265423393" y="1250.0" />
+      <point x="-37.75" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-transport:jar:4.1.33.Final">
+      <point x="40.875" y="-15.0" />
+      <point x="9559.580593209006" y="1380.0" />
+      <point x="9726.44499731432" y="1380.0" />
+      <point x="9726.44499731432" y="900.0" />
+      <point x="9758.778330647654" y="900.0" />
+      <point x="43.333333333333485" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3" target="com.alibaba:druid-spring-boot-starter:jar:1.1.14/org.slf4j:slf4j-api:jar:1.7.25">
+      <point x="32.25" y="-15.0" />
+      <point x="8054.0555932090065" y="500.0" />
+      <point x="9243.012305006629" y="500.0" />
+      <point x="-32.30769230769238" y="15.0" />
+    </edge>
+    <edge source="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/org.javassist:javassist:jar:3.23.1-GA">
+      <point x="56.81818181818198" y="-15.0" />
+      <point x="3099.1064831411463" y="1250.0" />
+      <point x="3810.047259875673" y="1250.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-websocket:jar:2.1.3.RELEASE/org.springframework:spring-websocket:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE">
+      <point x="-48.33333333333394" y="-15.0" />
+      <point x="4374.421333115084" y="1070.0" />
+      <point x="4334.172259875673" y="1070.0" />
+      <point x="4334.172259875673" y="140.0" />
+      <point x="8189.405593209007" y="140.0" />
+      <point x="-42.399999999999636" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-digester:commons-digester:jar:1.7" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-digester:commons-digester:jar:1.7/commons-collections:commons-collections:jar:2.1">
+      <point x="-56.25" y="-15.0" />
+      <point x="760.7120326029462" y="900.0" />
+      <point x="534.5" y="900.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="cglib:cglib:jar:3.1" target="cglib:cglib:jar:3.1/org.ow2.asm:asm:jar:4.2">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2" target="org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2/org.mybatis:mybatis-spring:jar:1.3.2">
+      <point x="0.0" y="-15.0" />
+      <point x="7309.564228083552" y="1470.0" />
+      <point x="7330.514228083552" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0" target="commons-dbcp:commons-dbcp:jar:1.4/commons-pool:commons-pool:jar:1.6">
+      <point x="36.67857142857156" y="-15.0" />
+      <point x="1786.8975235912767" y="1260.0" />
+      <point x="4176.088926542339" y="1260.0" />
+      <point x="-31.75" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-mail:jar:2.1.3.RELEASE/com.sun.mail:javax.mail:jar:1.6.2" target="org.springframework.boot:spring-boot-starter-mail:jar:2.1.3.RELEASE/com.sun.mail:javax.mail:jar:1.6.2/javax.activation:activation:jar:1.1">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.alibaba:druid-spring-boot-starter:jar:1.1.14" target="com.alibaba:druid-spring-boot-starter:jar:1.1.14/org.slf4j:slf4j-api:jar:1.7.25">
+      <point x="0.0" y="-15.0" />
+      <point x="7057.664228083551" y="1470.0" />
+      <point x="7047.247561416885" y="1470.0" />
+      <point x="7047.247561416885" y="490.0" />
+      <point x="9236.55076654509" y="490.0" />
+      <point x="-38.769230769230944" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE">
+      <point x="-59.16666666666674" y="-15.0" />
+      <point x="8929.254166666668" y="1370.0" />
+      <point x="8520.81392654234" y="1370.0" />
+      <point x="67.875" y="15.0" />
+    </edge>
+    <edge source="net.sf.dozer:dozer:jar:5.5.1" target="net.sf.dozer:dozer:jar:5.5.1/org.apache.commons:commons-lang3:jar:3.8.1">
+      <point x="8.625" y="-15.0" />
+      <point x="11093.808477865303" y="1450.0" />
+      <point x="11073.331749781752" y="1450.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-betwixt:commons-betwixt:jar:0.8" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-betwixt:commons-betwixt:jar:0.8/commons-beanutils:commons-beanutils-core:jar:1.7.0">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-config-core:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-lang:jar:1.4.1">
+      <point x="0.0" y="-15.0" />
+      <point x="10473.108653887066" y="740.0" />
+      <point x="10318.393093209006" y="740.0" />
+      <point x="6.0625" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-lang:jar:1.4.1" target="com.alibaba:druid-spring-boot-starter:jar:1.1.14/org.slf4j:slf4j-api:jar:1.7.25">
+      <point x="0.0" y="-15.0" />
+      <point x="10312.330593209006" y="500.0" />
+      <point x="9294.704612698937" y="500.0" />
+      <point x="19.384615384615472" y="15.0" />
+    </edge>
+    <edge source="net.sf.dozer:dozer:jar:5.5.1/commons-beanutils:commons-beanutils:jar:1.9.1" target="net.sf.dozer:dozer:jar:5.5.1/commons-beanutils:commons-beanutils:jar:1.9.1/commons-collections:commons-collections:jar:3.2.1">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.hibernate:hibernate-ehcache:jar:5.2.12.Final" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/net.sf.ehcache:ehcache:jar:2.10.6">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework.data:spring-data-keyvalue:jar:2.1.5.RELEASE/org.springframework.data:spring-data-commons:jar:2.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="9096.33922808355" y="480.0" />
+      <point x="9073.172561416884" y="480.0" />
+      <point x="9073.172561416884" y="140.0" />
+      <point x="8274.205593209006" y="140.0" />
+      <point x="42.399999999999636" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-crypto-hash:jar:1.4.1">
+      <point x="-14.0" y="-15.0" />
+      <point x="10417.24951923077" y="1050.0" />
+      <point x="10353.358653887066" y="1050.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-crypto-hash:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-lang:jar:1.4.1">
+      <point x="36.75" y="-15.0" />
+      <point x="10390.108653887066" y="900.0" />
+      <point x="10376.608653887066" y="900.0" />
+      <point x="10376.608653887066" y="750.0" />
+      <point x="10306.268093209006" y="750.0" />
+      <point x="-6.0625" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE">
+      <point x="60.333333333333485" y="-15.0" />
+      <point x="8513.272259875674" y="1070.0" />
+      <point x="8463.93892654234" y="1070.0" />
+      <point x="8463.93892654234" y="700.0" />
+      <point x="8759.288926542338" y="700.0" />
+      <point x="8759.288926542338" y="160.0" />
+      <point x="8260.072259875673" y="160.0" />
+      <point x="28.266666666666424" y="15.0" />
+    </edge>
+    <edge source="com.fasterxml.jackson.core:jackson-databind:jar:2.9.9" target="com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9/com.fasterxml.jackson.core:jackson-core:jar:2.9.8">
+      <point x="35.25" y="-15.0" />
+      <point x="5078.288301322964" y="850.0" />
+      <point x="5888.288301322964" y="850.0" />
+      <point x="-47.5" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="4412.914228083551" y="1450.0" />
+      <point x="4381.747561416885" y="1450.0" />
+      <point x="4381.747561416885" y="1280.0" />
+      <point x="5615.672259875673" y="1280.0" />
+      <point x="5615.672259875673" y="1030.0" />
+      <point x="7639.5375" y="1030.0" />
+      <point x="-54.25" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE">
+      <point x="-35.5" y="-15.0" />
+      <point x="8952.920833333334" y="1360.0" />
+      <point x="8642.772259875674" y="1360.0" />
+      <point x="8642.772259875674" y="720.0" />
+      <point x="8822.205593209006" y="720.0" />
+      <point x="8822.205593209006" y="370.0" />
+      <point x="8331.555593209006" y="370.0" />
+      <point x="38.25" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE">
+      <point x="-61.33333333333303" y="-15.0" />
+      <point x="8273.197561416884" y="1470.0" />
+      <point x="8226.864228083552" y="1470.0" />
+      <point x="8226.864228083552" y="1340.0" />
+      <point x="8259.280894750218" y="1340.0" />
+      <point x="8259.280894750218" y="1040.0" />
+      <point x="7748.0375" y="1040.0" />
+      <point x="54.25" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final/io.netty:netty-codec:jar:4.1.33.Final" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-common:jar:4.1.33.Final">
+      <point x="-36.333333333333485" y="-15.0" />
+      <point x="9538.611663980988" y="900.0" />
+      <point x="9529.778330647654" y="900.0" />
+      <point x="9529.778330647654" y="540.0" />
+      <point x="9539.611663980988" y="540.0" />
+      <point x="-10.41666666666697" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE">
+      <point x="49.25" y="-15.0" />
+      <point x="7855.780894750218" y="1360.0" />
+      <point x="8430.31392654234" y="1360.0" />
+      <point x="-22.625" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework.data:spring-data-keyvalue:jar:2.1.5.RELEASE/org.springframework.data:spring-data-commons:jar:2.1.5.RELEASE" target="com.alibaba:druid-spring-boot-starter:jar:1.1.14/org.slf4j:slf4j-api:jar:1.7.25">
+      <point x="57.33333333333326" y="-15.0" />
+      <point x="9153.672561416884" y="530.0" />
+      <point x="9262.396920391244" y="530.0" />
+      <point x="-12.923076923076906" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.apache.commons:commons-lang3:jar:3.5">
+      <point x="-6.149999999999636" y="-15.0" />
+      <point x="8984.009134656297" y="1550.0" />
+      <point x="8760.659134656296" y="1550.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/org.hibernate.common:hibernate-commons-annotations:jar:5.0.4.Final" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.jboss.logging:jboss-logging:jar:3.3.2.Final">
+      <point x="0.0" y="-15.0" />
+      <point x="2752.8597598756724" y="1070.0" />
+      <point x="2802.7347598756724" y="1070.0" />
+      <point x="-14.875" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework.data:spring-data-keyvalue:jar:2.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework.data:spring-data-keyvalue:jar:2.1.5.RELEASE/org.springframework.data:spring-data-commons:jar:2.1.5.RELEASE">
+      <point x="20.625" y="-15.0" />
+      <point x="9050.15172808355" y="890.0" />
+      <point x="9096.33922808355" y="890.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-websocket:jar:2.1.3.RELEASE/org.springframework:spring-websocket:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE/org.springframework:spring-context:jar:5.1.5.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="4422.754666448418" y="540.0" />
+      <point x="4838.138301322964" y="540.0" />
+      <point x="-50.399999999999636" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE/org.springframework:spring-beans:jar:5.1.5.RELEASE">
+      <point x="25.5" y="-15.0" />
+      <point x="8318.805593209006" y="300.0" />
+      <point x="8343.205593209006" y="300.0" />
+      <point x="-5.800000000000182" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="jakarta.xml.bind:jakarta.xml.bind-api:jar:2.3.3" target="jakarta.xml.bind:jakarta.xml.bind-api:jar:2.3.3/jakarta.activation:jakarta.activation-api:jar:1.2.2">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.projectreactor:reactor-core:jar:3.2.6.RELEASE" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.projectreactor:reactor-core:jar:3.2.6.RELEASE/org.reactivestreams:reactive-streams:jar:1.0.2">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-crypto-cipher:jar:1.4.1">
+      <point x="-28.0" y="-15.0" />
+      <point x="10403.24951923077" y="1060.0" />
+      <point x="10182.358653887066" y="1060.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2" target="org.springframework.boot:spring-boot-starter-jdbc:jar:2.1.3.RELEASE">
+      <point x="83.60000000000036" y="-15.0" />
+      <point x="7393.164228083552" y="1470.0" />
+      <point x="7686.530894750218" y="1470.0" />
+      <point x="7686.530894750218" y="1330.0" />
+      <point x="7874.447561416885" y="1330.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-config-core:jar:1.4.1">
+      <point x="0.0" y="-15.0" />
+      <point x="10431.24951923077" y="1070.0" />
+      <point x="10437.358653887066" y="1070.0" />
+      <point x="-35.75" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-ehcache:jar:1.4.1" target="org.apache.shiro:shiro-ehcache:jar:1.4.1/net.sf.ehcache:ehcache-core:jar:2.6.11">
+      <point x="-30.5" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE">
+      <point x="-74.66666666666652" y="-15.0" />
+      <point x="9006.99246798963" y="1470.0" />
+      <point x="8614.272259875674" y="1470.0" />
+      <point x="8614.272259875674" y="1030.0" />
+      <point x="7763.5375" y="1030.0" />
+      <point x="69.75" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/stax:stax-api:jar:1.0.1">
+      <point x="-14.107142857143117" y="-15.0" />
+      <point x="1736.111809305562" y="1200.0" />
+      <point x="906.9620326029462" y="1200.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-jdbc:jar:2.1.3.RELEASE/org.springframework:spring-jdbc:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE/org.springframework:spring-beans:jar:5.1.5.RELEASE">
+      <point x="-35.0" y="-15.0" />
+      <point x="7937.179166666667" y="900.0" />
+      <point x="7909.479166666668" y="900.0" />
+      <point x="7909.479166666668" y="660.0" />
+      <point x="8354.805593209006" y="660.0" />
+      <point x="5.800000000000182" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-common:jar:4.1.33.Final">
+      <point x="-44.25" y="-15.0" />
+      <point x="9527.69499731432" y="1070.0" />
+      <point x="9509.94499731432" y="1070.0" />
+      <point x="9509.94499731432" y="540.0" />
+      <point x="9518.778330647654" y="540.0" />
+      <point x="-31.25" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final/io.netty:netty-buffer:jar:4.1.33.Final" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-common:jar:4.1.33.Final">
+      <point x="0.0" y="-15.0" />
+      <point x="9625.778330647654" y="540.0" />
+      <point x="9560.44499731432" y="540.0" />
+      <point x="10.416666666666742" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE/org.springframework:spring-context:jar:5.1.5.RELEASE">
+      <point x="27.0" y="-15.0" />
+      <point x="7444.722259875673" y="470.0" />
+      <point x="4888.538301322964" y="470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="commons-io:commons-io:jar:2.4">
+      <point x="79.94999999999982" y="-15.0" />
+      <point x="9070.109134656297" y="1730.0" />
+      <point x="12445.144249781752" y="1730.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.postgresql:postgresql:jar:42.2.5">
+      <point x="43.05000000000018" y="-15.0" />
+      <point x="9033.209134656297" y="1640.0" />
+      <point x="11198.980593209006" y="1640.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.apache.shiro:shiro-core:jar:1.4.1">
+      <point x="26.649999999999636" y="-15.0" />
+      <point x="9016.809134656296" y="1600.0" />
+      <point x="10530.358653887066" y="1600.0" />
+      <point x="10530.358653887066" y="1380.0" />
+      <point x="10463.916185897437" y="1380.0" />
+      <point x="32.666666666666515" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-websocket:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-websocket:jar:2.1.3.RELEASE/org.springframework:spring-messaging:jar:5.1.5.RELEASE">
+      <point x="-75.66666666666606" y="-15.0" />
+      <point x="4093.7475614168857" y="1470.0" />
+      <point x="3864.047259875673" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:jar:1.1.1.Final">
+      <point x="34.09090909090992" y="-15.0" />
+      <point x="3076.3792104138743" y="1230.0" />
+      <point x="3449.547259875673" y="1230.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-crypto-hash:jar:1.4.1/org.apache.shiro:shiro-crypto-core:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-lang:jar:1.4.1">
+      <point x="0.0" y="-15.0" />
+      <point x="10268.858653887066" y="750.0" />
+      <point x="10294.143093209006" y="750.0" />
+      <point x="-18.1875" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE">
+      <point x="-14.350000000000364" y="-15.0" />
+      <point x="8975.809134656296" y="1570.0" />
+      <point x="8334.530894750218" y="1570.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="mysql:mysql-connector-java:jar:8.0.15">
+      <point x="63.55000000000018" y="-15.0" />
+      <point x="9053.709134656297" y="1690.0" />
+      <point x="11984.144249781752" y="1690.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE">
+      <point x="41.80000000000018" y="-15.0" />
+      <point x="7351.364228083552" y="1460.0" />
+      <point x="7473.764228083552" y="1460.0" />
+      <point x="7473.764228083552" y="1060.0" />
+      <point x="7686.0375" y="1060.0" />
+      <point x="-7.75" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="net.sf.json-lib:json-lib:jar:jdk15:2.4">
+      <point x="47.149999999999636" y="-15.0" />
+      <point x="9037.309134656296" y="1650.0" />
+      <point x="11413.644249781752" y="1650.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-webmvc:jar:5.1.5.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="4729.247561416885" y="1260.0" />
+      <point x="5039.122561416885" y="1260.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE">
+      <point x="74.66666666666652" y="-15.0" />
+      <point x="9156.325801322964" y="1470.0" />
+      <point x="9518.705593209006" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE">
+      <point x="64.58333333333348" y="-15.0" />
+      <point x="7758.370833333334" y="900.0" />
+      <point x="7892.620833333334" y="900.0" />
+      <point x="7892.620833333334" y="650.0" />
+      <point x="8231.805593209006" y="650.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.hibernate:hibernate-ehcache:jar:5.2.12.Final" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final">
+      <point x="49.66666666666606" y="-15.0" />
+      <point x="2854.204967989631" y="1470.0" />
+      <point x="3042.2883013229643" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="com.fasterxml.jackson.core:jackson-databind:jar:2.9.9">
+      <point x="-51.25" y="-15.0" />
+      <point x="8938.909134656296" y="1660.0" />
+      <point x="5473.122561416885" y="1660.0" />
+      <point x="5473.122561416885" y="1240.0" />
+      <point x="4869.713926542339" y="1240.0" />
+      <point x="4869.713926542339" y="1070.0" />
+      <point x="5043.038301322964" y="1070.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-webmvc:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE">
+      <point x="-32.25" y="-15.0" />
+      <point x="5006.872561416885" y="1040.0" />
+      <point x="4637.038301322964" y="1040.0" />
+      <point x="4637.038301322964" y="160.0" />
+      <point x="8203.53892654234" y="160.0" />
+      <point x="-28.266666666666424" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-config-ogdl:jar:1.4.1" target="com.alibaba:druid-spring-boot-starter:jar:1.1.14/org.slf4j:slf4j-api:jar:1.7.25">
+      <point x="57.19999999999982" y="-15.0" />
+      <point x="10824.808653887067" y="900.0" />
+      <point x="10875.952403887066" y="900.0" />
+      <point x="10875.952403887066" y="490.0" />
+      <point x="9301.166151160474" y="490.0" />
+      <point x="25.84615384615381" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE/org.springframework:spring-context:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE">
+      <point x="-15.75" y="-15.0" />
+      <point x="4872.788301322964" y="380.0" />
+      <point x="4883.038301322964" y="380.0" />
+      <point x="4883.038301322964" y="190.0" />
+      <point x="8224.73892654234" y="190.0" />
+      <point x="-7.066666666666606" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE">
+      <point x="38.75" y="-15.0" />
+      <point x="7732.5375" y="890.0" />
+      <point x="7778.620833333334" y="890.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-webmvc:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE/org.springframework:spring-context:jar:5.1.5.RELEASE">
+      <point x="32.25" y="-15.0" />
+      <point x="5071.372561416885" y="1010.0" />
+      <point x="4863.338301322964" y="1010.0" />
+      <point x="-25.199999999999818" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-ehcache:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-cache:jar:1.4.1">
+      <point x="30.5" y="-15.0" />
+      <point x="9986.94499731432" y="1070.0" />
+      <point x="10004.608653887066" y="1070.0" />
+      <point x="-26.75" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.springframework.boot:spring-boot-starter-websocket:jar:2.1.3.RELEASE">
+      <point x="-71.75" y="-15.0" />
+      <point x="8918.409134656296" y="1710.0" />
+      <point x="4169.414228083551" y="1710.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework.data:spring-data-keyvalue:jar:2.1.5.RELEASE">
+      <point x="11.833333333333258" y="-15.0" />
+      <point x="9000.254166666668" y="1360.0" />
+      <point x="9029.52672808355" y="1360.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE/org.apache.tomcat.embed:tomcat-embed-el:jar:9.0.16">
+      <point x="73.33333333333303" y="-15.0" />
+      <point x="4486.247561416885" y="1470.0" />
+      <point x="5332.0972598756725" y="1470.0" />
+      <point x="-35.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/junit:junit:jar:4.12" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/junit:junit:jar:4.12/org.hamcrest:hamcrest-core:jar:1.3">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/oro:oro:jar:2.0.8">
+      <point x="2.8214285714284415" y="-15.0" />
+      <point x="1753.0403807341336" y="1170.0" />
+      <point x="1328.4620326029462" y="1170.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-cache:jar:1.4.1">
+      <point x="-42.0" y="-15.0" />
+      <point x="10389.24951923077" y="1070.0" />
+      <point x="10058.108653887066" y="1070.0" />
+      <point x="26.75" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-config-ogdl:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-lang:jar:1.4.1">
+      <point x="28.59999999999991" y="-15.0" />
+      <point x="10796.208653887066" y="890.0" />
+      <point x="10856.108653887066" y="890.0" />
+      <point x="10856.108653887066" y="720.0" />
+      <point x="10342.643093209006" y="720.0" />
+      <point x="30.3125" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-crypto-cipher:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-crypto-hash:jar:1.4.1/org.apache.shiro:shiro-crypto-core:jar:1.4.1">
+      <point x="38.75" y="-15.0" />
+      <point x="10221.108653887066" y="900.0" />
+      <point x="10232.858653887066" y="900.0" />
+      <point x="-36.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.14.Final" target="org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.14.Final/javax.validation:validation-api:jar:2.0.1.Final">
+      <point x="50.33333333333394" y="-15.0" />
+      <point x="4099.172259875673" y="1070.0" />
+      <point x="4167.354166666667" y="1070.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-web:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE/org.springframework:spring-beans:jar:5.1.5.RELEASE">
+      <point x="26.0" y="-15.0" />
+      <point x="4600.538301322964" y="880.0" />
+      <point x="4580.038301322964" y="880.0" />
+      <point x="4580.038301322964" y="270.0" />
+      <point x="8308.405593209005" y="270.0" />
+      <point x="-40.600000000000364" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE">
+      <point x="-10.25" y="-15.0" />
+      <point x="8979.909134656296" y="1560.0" />
+      <point x="8437.030894750218" y="1560.0" />
+      <point x="8437.030894750218" y="1330.0" />
+      <point x="8248.280894750218" y="1330.0" />
+      <point x="8248.280894750218" y="1070.0" />
+      <point x="8319.772259875674" y="1070.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.projectreactor:reactor-core:jar:3.2.6.RELEASE">
+      <point x="-40.875" y="-15.0" />
+      <point x="9477.830593209006" y="1380.0" />
+      <point x="9412.81999731432" y="1380.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-jdbc:jar:2.1.3.RELEASE/com.zaxxer:HikariCP:jar:3.2.0" target="com.alibaba:druid-spring-boot-starter:jar:1.1.14/org.slf4j:slf4j-api:jar:1.7.25">
+      <point x="0.0" y="-15.0" />
+      <point x="9245.33922808355" y="540.0" />
+      <point x="9268.858458852781" y="540.0" />
+      <point x="-6.4615384615385665" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-spring:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1">
+      <point x="-27.5" y="-15.0" />
+      <point x="10344.358653887066" y="1380.0" />
+      <point x="10398.582852564105" y="1380.0" />
+      <point x="-32.666666666666515" y="15.0" />
+    </edge>
+    <edge source="com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:jar:2.9.9" target="com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9/com.fasterxml.jackson.core:jackson-core:jar:2.9.8">
+      <point x="71.0" y="-15.0" />
+      <point x="6293.788301322964" y="1470.0" />
+      <point x="6351.080894750218" y="1470.0" />
+      <point x="6351.080894750218" y="860.0" />
+      <point x="5983.288301322964" y="860.0" />
+      <point x="47.5" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.14.Final" target="org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.14.Final/com.fasterxml:classmate:jar:1.4.0">
+      <point x="0.0" y="-15.0" />
+      <point x="4048.8389265423393" y="1050.0" />
+      <point x="2979.547259875673" y="1050.0" />
+      <point x="23.75" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-beanutils:commons-beanutils:jar:1.7.0">
+      <point x="31.035714285714675" y="-15.0" />
+      <point x="1781.2546664484198" y="1240.0" />
+      <point x="2043.9620326029462" y="1240.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-digester:commons-digester:jar:1.7">
+      <point x="-19.75" y="-15.0" />
+      <point x="1730.4689521627051" y="1210.0" />
+      <point x="854.4620326029462" y="1210.0" />
+      <point x="37.5" y="15.0" />
+    </edge>
+    <edge source="net.sf.dozer:dozer:jar:5.5.1/org.slf4j:jcl-over-slf4j:jar:1.7.25" target="com.alibaba:druid-spring-boot-starter:jar:1.1.14/org.slf4j:slf4j-api:jar:1.7.25">
+      <point x="0.0" y="-15.0" />
+      <point x="10995.831749781752" y="470.0" />
+      <point x="9314.08922808355" y="470.0" />
+      <point x="38.76923076923072" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-freemarker:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-freemarker:jar:2.1.3.RELEASE/org.freemarker:freemarker:jar:2.3.28">
+      <point x="0.0" y="-15.0" />
+      <point x="8109.030894750218" y="1470.0" />
+      <point x="8101.447561416885" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-websocket:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-websocket:jar:2.1.3.RELEASE/org.springframework:spring-websocket:jar:5.1.5.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="4169.414228083551" y="1460.0" />
+      <point x="4070.0472598756733" y="1460.0" />
+      <point x="4070.0472598756733" y="1270.0" />
+      <point x="4422.754666448418" y="1270.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/javax.persistence:javax.persistence-api:jar:2.2">
+      <point x="45.45454545454595" y="-15.0" />
+      <point x="3087.7428467775103" y="1240.0" />
+      <point x="3664.547259875673" y="1240.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework.data:spring-data-keyvalue:jar:2.1.5.RELEASE/org.springframework.data:spring-data-commons:jar:2.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE/org.springframework:spring-beans:jar:5.1.5.RELEASE">
+      <point x="-57.33333333333326" y="-15.0" />
+      <point x="9039.005894750218" y="480.0" />
+      <point x="9024.922561416884" y="480.0" />
+      <point x="9024.922561416884" y="280.0" />
+      <point x="8389.605593209006" y="280.0" />
+      <point x="40.600000000000364" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-lang:commons-lang:jar:2.1">
+      <point x="-2.8214285714284415" y="-15.0" />
+      <point x="1747.3975235912767" y="1180.0" />
+      <point x="1217.9620326029462" y="1180.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.8">
+      <point x="15.58333333333394" y="-15.0" />
+      <point x="5527.255593209007" y="1000.0" />
+      <point x="5587.913301322964" y="1000.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2">
+      <point x="86.39999999999964" y="-15.0" />
+      <point x="1819.418952162704" y="1470.0" />
+      <point x="2474.5036992696123" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-jdbc:jar:2.1.3.RELEASE/org.springframework:spring-jdbc:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework:spring-tx:jar:5.1.5.RELEASE">
+      <point x="35.0" y="-15.0" />
+      <point x="8007.179166666667" y="900.0" />
+      <point x="8812.947561416886" y="900.0" />
+      <point x="-30.333333333333258" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-mail:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="6848.664228083551" y="1470.0" />
+      <point x="6846.580894750219" y="1470.0" />
+      <point x="6846.580894750219" y="1050.0" />
+      <point x="7670.5375" y="1050.0" />
+      <point x="-23.25" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9">
+      <point x="-55.350000000000364" y="-15.0" />
+      <point x="8934.809134656296" y="1670.0" />
+      <point x="5178.622561416885" y="1670.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-transport:jar:4.1.33.Final" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final/io.netty:netty-buffer:jar:4.1.33.Final">
+      <point x="-43.33333333333326" y="-15.0" />
+      <point x="9672.111663980988" y="750.0" />
+      <point x="9662.44499731432" y="750.0" />
+      <point x="36.66666666666674" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-websocket:jar:2.1.3.RELEASE/org.springframework:spring-messaging:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE">
+      <point x="-36.25" y="-15.0" />
+      <point x="3827.797259875673" y="130.0" />
+      <point x="8182.33892654234" y="130.0" />
+      <point x="-49.46666666666624" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.8" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.8/com.fasterxml.jackson.core:jackson-databind:jar:2.9.9">
+      <point x="0.0" y="-15.0" />
+      <point x="5386.538301322964" y="830.0" />
+      <point x="5581.330894750218" y="830.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-freemarker:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE">
+      <point x="-75.66666666666652" y="-15.0" />
+      <point x="8033.364228083552" y="1470.0" />
+      <point x="8040.947561416885" y="1470.0" />
+      <point x="8040.947561416885" y="1050.0" />
+      <point x="7732.5375" y="1050.0" />
+      <point x="38.75" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-codec:commons-codec:jar:1.11">
+      <point x="14.107142857143117" y="-15.0" />
+      <point x="1764.3260950198483" y="1150.0" />
+      <point x="1536.4620326029462" y="1150.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-crypto-cipher:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-lang:jar:1.4.1">
+      <point x="-38.75" y="-15.0" />
+      <point x="10143.608653887066" y="900.0" />
+      <point x="10159.108653887066" y="900.0" />
+      <point x="10159.108653887066" y="740.0" />
+      <point x="10282.018093209006" y="740.0" />
+      <point x="-30.3125" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.apache.shiro:shiro-ehcache:jar:1.4.1">
+      <point x="6.149999999999636" y="-15.0" />
+      <point x="8996.309134656296" y="1550.0" />
+      <point x="9956.44499731432" y="1550.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE">
+      <point x="-27.0" y="-15.0" />
+      <point x="7390.722259875673" y="480.0" />
+      <point x="4815.038301322964" y="480.0" />
+      <point x="4815.038301322964" y="180.0" />
+      <point x="8217.672259875673" y="180.0" />
+      <point x="-14.133333333333212" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-betwixt:commons-betwixt:jar:0.8/commons-beanutils:commons-beanutils-core:jar:1.7.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-betwixt:commons-betwixt:jar:0.8/commons-beanutils:commons-beanutils-core:jar:1.7.0/commons-logging:commons-logging:jar:1.0">
+      <point x="-47.25" y="-15.0" />
+      <point x="213.25" y="900.0" />
+      <point x="172.5" y="900.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.3.RELEASE/org.apache.tomcat.embed:tomcat-embed-websocket:jar:9.0.16" target="org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.3.RELEASE/org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.16">
+      <point x="0.0" y="-15.0" />
+      <point x="6624.580894750218" y="1310.0" />
+      <point x="6594.580894750218" y="1310.0" />
+      <point x="39.25" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-digester:commons-digester:jar:1.7" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-digester:commons-digester:jar:1.7/commons-logging:commons-logging:jar:1.0.4">
+      <point x="-18.75" y="-15.0" />
+      <point x="798.2120326029462" y="890.0" />
+      <point x="710.5" y="890.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-jdbc:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-jdbc:jar:2.1.3.RELEASE/org.springframework:spring-jdbc:jar:5.1.5.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="7874.447561416885" y="1060.0" />
+      <point x="7972.179166666667" y="1060.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.sun.xml.bind:jaxb-core:jar:2.3.0.1">
+      <point x="0.0" y="-15.0" />
+      <point x="1733.0189521627044" y="1450.0" />
+      <point x="1644.7189521627051" y="1450.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework:spring-oxm:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE/org.springframework:spring-beans:jar:5.1.5.RELEASE">
+      <point x="-26.25" y="-15.0" />
+      <point x="9307.56999731432" y="270.0" />
+      <point x="8401.205593209006" y="270.0" />
+      <point x="52.19999999999982" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="com.mchange:c3p0:jar:0.9.2.1">
+      <point x="75.85000000000036" y="-15.0" />
+      <point x="9066.009134656297" y="1720.0" />
+      <point x="12337.144249781752" y="1720.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-jdbc:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE">
+      <point x="-62.333333333333485" y="-15.0" />
+      <point x="7812.114228083552" y="1070.0" />
+      <point x="7717.0375" y="1070.0" />
+      <point x="23.25" y="15.0" />
+    </edge>
+    <edge source="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/antlr:antlr:jar:2.7.7">
+      <point x="0.0" y="-15.0" />
+      <point x="3042.2883013229643" y="1200.0" />
+      <point x="3065.547259875673" y="1200.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.14.Final" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.jboss.logging:jboss-logging:jar:3.3.2.Final">
+      <point x="-50.33333333333394" y="-15.0" />
+      <point x="3998.5055932090054" y="1060.0" />
+      <point x="2862.2347598756724" y="1060.0" />
+      <point x="44.625" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.3.RELEASE/javax.annotation:javax.annotation-api:jar:1.3.2">
+      <point x="-64.58333333333348" y="-15.0" />
+      <point x="7629.204166666666" y="880.0" />
+      <point x="6546.330894750218" y="880.0" />
+      <point x="40.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE/org.springframework:spring-context:jar:5.1.5.RELEASE">
+      <point x="-60.333333333333485" y="-15.0" />
+      <point x="8392.605593209006" y="1070.0" />
+      <point x="8423.264727865302" y="1070.0" />
+      <point x="8423.264727865302" y="610.0" />
+      <point x="7946.8055932090065" y="610.0" />
+      <point x="7946.8055932090065" y="460.0" />
+      <point x="4913.738301322964" y="460.0" />
+      <point x="25.199999999999818" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.8" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.8/com.fasterxml.jackson.core:jackson-databind:jar:2.9.9">
+      <point x="-43.25" y="-15.0" />
+      <point x="5544.663301322964" y="840.0" />
+      <point x="5742.330894750218" y="840.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE">
+      <point x="61.33333333333303" y="-15.0" />
+      <point x="8395.864228083552" y="1470.0" />
+      <point x="8410.364228083552" y="1470.0" />
+      <point x="8410.364228083552" y="1380.0" />
+      <point x="8556.295833333334" y="1380.0" />
+      <point x="8556.295833333334" y="710.0" />
+      <point x="8785.122259875672" y="710.0" />
+      <point x="8785.122259875672" y="380.0" />
+      <point x="8306.055593209006" y="380.0" />
+      <point x="12.75" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE">
+      <point x="-49.25" y="-15.0" />
+      <point x="7757.280894750218" y="1310.0" />
+      <point x="7520.139228083552" y="1310.0" />
+      <point x="7520.139228083552" y="1070.0" />
+      <point x="7701.5375" y="1070.0" />
+      <point x="7.75" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework.data:spring-data-keyvalue:jar:2.1.5.RELEASE" target="com.alibaba:druid-spring-boot-starter:jar:1.1.14/org.slf4j:slf4j-api:jar:1.7.25">
+      <point x="61.875" y="-15.0" />
+      <point x="9091.40172808355" y="900.0" />
+      <point x="9298.83922808355" y="900.0" />
+      <point x="9298.83922808355" y="540.0" />
+      <point x="9275.31999731432" y="540.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="cglib:cglib:jar:3.1">
+      <point x="55.350000000000364" y="-15.0" />
+      <point x="9045.509134656297" y="1670.0" />
+      <point x="11671.144249781752" y="1670.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.14.Final">
+      <point x="-74.39999999999964" y="-15.0" />
+      <point x="4654.847561416886" y="1230.0" />
+      <point x="4086.5889265423393" y="1230.0" />
+      <point x="37.75" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final/io.netty:netty-buffer:jar:4.1.33.Final">
+      <point x="14.75" y="-15.0" />
+      <point x="9586.69499731432" y="1060.0" />
+      <point x="9639.94499731432" y="1060.0" />
+      <point x="9639.94499731432" y="750.0" />
+      <point x="9625.778330647654" y="750.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-transport:jar:4.1.33.Final/io.netty:netty-resolver:jar:4.1.33.Final" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-common:jar:4.1.33.Final">
+      <point x="0.0" y="-15.0" />
+      <point x="9786.44499731432" y="520.0" />
+      <point x="9602.111663980988" y="520.0" />
+      <point x="52.08333333333326" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-websocket:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE">
+      <point x="75.66666666666606" y="-15.0" />
+      <point x="4245.080894750217" y="1460.0" />
+      <point x="4682.747561416885" y="1460.0" />
+      <point x="-46.5" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-web:jar:5.1.5.RELEASE">
+      <point x="-37.20000000000073" y="-15.0" />
+      <point x="4692.0475614168845" y="1250.0" />
+      <point x="4947.747561416885" y="1250.0" />
+      <point x="4947.747561416885" y="1060.0" />
+      <point x="4561.538301322964" y="1060.0" />
+      <point x="-13.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="net.sf.dozer:dozer:jar:5.5.1">
+      <point x="38.94999999999982" y="-15.0" />
+      <point x="9029.109134656297" y="1630.0" />
+      <point x="11085.183477865303" y="1630.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-webmvc:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE">
+      <point x="53.75" y="-15.0" />
+      <point x="5092.872561416885" y="1000.0" />
+      <point x="4962.038301322964" y="1000.0" />
+      <point x="4962.038301322964" y="380.0" />
+      <point x="8280.555593209006" y="380.0" />
+      <point x="-12.75" y="15.0" />
+    </edge>
+    <edge source="com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:jar:2.9.9" target="com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:jar:2.9.9/javax.transaction:jta:jar:1.1">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="commons-lang:commons-lang:jar:2.6">
+      <point x="51.25" y="-15.0" />
+      <point x="9041.409134656296" y="1660.0" />
+      <point x="11556.644249781752" y="1660.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="net.sf.dozer:dozer:jar:5.5.1" target="com.alibaba:druid-spring-boot-starter:jar:1.1.14/org.slf4j:slf4j-api:jar:1.7.25">
+      <point x="-25.875" y="-15.0" />
+      <point x="11059.308477865303" y="1470.0" />
+      <point x="10929.331749781752" y="1470.0" />
+      <point x="10929.331749781752" y="480.0" />
+      <point x="9307.627689622013" y="480.0" />
+      <point x="32.30769230769238" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework:spring-oxm:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE">
+      <point x="26.25" y="-15.0" />
+      <point x="9360.06999731432" y="130.0" />
+      <point x="8281.272259875674" y="130.0" />
+      <point x="49.46666666666624" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE/org.springframework:spring-beans:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="8349.005593209005" y="180.0" />
+      <point x="8245.93892654234" y="180.0" />
+      <point x="14.133333333333212" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-crypto-hash:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-crypto-hash:jar:1.4.1/org.apache.shiro:shiro-crypto-core:jar:1.4.1">
+      <point x="-36.75" y="-15.0" />
+      <point x="10316.608653887066" y="900.0" />
+      <point x="10304.858653887066" y="900.0" />
+      <point x="36.0" y="15.0" />
+    </edge>
+    <edge source="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/org.jboss:jandex:jar:2.0.5.Final">
+      <point x="11.363636363636033" y="-15.0" />
+      <point x="3053.6519376866004" y="1210.0" />
+      <point x="3153.547259875673" y="1210.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE/org.slf4j:jul-to-slf4j:jar:1.7.25">
+      <point x="69.0" y="-15.0" />
+      <point x="7847.620833333334" y="680.0" />
+      <point x="8677.288926542338" y="680.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final">
+      <point x="-75.85000000000036" y="-15.0" />
+      <point x="8914.309134656296" y="1720.0" />
+      <point x="2804.538301322965" y="1720.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.apache.shiro:shiro-web:jar:1.4.1">
+      <point x="18.449999999999818" y="-15.0" />
+      <point x="9008.609134656297" y="1580.0" />
+      <point x="10437.358653887066" y="1580.0" />
+      <point x="24.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="com.microsoft.sqlserver:mssql-jdbc:jar:6.4.0.jre8">
+      <point x="-2.050000000000182" y="-15.0" />
+      <point x="8988.109134656297" y="1540.0" />
+      <point x="8898.659134656296" y="1540.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:jar:2.9.9" target="com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:jar:2.9.9/com.fasterxml.jackson.core:jackson-databind:jar:2.9.9">
+      <point x="-71.0" y="-15.0" />
+      <point x="6151.788301322964" y="1470.0" />
+      <point x="6107.788301322964" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-web:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1">
+      <point x="0.0" y="-15.0" />
+      <point x="10413.358653887066" y="1380.0" />
+      <point x="10431.24951923077" y="1380.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-autoconfigure:jar:2.1.3.RELEASE">
+      <point x="-38.75" y="-15.0" />
+      <point x="7655.0375" y="870.0" />
+      <point x="7247.814228083551" y="870.0" />
+      <point x="40.19999999999982" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-logging:commons-logging:jar:1.0.4">
+      <point x="-36.67857142857156" y="-15.0" />
+      <point x="1713.5403807341336" y="1240.0" />
+      <point x="36.5" y="1240.0" />
+      <point x="-36.5" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-mail:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE">
+      <point x="61.666666666666515" y="-15.0" />
+      <point x="6910.330894750218" y="1470.0" />
+      <point x="6888.788301322964" y="1470.0" />
+      <point x="6888.788301322964" y="1350.0" />
+      <point x="8385.06392654234" y="1350.0" />
+      <point x="-67.875" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2" target="org.springframework.boot:spring-boot-starter-jdbc:jar:2.1.3.RELEASE">
+      <point x="65.33333333333303" y="-15.0" />
+      <point x="2539.8370326029453" y="1320.0" />
+      <point x="7812.114228083552" y="1320.0" />
+      <point x="-62.333333333333485" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE">
+      <point x="74.39999999999964" y="-15.0" />
+      <point x="4803.647561416885" y="1290.0" />
+      <point x="5626.672259875673" y="1290.0" />
+      <point x="5626.672259875673" y="1040.0" />
+      <point x="7655.0375" y="1040.0" />
+      <point x="-38.75" y="15.0" />
+    </edge>
+    <edge source="com.alibaba:druid-spring-boot-starter:jar:1.1.14" target="org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-autoconfigure:jar:2.1.3.RELEASE">
+      <point x="64.33333333333303" y="-15.0" />
+      <point x="7121.997561416885" y="1470.0" />
+      <point x="7087.81392654234" y="1470.0" />
+      <point x="7087.81392654234" y="900.0" />
+      <point x="7167.414228083551" y="900.0" />
+      <point x="-40.19999999999982" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-webmvc:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-webmvc:jar:5.1.5.RELEASE/org.springframework:spring-expression:jar:5.1.5.RELEASE">
+      <point x="-10.75" y="-15.0" />
+      <point x="5028.372561416885" y="1030.0" />
+      <point x="4684.038301322964" y="1030.0" />
+      <point x="-36.5" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-autoconfigure:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot:jar:2.1.3.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="7207.614228083552" y="750.0" />
+      <point x="7381.722259875673" y="750.0" />
+      <point x="-36.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/dom4j:dom4j:jar:1.6.1">
+      <point x="8.464285714285325" y="-15.0" />
+      <point x="1758.6832378769905" y="1160.0" />
+      <point x="1411.9620326029462" y="1160.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-common:jar:4.1.33.Final">
+      <point x="-13.625" y="-15.0" />
+      <point x="9505.080593209006" y="1380.0" />
+      <point x="9491.81999731432" y="1380.0" />
+      <point x="9491.81999731432" y="540.0" />
+      <point x="9497.94499731432" y="540.0" />
+      <point x="-52.08333333333303" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-betwixt:commons-betwixt:jar:0.8/commons-beanutils:commons-beanutils-core:jar:1.7.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-betwixt:commons-betwixt:jar:0.8/commons-beanutils:commons-beanutils-core:jar:1.7.0/commons-collections:commons-collections:jar:2.0">
+      <point x="47.25" y="-15.0" />
+      <point x="307.75" y="900.0" />
+      <point x="348.5" y="900.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="javax.servlet.jsp:jsp-api:jar:2.1">
+      <point x="10.25" y="-15.0" />
+      <point x="9000.409134656296" y="1560.0" />
+      <point x="10178.673061198635" y="1560.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.8">
+      <point x="-15.58333333333394" y="-15.0" />
+      <point x="5496.088926542339" y="970.0" />
+      <point x="5386.538301322964" y="970.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.8" target="com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9/com.fasterxml.jackson.core:jackson-core:jar:2.9.8">
+      <point x="61.33333333333394" y="-15.0" />
+      <point x="5447.871634656298" y="860.0" />
+      <point x="5907.288301322964" y="860.0" />
+      <point x="-28.5" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE/org.springframework:spring-context:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE">
+      <point x="47.25" y="-15.0" />
+      <point x="4935.788301322964" y="370.0" />
+      <point x="8255.055593209006" y="370.0" />
+      <point x="-38.25" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="com.google.code.maven-play-plugin.com.mchange:c3p0-oracle-thin-extras:jar:0.9.5">
+      <point x="34.850000000000364" y="-15.0" />
+      <point x="9025.009134656297" y="1620.0" />
+      <point x="10758.916185897437" y="1620.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2/com.baomidou:mybatis-plus-core:jar:3.4.2" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2/com.baomidou:mybatis-plus-core:jar:3.4.2/org.mybatis:mybatis:jar:3.5.6">
+      <point x="-49.0" y="-15.0" />
+      <point x="2071.4620326029462" y="750.0" />
+      <point x="1986.2120326029462" y="750.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.3.RELEASE/org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.16">
+      <point x="25.5" y="-15.0" />
+      <point x="6517.330894750218" y="1470.0" />
+      <point x="6516.080894750218" y="1470.0" />
+      <point x="-39.25" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE">
+      <point x="-25.5" y="-15.0" />
+      <point x="8267.805593209006" y="190.0" />
+      <point x="8238.872259875672" y="190.0" />
+      <point x="7.066666666666606" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-digester:commons-digester:jar:1.7" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-digester:commons-digester:jar:1.7/xml-apis:xml-apis:jar:1.4.01">
+      <point x="56.25" y="-15.0" />
+      <point x="873.2120326029462" y="900.0" />
+      <point x="1285.1831674774921" y="900.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.sun.xml.bind:jaxb-impl:jar:2.3.0.1">
+      <point x="-86.39999999999964" y="-15.0" />
+      <point x="1646.6189521627048" y="1470.0" />
+      <point x="1430.7189521627051" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework.data:spring-data-keyvalue:jar:2.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE/org.springframework:spring-context:jar:5.1.5.RELEASE">
+      <point x="-20.625" y="-15.0" />
+      <point x="9008.90172808355" y="680.0" />
+      <point x="8737.288926542338" y="680.0" />
+      <point x="8737.288926542338" y="450.0" />
+      <point x="4938.9383013229635" y="450.0" />
+      <point x="50.399999999999636" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-event:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-lang:jar:1.4.1">
+      <point x="0.0" y="-15.0" />
+      <point x="10617.108653887066" y="730.0" />
+      <point x="10330.518093209006" y="730.0" />
+      <point x="18.1875" y="15.0" />
+    </edge>
+    <edge source="com.alibaba:druid-spring-boot-starter:jar:1.1.14" target="com.alibaba:druid-spring-boot-starter:jar:1.1.14/com.alibaba:druid:jar:1.1.14">
+      <point x="-64.33333333333303" y="-15.0" />
+      <point x="6993.330894750219" y="1470.0" />
+      <point x="6948.247561416885" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-autoconfigure:jar:2.1.3.RELEASE">
+      <point x="-41.75" y="-15.0" />
+      <point x="8278.022259875674" y="840.0" />
+      <point x="7288.014228083552" y="840.0" />
+      <point x="80.39999999999964" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.springframework.boot:spring-boot-starter-jdbc:jar:2.1.3.RELEASE">
+      <point x="-26.649999999999636" y="-15.0" />
+      <point x="8963.509134656297" y="1600.0" />
+      <point x="7697.530894750218" y="1600.0" />
+      <point x="7697.530894750218" y="1340.0" />
+      <point x="7936.780894750218" y="1340.0" />
+      <point x="62.333333333333485" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE">
+      <point x="2.050000000000182" y="-15.0" />
+      <point x="8992.209134656297" y="1540.0" />
+      <point x="9081.659134656296" y="1540.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="net.sf.dozer:dozer:jar:5.5.1" target="net.sf.dozer:dozer:jar:5.5.1/commons-beanutils:commons-beanutils:jar:1.9.1">
+      <point x="25.875" y="-15.0" />
+      <point x="11111.058477865303" y="1470.0" />
+      <point x="11238.331749781752" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-freemarker:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE">
+      <point x="75.66666666666652" y="-15.0" />
+      <point x="8184.697561416884" y="1470.0" />
+      <point x="8161.947561416885" y="1470.0" />
+      <point x="8161.947561416885" y="1370.0" />
+      <point x="8475.56392654234" y="1370.0" />
+      <point x="22.625" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.11.2" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.11.2/org.apache.logging.log4j:log4j-api:jar:2.11.2">
+      <point x="-28.75" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:jar:2.9.9">
+      <point x="-47.149999999999636" y="-15.0" />
+      <point x="8943.009134656297" y="1650.0" />
+      <point x="6222.788301322964" y="1650.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2" target="org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2/org.mybatis:mybatis:jar:3.4.6">
+      <point x="-83.59999999999991" y="-15.0" />
+      <point x="7225.964228083552" y="1470.0" />
+      <point x="7187.514228083552" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-webmvc:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-web:jar:5.1.5.RELEASE">
+      <point x="-53.75" y="-15.0" />
+      <point x="4985.372561416885" y="1050.0" />
+      <point x="4587.538301322964" y="1050.0" />
+      <point x="13.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final/io.netty:netty-codec:jar:4.1.33.Final" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-transport:jar:4.1.33.Final">
+      <point x="36.33333333333326" y="-15.0" />
+      <point x="9611.278330647654" y="900.0" />
+      <point x="9672.111663980988" y="900.0" />
+      <point x="-43.33333333333326" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE/org.springframework:spring-context:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE/org.springframework:spring-beans:jar:5.1.5.RELEASE">
+      <point x="15.75" y="-15.0" />
+      <point x="4904.288301322964" y="380.0" />
+      <point x="4894.038301322964" y="380.0" />
+      <point x="4894.038301322964" y="290.0" />
+      <point x="8331.605593209006" y="290.0" />
+      <point x="-17.399999999999636" y="15.0" />
+    </edge>
+    <edge source="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/javax.activation:javax.activation-api:jar:1.2.0">
+      <point x="-56.81818181818198" y="-15.0" />
+      <point x="2985.4701195047824" y="1230.0" />
+      <point x="2390.7120326029462" y="1230.0" />
+      <point x="38.25" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.core:jackson-databind:jar:2.9.8">
+      <point x="-46.75" y="-15.0" />
+      <point x="5464.922259875673" y="980.0" />
+      <point x="5204.038301322964" y="980.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE">
+      <point x="-67.64999999999964" y="-15.0" />
+      <point x="8922.509134656297" y="1700.0" />
+      <point x="4412.914228083551" y="1700.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-config-ogdl:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-config-core:jar:1.4.1">
+      <point x="-57.19999999999999" y="-15.0" />
+      <point x="10710.408653887067" y="900.0" />
+      <point x="10508.858653887066" y="900.0" />
+      <point x="35.75" y="15.0" />
+    </edge>
+    <edge source="org.hibernate:hibernate-ehcache:jar:5.2.12.Final" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.jboss.logging:jboss-logging:jar:3.3.2.Final">
+      <point x="-49.66666666666606" y="-15.0" />
+      <point x="2754.8716346562987" y="1470.0" />
+      <point x="2621.8370326029462" y="1470.0" />
+      <point x="2621.8370326029462" y="1060.0" />
+      <point x="2772.9847598756724" y="1060.0" />
+      <point x="-44.625" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/javax.xml.bind:jaxb-api:jar:2.3.1">
+      <point x="-43.19999999999982" y="-15.0" />
+      <point x="1689.8189521627046" y="1460.0" />
+      <point x="1537.2189521627051" y="1460.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3/ch.qos.logback:logback-core:jar:1.2.3">
+      <point x="-32.25" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework.data:spring-data-keyvalue:jar:2.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework:spring-tx:jar:5.1.5.RELEASE">
+      <point x="-61.875" y="-15.0" />
+      <point x="8967.65172808355" y="900.0" />
+      <point x="8873.614228083552" y="900.0" />
+      <point x="30.333333333333485" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE/org.slf4j:jul-to-slf4j:jar:1.7.25" target="com.alibaba:druid-spring-boot-starter:jar:1.1.14/org.slf4j:slf4j-api:jar:1.7.25">
+      <point x="0.0" y="-15.0" />
+      <point x="8677.288926542338" y="520.0" />
+      <point x="9255.935381929705" y="520.0" />
+      <point x="-19.384615384615472" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="dom4j:dom4j:jar:1.6">
+      <point x="22.550000000000182" y="-15.0" />
+      <point x="9012.709134656297" y="1590.0" />
+      <point x="10483.858653887066" y="1590.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE/org.springframework:spring-beans:jar:5.1.5.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="8452.93892654234" y="690.0" />
+      <point x="8748.288926542338" y="690.0" />
+      <point x="8748.288926542338" y="300.0" />
+      <point x="8366.405593209005" y="300.0" />
+      <point x="17.399999999999636" y="15.0" />
+    </edge>
+    <edge source="com.fasterxml.jackson.core:jackson-databind:jar:2.9.9" target="com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9/com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0">
+      <point x="-35.25" y="-15.0" />
+      <point x="5007.788301322964" y="840.0" />
+      <point x="5289.630593209005" y="840.0" />
+      <point x="-53.66666666666697" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="9081.659134656296" y="1460.0" />
+      <point x="8988.420833333334" y="1460.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/javax.xml.bind:jaxb-api:jar:2.3.1" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/javax.activation:javax.activation-api:jar:1.2.0">
+      <point x="0.0" y="-15.0" />
+      <point x="1537.2189521627051" y="1250.0" />
+      <point x="2314.2120326029462" y="1250.0" />
+      <point x="-38.25" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE" target="com.alibaba:druid-spring-boot-starter:jar:1.1.14/org.slf4j:slf4j-api:jar:1.7.25">
+      <point x="35.5" y="-15.0" />
+      <point x="9023.920833333334" y="1370.0" />
+      <point x="9305.30076654509" y="1370.0" />
+      <point x="9305.30076654509" y="530.0" />
+      <point x="9281.781535775859" y="530.0" />
+      <point x="6.4615384615385665" y="15.0" />
+    </edge>
+    <edge source="com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9" target="com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9/com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0">
+      <point x="-81.0" y="-15.0" />
+      <point x="5097.622561416885" y="1460.0" />
+      <point x="5072.0972598756725" y="1460.0" />
+      <point x="5072.0972598756725" y="1300.0" />
+      <point x="5691.621634656297" y="1300.0" />
+      <point x="5691.621634656297" y="820.0" />
+      <point x="5396.963926542339" y="820.0" />
+      <point x="53.66666666666697" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.8">
+      <point x="46.75" y="-15.0" />
+      <point x="5558.422259875673" y="1010.0" />
+      <point x="5922.788301322964" y="1010.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-config-ogdl:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-event:jar:1.4.1">
+      <point x="-28.599999999999966" y="-15.0" />
+      <point x="10739.008653887067" y="890.0" />
+      <point x="10643.358653887066" y="890.0" />
+      <point x="26.25" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-betwixt:commons-betwixt:jar:0.8">
+      <point x="-31.035714285714675" y="-15.0" />
+      <point x="1719.1832378769905" y="1230.0" />
+      <point x="260.5" y="1230.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="net.sf.dozer:dozer:jar:5.5.1" target="net.sf.dozer:dozer:jar:5.5.1/org.slf4j:jcl-over-slf4j:jar:1.7.25">
+      <point x="-8.625" y="-15.0" />
+      <point x="11076.558477865303" y="1460.0" />
+      <point x="10995.831749781752" y="1460.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-digester:commons-digester:jar:1.7" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-digester:commons-digester:jar:1.7/commons-beanutils:commons-beanutils:jar:1.6">
+      <point x="18.75" y="-15.0" />
+      <point x="835.7120326029462" y="890.0" />
+      <point x="881.5" y="890.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9" target="com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9/com.fasterxml.jackson.core:jackson-databind:jar:2.9.9">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-cache:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-lang:jar:1.4.1">
+      <point x="0.0" y="-15.0" />
+      <point x="10031.358653887066" y="730.0" />
+      <point x="10269.893093209006" y="730.0" />
+      <point x="-42.4375" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-transport:jar:4.1.33.Final">
+      <point x="44.25" y="-15.0" />
+      <point x="9616.19499731432" y="1070.0" />
+      <point x="9715.44499731432" y="1070.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.8" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.8/com.fasterxml.jackson.core:jackson-databind:jar:2.9.9">
+      <point x="61.5" y="-15.0" />
+      <point x="5984.288301322964" y="880.0" />
+      <point x="6083.288301322964" y="880.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework:spring-tx:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE/org.springframework:spring-beans:jar:5.1.5.RELEASE">
+      <point x="-22.75" y="-15.0" />
+      <point x="8820.530894750218" y="730.0" />
+      <point x="8988.83922808355" y="730.0" />
+      <point x="8988.83922808355" y="290.0" />
+      <point x="8378.005593209005" y="290.0" />
+      <point x="29.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.apache.shiro:shiro-cas:jar:1.4.0">
+      <point x="67.64999999999964" y="-15.0" />
+      <point x="9057.809134656296" y="1700.0" />
+      <point x="12134.644249781752" y="1700.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.springframework.boot:spring-boot-starter-mail:jar:2.1.3.RELEASE">
+      <point x="-38.94999999999982" y="-15.0" />
+      <point x="8951.209134656297" y="1630.0" />
+      <point x="6848.664228083551" y="1630.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2/com.baomidou:mybatis-plus-core:jar:3.4.2" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2/com.baomidou:mybatis-plus-core:jar:3.4.2/com.baomidou:mybatis-plus-annotation:jar:3.4.2">
+      <point x="49.0" y="-15.0" />
+      <point x="2169.4620326029462" y="750.0" />
+      <point x="2449.683167477492" y="750.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-jdbc:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-jdbc:jar:2.1.3.RELEASE/com.zaxxer:HikariCP:jar:3.2.0">
+      <point x="62.333333333333485" y="-15.0" />
+      <point x="7936.780894750218" y="1070.0" />
+      <point x="8035.179166666667" y="1070.0" />
+      <point x="8035.179166666667" y="750.0" />
+      <point x="9245.33922808355" y="750.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.11.2" target="com.alibaba:druid-spring-boot-starter:jar:1.1.14/org.slf4j:slf4j-api:jar:1.7.25">
+      <point x="28.75" y="-15.0" />
+      <point x="8192.555593209006" y="510.0" />
+      <point x="9249.473843468168" y="510.0" />
+      <point x="-25.84615384615381" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.apache.shiro:shiro-spring:jar:1.4.1">
+      <point x="14.350000000000364" y="-15.0" />
+      <point x="9004.509134656297" y="1570.0" />
+      <point x="10371.858653887066" y="1570.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot:jar:2.1.3.RELEASE">
+      <point x="-12.916666666666515" y="-15.0" />
+      <point x="7680.870833333334" y="860.0" />
+      <point x="7494.729166666668" y="860.0" />
+      <point x="7494.729166666668" y="750.0" />
+      <point x="7417.722259875673" y="750.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-websocket:jar:2.1.3.RELEASE/org.springframework:spring-messaging:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE/org.springframework:spring-beans:jar:5.1.5.RELEASE">
+      <point x="36.25" y="-15.0" />
+      <point x="3900.297259875673" y="260.0" />
+      <point x="8296.805593209006" y="260.0" />
+      <point x="-52.19999999999982" y="15.0" />
+    </edge>
+    <edge source="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/org.dom4j:dom4j:jar:2.1.1">
+      <point x="-11.363636363636033" y="-15.0" />
+      <point x="3030.9246649593283" y="1190.0" />
+      <point x="2978.547259875673" y="1190.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="com.alibaba:fastjson:jar:1.2.45">
+      <point x="71.75" y="-15.0" />
+      <point x="9061.909134656296" y="1710.0" />
+      <point x="12242.644249781752" y="1710.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.jboss.logging:jboss-logging:jar:3.3.2.Final">
+      <point x="-34.09090909090992" y="-15.0" />
+      <point x="3008.1973922320544" y="1210.0" />
+      <point x="2882.3597598756724" y="1210.0" />
+      <point x="2882.3597598756724" y="1070.0" />
+      <point x="2832.4847598756724" y="1070.0" />
+      <point x="14.875" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-jdbc:jar:2.1.3.RELEASE/org.springframework:spring-jdbc:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="7972.179166666667" y="670.0" />
+      <point x="8417.505593209005" y="670.0" />
+      <point x="8417.505593209005" y="170.0" />
+      <point x="8253.005593209007" y="170.0" />
+      <point x="21.199999999999818" y="15.0" />
+    </edge>
+    <edge source="org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2" target="org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2/org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:jar:1.3.2">
+      <point x="-41.80000000000018" y="-15.0" />
+      <point x="7267.764228083552" y="1470.0" />
+      <point x="7256.1805932090065" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="net.sf.json-lib:json-lib:jar:jdk15:2.4" target="net.sf.json-lib:json-lib:jar:jdk15:2.4/net.sf.ezmorph:ezmorph:jar:1.0.6">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.3.RELEASE/javax.annotation:javax.annotation-api:jar:1.3.2">
+      <point x="-25.5" y="-15.0" />
+      <point x="-40.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0">
+      <point x="-79.94999999999982" y="-15.0" />
+      <point x="8910.209134656297" y="1730.0" />
+      <point x="1733.0189521627044" y="1730.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-logging:commons-logging-api:jar:1.0.4">
+      <point x="25.392857142856883" y="-15.0" />
+      <point x="1775.611809305562" y="1230.0" />
+      <point x="1860.9620326029462" y="1230.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final/io.netty:netty-codec:jar:4.1.33.Final">
+      <point x="-14.75" y="-15.0" />
+      <point x="9557.19499731432" y="1070.0" />
+      <point x="9574.94499731432" y="1070.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="com.alibaba:druid-spring-boot-starter:jar:1.1.14">
+      <point x="-34.850000000000364" y="-15.0" />
+      <point x="8955.309134656296" y="1620.0" />
+      <point x="7057.664228083551" y="1620.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.8" target="com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9/com.fasterxml.jackson.core:jackson-core:jar:2.9.8">
+      <point x="-61.5" y="-15.0" />
+      <point x="5861.288301322964" y="880.0" />
+      <point x="5945.288301322964" y="880.0" />
+      <point x="9.5" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-transport:jar:4.1.33.Final" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-transport:jar:4.1.33.Final/io.netty:netty-resolver:jar:4.1.33.Final">
+      <point x="43.33333333333326" y="-15.0" />
+      <point x="9758.778330647654" y="750.0" />
+      <point x="9786.44499731432" y="750.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-spring:jar:1.4.1" target="org.apache.shiro:shiro-web:jar:1.4.1">
+      <point x="27.5" y="-15.0" />
+      <point x="10399.358653887066" y="1470.0" />
+      <point x="10389.358653887066" y="1470.0" />
+      <point x="-24.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="commons-dbcp:commons-dbcp:jar:1.4">
+      <point x="-63.55000000000018" y="-15.0" />
+      <point x="8926.609134656297" y="1690.0" />
+      <point x="4550.747561416885" y="1690.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework:spring-tx:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE">
+      <point x="22.75" y="-15.0" />
+      <point x="8866.030894750218" y="740.0" />
+      <point x="8999.83922808355" y="740.0" />
+      <point x="8999.83922808355" y="150.0" />
+      <point x="8267.138926542339" y="150.0" />
+      <point x="35.33333333333303" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-betwixt:commons-betwixt:jar:0.8" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-logging:commons-logging:jar:1.0.4">
+      <point x="-48.33333333333303" y="-15.0" />
+      <point x="212.16666666666697" y="1070.0" />
+      <point x="109.5" y="1070.0" />
+      <point x="36.5" y="15.0" />
+    </edge>
+    <edge source="org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2/org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:jar:1.3.2" target="org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-autoconfigure:jar:2.1.3.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="7256.1805932090065" y="900.0" />
+      <point x="7207.614228083552" y="900.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE/org.springframework:spring-jcl:jar:5.1.5.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2">
+      <point x="-65.33333333333303" y="-15.0" />
+      <point x="2409.1703659362793" y="1240.0" />
+      <point x="2198.9620326029462" y="1240.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE">
+      <point x="77.91666666666606" y="-15.0" />
+      <point x="5589.588926542339" y="1020.0" />
+      <point x="7624.0375" y="1020.0" />
+      <point x="-69.75" y="15.0" />
+    </edge>
+    <edge source="commons-dbcp:commons-dbcp:jar:1.4" target="commons-dbcp:commons-dbcp:jar:1.4/commons-pool:commons-pool:jar:1.6">
+      <point x="0.0" y="-15.0" />
+      <point x="4550.747561416885" y="1240.0" />
+      <point x="4239.588926542339" y="1240.0" />
+      <point x="31.75" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-handler:jar:4.1.33.Final">
+      <point x="13.625" y="-15.0" />
+      <point x="9532.330593209006" y="1370.0" />
+      <point x="9571.94499731432" y="1370.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-transport:jar:4.1.33.Final" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/io.lettuce:lettuce-core:jar:5.1.4.RELEASE/io.netty:netty-common:jar:4.1.33.Final">
+      <point x="0.0" y="-15.0" />
+      <point x="9715.44499731432" y="530.0" />
+      <point x="9581.278330647654" y="530.0" />
+      <point x="31.25" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.2">
+      <point x="-30.75" y="-15.0" />
+      <point x="8959.409134656296" y="1610.0" />
+      <point x="7309.564228083552" y="1610.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot:jar:2.1.3.RELEASE">
+      <point x="41.75" y="-15.0" />
+      <point x="8361.522259875674" y="620.0" />
+      <point x="7453.722259875673" y="620.0" />
+      <point x="36.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-lang:jar:1.4.1">
+      <point x="42.0" y="-15.0" />
+      <point x="10473.24951923077" y="1070.0" />
+      <point x="10886.952403887066" y="1070.0" />
+      <point x="10886.952403887066" y="710.0" />
+      <point x="10354.768093209006" y="710.0" />
+      <point x="42.4375" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.3.RELEASE">
+      <point x="-43.05000000000018" y="-15.0" />
+      <point x="8947.109134656297" y="1640.0" />
+      <point x="6491.830894750218" y="1640.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-web:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE">
+      <point x="-26.0" y="-15.0" />
+      <point x="4548.538301322964" y="880.0" />
+      <point x="4569.038301322964" y="880.0" />
+      <point x="4569.038301322964" y="150.0" />
+      <point x="8196.472259875674" y="150.0" />
+      <point x="-35.33333333333303" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-cache:jar:2.1.3.RELEASE/org.springframework:spring-context-support:jar:5.1.5.RELEASE/org.springframework:spring-context:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-webmvc:jar:5.1.5.RELEASE/org.springframework:spring-expression:jar:5.1.5.RELEASE">
+      <point x="-47.25" y="-15.0" />
+      <point x="4841.288301322964" y="380.0" />
+      <point x="4757.038301322964" y="380.0" />
+      <point x="36.5" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE">
+      <point x="37.20000000000073" y="-15.0" />
+      <point x="4766.447561416886" y="1270.0" />
+      <point x="5511.672259875673" y="1270.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final" target="org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.14.Final/com.fasterxml:classmate:jar:1.4.0">
+      <point x="-22.727272727272066" y="-15.0" />
+      <point x="3019.5610285956923" y="1200.0" />
+      <point x="2932.047259875673" y="1200.0" />
+      <point x="-23.75" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2/org.mybatis:mybatis-spring:jar:2.0.5">
+      <point x="45.0" y="-15.0" />
+      <point x="2243.9620326029462" y="900.0" />
+      <point x="2277.4620326029462" y="900.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.8" target="com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9/com.fasterxml.jackson.core:jackson-core:jar:2.9.8">
+      <point x="43.25" y="-15.0" />
+      <point x="5631.163301322964" y="870.0" />
+      <point x="5926.288301322964" y="870.0" />
+      <point x="-9.5" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-websocket:jar:2.1.3.RELEASE/org.springframework:spring-websocket:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-web:jar:5.1.5.RELEASE">
+      <point x="48.33333333333394" y="-15.0" />
+      <point x="4471.087999781752" y="1070.0" />
+      <point x="4535.538301322964" y="1070.0" />
+      <point x="-39.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-webmvc:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework:spring-aop:jar:5.1.5.RELEASE/org.springframework:spring-beans:jar:5.1.5.RELEASE">
+      <point x="10.75" y="-15.0" />
+      <point x="5049.872561416885" y="1020.0" />
+      <point x="4804.038301322964" y="1020.0" />
+      <point x="4804.038301322964" y="280.0" />
+      <point x="8320.005593209005" y="280.0" />
+      <point x="-29.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-betwixt:commons-betwixt:jar:0.8" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-digester:commons-digester:jar:1.7">
+      <point x="48.33333333333303" y="-15.0" />
+      <point x="308.83333333333303" y="1070.0" />
+      <point x="779.4620326029462" y="1070.0" />
+      <point x="-37.5" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/junit:junit:jar:4.12">
+      <point x="-25.392857142856883" y="-15.0" />
+      <point x="1724.8260950198483" y="1220.0" />
+      <point x="602.75" y="1220.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3">
+      <point x="-69.0" y="-15.0" />
+      <point x="7709.620833333334" y="630.0" />
+      <point x="8021.8055932090065" y="630.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2/com.baomidou:mybatis-plus-core:jar:3.4.2" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2/com.baomidou:mybatis-plus-core:jar:3.4.2/com.github.jsqlparser:jsqlparser:jar:4.0">
+      <point x="0.0" y="-15.0" />
+      <point x="2120.4620326029462" y="750.0" />
+      <point x="2094.2120326029462" y="750.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.springframework.boot:spring-boot-starter-freemarker:jar:2.1.3.RELEASE">
+      <point x="-18.449999999999818" y="-15.0" />
+      <point x="8971.709134656297" y="1580.0" />
+      <point x="8109.030894750218" y="1580.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-config-ogdl:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-config-ogdl:jar:1.4.1/commons-beanutils:commons-beanutils:jar:1.9.3">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-dbcp:commons-dbcp:jar:1.2.1">
+      <point x="19.75" y="-15.0" />
+      <point x="1769.9689521627051" y="1140.0" />
+      <point x="1690.4620326029462" y="1140.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9" target="com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9/com.fasterxml.jackson.core:jackson-core:jar:2.9.8">
+      <point x="81.0" y="-15.0" />
+      <point x="5259.622561416885" y="1460.0" />
+      <point x="5286.5972598756725" y="1460.0" />
+      <point x="5286.5972598756725" y="1310.0" />
+      <point x="6056.288301322964" y="1310.0" />
+      <point x="6056.288301322964" y="870.0" />
+      <point x="5964.288301322964" y="870.0" />
+      <point x="28.5" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.3.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.11.2">
+      <point x="0.0" y="-15.0" />
+      <point x="7778.620833333334" y="640.0" />
+      <point x="8163.8055932090065" y="640.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0/commons-collections:commons-collections:jar:3.1">
+      <point x="-8.464285714285325" y="-15.0" />
+      <point x="1741.7546664484198" y="1190.0" />
+      <point x="1051.9620326029462" y="1190.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-ehcache:jar:1.4.1/net.sf.ehcache:ehcache-core:jar:2.6.11" target="com.alibaba:druid-spring-boot-starter:jar:1.1.14/org.slf4j:slf4j-api:jar:1.7.25">
+      <point x="0.0" y="-15.0" />
+      <point x="9925.94499731432" y="510.0" />
+      <point x="9288.243074237398" y="510.0" />
+      <point x="12.923076923076906" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework:spring-tx:jar:5.1.5.RELEASE">
+      <point x="-11.833333333333258" y="-15.0" />
+      <point x="8976.587500000001" y="1350.0" />
+      <point x="8843.280894750218" y="1350.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="jakarta.xml.bind:jakarta.xml.bind-api:jar:2.3.3">
+      <point x="59.44999999999982" y="-15.0" />
+      <point x="9049.609134656297" y="1680.0" />
+      <point x="11802.144249781752" y="1680.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.aspectj:aspectjweaver:jar:1.9.2">
+      <point x="0.0" y="-15.0" />
+      <point x="8334.530894750218" y="1470.0" />
+      <point x="8339.364228083552" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-validation:jar:2.1.3.RELEASE/org.apache.tomcat.embed:tomcat-embed-el:jar:9.0.16">
+      <point x="-76.5" y="-15.0" />
+      <point x="6415.330894750218" y="1460.0" />
+      <point x="5402.0972598756725" y="1460.0" />
+      <point x="35.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.3.RELEASE/org.springframework.data:spring-data-redis:jar:2.1.5.RELEASE/org.springframework:spring-oxm:jar:5.1.5.RELEASE">
+      <point x="59.16666666666674" y="-15.0" />
+      <point x="9047.587500000001" y="1380.0" />
+      <point x="9333.81999731432" y="1380.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE">
+      <point x="-59.44999999999982" y="-15.0" />
+      <point x="8930.709134656297" y="1680.0" />
+      <point x="4775.747561416885" y="1680.0" />
+      <point x="46.5" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2/com.baomidou:mybatis-plus:jar:3.4.2/com.baomidou:mybatis-plus-extension:jar:3.4.2/com.baomidou:mybatis-plus-core:jar:3.4.2">
+      <point x="-45.0" y="-15.0" />
+      <point x="2153.9620326029462" y="900.0" />
+      <point x="2120.4620326029462" y="900.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-cas:jar:1.4.0" target="org.apache.shiro:shiro-cas:jar:1.4.0/org.jasig.cas.client:cas-client-core:jar:3.2.2">
+      <point x="-23.0" y="-15.0" />
+      <point x="12111.644249781752" y="1470.0" />
+      <point x="12026.144249781752" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-webmvc:jar:5.1.5.RELEASE/org.springframework:spring-expression:jar:5.1.5.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.springframework:spring-core:jar:5.1.5.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="4720.538301322964" y="170.0" />
+      <point x="8210.605593209006" y="170.0" />
+      <point x="-21.199999999999818" y="15.0" />
+    </edge>
+    <edge source="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/net.bytebuddy:byte-buddy:jar:1.9.10">
+      <point x="22.727272727272066" y="-15.0" />
+      <point x="3065.0155740502364" y="1220.0" />
+      <point x="3263.547259875673" y="1220.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-mail:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-mail:jar:2.1.3.RELEASE/com.sun.mail:javax.mail:jar:1.6.2">
+      <point x="-61.666666666666515" y="-15.0" />
+      <point x="6786.997561416885" y="1470.0" />
+      <point x="6789.080894750219" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-event:jar:1.4.1">
+      <point x="14.0" y="-15.0" />
+      <point x="10445.24951923077" y="1050.0" />
+      <point x="10590.858653887066" y="1050.0" />
+      <point x="-26.25" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework:spring-web:jar:5.1.5.RELEASE">
+      <point x="-77.91666666666606" y="-15.0" />
+      <point x="5433.755593209007" y="990.0" />
+      <point x="4613.538301322964" y="990.0" />
+      <point x="39.0" y="15.0" />
+    </edge>
+    <edge source="com.mchange:c3p0:jar:0.9.2.1" target="com.mchange:c3p0:jar:0.9.2.1/com.mchange:mchange-commons-java:jar:0.2.3.4">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-gencode-vue:8.0" target="com.google.guava:guava:jar:20.0">
+      <point x="30.75" y="-15.0" />
+      <point x="9020.909134656296" y="1610.0" />
+      <point x="10612.416185897437" y="1610.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.apache.shiro:shiro-core:jar:1.4.1" target="org.apache.shiro:shiro-core:jar:1.4.1/org.apache.shiro:shiro-config-ogdl:jar:1.4.1">
+      <point x="28.0" y="-15.0" />
+      <point x="10459.24951923077" y="1060.0" />
+      <point x="10767.608653887066" y="1060.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/com.baomidou:mybatis-plus-boot-starter:jar:3.4.2" target="org.springframework.boot:spring-boot-devtools:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-autoconfigure:jar:2.1.3.RELEASE">
+      <point x="0.0" y="-15.0" />
+      <point x="2474.5036992696123" y="1250.0" />
+      <point x="2562.0870326029462" y="1250.0" />
+      <point x="2562.0870326029462" y="890.0" />
+      <point x="7127.214228083552" y="890.0" />
+      <point x="-80.39999999999964" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE" target="org.springframework.boot:spring-boot-starter-aop:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.1.3.RELEASE/org.yaml:snakeyaml:jar:1.23">
+      <point x="12.916666666666515" y="-15.0" />
+      <point x="7706.704166666666" y="850.0" />
+      <point x="7606.120833333334" y="850.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final" target="org.hibernate:hibernate-ehcache:jar:5.2.12.Final/org.hibernate:hibernate-core:jar:5.3.7.Final/org.hibernate.common:hibernate-commons-annotations:jar:5.0.4.Final">
+      <point x="-45.45454545454595" y="-15.0" />
+      <point x="2996.8337558684184" y="1220.0" />
+      <point x="2752.8597598756724" y="1220.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.boot:spring-boot-starter-web:jar:2.1.3.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.1.3.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.8" target="com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.9/com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0">
+      <point x="-61.33333333333394" y="-15.0" />
+      <point x="5325.20496798963" y="840.0" />
+      <point x="5343.297259875673" y="840.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0" target="org.jeeplus:jeeplus-mybatis-dynamic-vue:jar:8.0/org.apache.ddlutils:ddlutils:jar:1.0">
+      <point x="43.19999999999982" y="-15.0" />
+      <point x="1776.2189521627042" y="1470.0" />
+      <point x="1750.2189521627051" y="1470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.07991414183109057" x="6046.5" y="770.0" />
+  <SelectedNodes>
+    <node>jakarta.xml.bind:jakarta.xml.bind-api:jar:2.3.3/jakarta.activation:jakarta.activation-api:jar:1.2.2</node>
+    <node>org.jeeplus:jeeplus-gencode-vue:8.0</node>
+  </SelectedNodes>
+  <Categories />
+  <VISIBILITY>All</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,61 @@
+# ============ 编译输出 ============
+# 所有模块的 target 目录
+**/target/
+target/
+node_modules/
+dist/
+output/
+*.jar
+*.war
+
+# ============ IDE - IntelliJ IDEA ============
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ============ IDE - Eclipse ============
+.project
+.classpath
+.settings/
+.factorypath
+bin/
+
+# ============ IDE - VS Code ============
+.vscode/
+
+# ============ 日志文件 ============
+*.log
+logs/
+log/
+
+# ============ Maven ============
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# ============ 系统文件 ============
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# ============ 临时文件 ============
+*.tmp
+*.bak
+*.orig
+tmp/
+temp/
+.env.local
+.env.*.local
+application-local.yml
+.codex/

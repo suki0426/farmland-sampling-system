@@ -1,0 +1,7 @@
+import 'element-ui/lib/theme-chalk/index.css'
+import '@/assets/scss/index.scss'
+import '@/assets/css/style.css'
+import '@/assets/scss/ultra/index.scss'
+import 'font-awesome/css/font-awesome.min.css'
+import 'vxe-pc-ui/lib/style.css'
+import 'vxe-table/lib/style.css'

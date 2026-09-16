@@ -1,0 +1,49 @@
+.DS_Store
+node_modules
+/dist
+dist/
+output/
+**/target/
+*.jar
+*.war
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+logs/
+log/
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Windows 系统文件
+Thumbs.db
+Desktop.ini
+
+# 缓存文件
+.cache/
+.cache-loader/
+
+# Local debug/runtime artifacts
+.playwright-*
+.runtime/
+output/
+tmp/
+temp/
+/jeeplus-web-*.jar
+*.iml
+*.iws
+*.ipr
+application-local.yml

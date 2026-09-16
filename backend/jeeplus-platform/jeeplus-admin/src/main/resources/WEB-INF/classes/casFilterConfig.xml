@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- CAS验证服务器地址 -->
+	<loginServer>https://one.ncwu.edu.cn</loginServer>
+	<validateServer>https://one.ncwu.edu.cn</validateServer>
+	<!--平台地址-->
+	<serverName>http://localhost:8083</serverName>
+	<!-- 排除被保护的资源  -->
+	<notForceAuthUrls>
+		<url-pattern>\.js$</url-pattern>
+		<url-pattern>\.xml$</url-pattern>
+		<url-pattern>\.html.*</url-pattern>
+		<url-pattern><![CDATA[.*/fileUpload.*]]></url-pattern>
+	</notForceAuthUrls>
+</config>

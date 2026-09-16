@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jeeplus.teaching.ddevice.mapper.DDeviceMapper">
+
+
+	<sql id="dDeviceColumns">
+		a.id AS "id",
+		a.device_code AS "deviceCode",
+		a.device_name AS "deviceName",
+		a.category AS "category",
+		a.model AS "model",
+		a.manufacturer AS "manufacturer",
+		a.price AS "price",
+		a.scenarios_json AS "scenariosJson",
+		a.attrs_json AS "attrsJson",
+		a.total_score AS "totalScore",
+		a.descriptiontext AS "descriptiontext",
+		a.status AS "status",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.del_flag AS "delFlag"
+	</sql>
+
+	<sql id="dDeviceJoins">
+
+	</sql>
+
+
+
+	<select id="findById" resultType="com.jeeplus.teaching.ddevice.service.dto.DDeviceDTO">
+		SELECT
+			<include refid="dDeviceColumns"/>
+		FROM d_device a
+		<include refid="dDeviceJoins"/>
+		WHERE a.id = #{id} and a.del_flag = 0
+	</select>
+
+	<select id="findList" resultType="com.jeeplus.teaching.ddevice.service.dto.DDeviceDTO">
+		SELECT
+			<include refid="dDeviceColumns"/>
+		FROM d_device a
+		<include refid="dDeviceJoins"/>
+	    ${ew.customSqlSegment}
+	</select>
+
+
+</mapper>

@@ -1,0 +1,18 @@
+spring:
+  profiles:
+# 开发
+    active: dev
+# 测试环境
+#    active: test
+# 正式环境
+#    active: prod
+
+#
+##############################################
+# 默认路径
+spring.thymeleaf.prefix: classpath:/templates/
+# 后缀
+spring.thymeleaf.suffix: .html
+# 模板格式
+spring.thymeleaf.mode: HTML5
+spring.thymeleaf.encoding: UTF-8

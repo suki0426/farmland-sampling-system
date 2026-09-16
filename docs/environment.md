@@ -1,0 +1,75 @@
+# 开发环境
+
+## 基础环境
+
+- JDK：8
+- Node.js：建议 16
+- 前端端口：3000
+- 后端端口：8087
+- MySQL：本地开发
+- Redis：本地开发
+
+## 环境变量
+
+所有变量只记录名称，不在仓库中保存真实凭据。
+
+### MySQL
+
+- `MYSQL_HOST`
+- `MYSQL_PORT`
+- `MYSQL_DATABASE`
+- `MYSQL_USERNAME`
+- `MYSQL_PASSWORD`
+
+### Redis
+
+- `REDIS_HOST`
+- `REDIS_PORT`
+- `REDIS_PASSWORD`
+
+### Flowable 与 CAS
+
+- `FLOWABLE_IDM_URL`
+- `FLOWABLE_IDM_PASSWORD`
+- `CAS_SERVER_URL`
+
+### WPS
+
+- `WPS_APP_ID`
+- `WPS_APP_SECRET`
+- `WPS_DOWNLOAD_HOST`
+- `WPS_DOMAIN`
+
+### 对象存储
+
+- `ALIYUN_OSS_ACCESS_KEY_ID`
+- `ALIYUN_OSS_ACCESS_KEY_SECRET`
+- `MINIO_ACCESS_KEY`
+- `MINIO_SECRET_KEY`
+- `UNICOM_OSS_ACCESS_KEY`
+- `UNICOM_OSS_SECRET_KEY`
+
+### InfluxDB、MQTT 与校验
+
+- `INFLUXDB_URL`
+- `INFLUXDB_TOKEN`
+- `INFLUXDB_USERNAME`
+- `INFLUXDB_PASSWORD`
+- `MQTT_BROKER_URL`
+- `MQTT_USERNAME`
+- `MQTT_PASSWORD`
+- `VERIFY_SECRET_KEY`
+- `WEBSOCKET_DEVICE_ADDRESS`
+
+### 短信服务
+
+- `SMS_ACCESS_KEY_ID`
+- `SMS_ACCESS_KEY_SECRET`
+
+### Vue 前端 MQTT
+
+- `VUE_APP_MQTT_BROKER_URL`
+- `VUE_APP_MQTT_USERNAME`
+- `VUE_APP_MQTT_PASSWORD`
+
+数据库业务结构尚未设计。当前阶段不要求后端连接数据库或完成登录。

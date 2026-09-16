@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+  <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+  <META HTTP-EQUIV="Expires" CONTENT="0">
+  <script src="./components.js"></script>
+  <script src="./config.js"></script>
+  <script src="./index.js"></script>
+  <script src="./view.js"></script>
+  <link rel="stylesheet" href="./cdn/iconfont/iconfont.css">
+  <link rel="stylesheet" href="./cdn/animate/3.5.1/animate.css">
+  <link rel="stylesheet" href="./cdn/element-ui/2.15.0/theme-chalk/index.css">
+  <link rel="stylesheet" href="./cdn/avue/2.8.23/index.css">
+  <link rel="stylesheet" href="./lib/index.css">
+  <script src="./cdn/echarts/5.4.0/echarts.min.js"></script>
+  <script src="./cdn/echarts-wordcloud.min.js"></script>
+  <script src="./cdn/clappr.min.js"></script>
+  <script src="./cdn/vue/2.5.2/vue.min.js" charset="utf-8"></script>
+  <script src="./cdn/axios/1.0.0/axios.min.js" charset="utf-8"></script>
+  <script src="./cdn/element-ui/2.15.0/index.js" charset="utf-8"></script>
+  <script src="./cdn/avue/2.8.23/avue.min.js"></script>
+  <script src="./cdn/datav.min.vue.js"></script>
+  <script src="./lib/index.umd.min.js"></script>
+  <title>data数据大屏</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body,
+    html,
+    #app {
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <avue-data :id="id" :option="option"></avue-data>
+  </div>
+  <script>
+    window.onload = () => {
+      new Vue({
+        el: '#app',
+        data () {
+          return {
+            id: GetQueryString('id'),
+            option: option
+          }
+        },
+        components: {
+          avueData
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>

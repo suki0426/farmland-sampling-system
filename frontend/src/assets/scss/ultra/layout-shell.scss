@@ -1,0 +1,292 @@
+.ultra-layout-shell.jp-wrapper {
+  background: var(--ul-bg);
+}
+
+.ultra-layout-shell .jp-navbar {
+  height: var(--ul-nav-height);
+  padding: 4px 12px 4px 0;
+  background: var(--ul-bg) !important;
+  box-shadow: none;
+  border: 0;
+  overflow: hidden;
+}
+
+.ultra-layout-shell .jp-navbar__header,
+.ultra-layout-shell .jp-navbar__body {
+  height: var(--ul-nav-inner-height);
+  border: 1px solid var(--ul-line);
+  box-shadow: var(--ul-shadow-sm);
+}
+
+.ultra-layout-shell .jp-navbar__header {
+  width: var(--ul-sidebar-width);
+  border-radius: var(--ul-radius-lg);
+  background: linear-gradient(135deg, var(--ul-brand-start), var(--ul-brand-end));
+  overflow: hidden;
+}
+
+.ultra-layout-shell .jp-navbar__body {
+  margin-left: calc(var(--ul-sidebar-width) + 12px);
+  border-radius: var(--ul-radius-lg);
+  background: var(--ul-panel);
+  display: flex;
+  align-items: center;
+}
+
+.ultra-layout-shell .jp-navbar__brand {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ultra-layout-shell .jp-navbar__brand > .jp-navbar__brand-lg {
+  display: flex !important;
+}
+
+.ultra-layout-shell .jp-navbar__brand > .jp-navbar__brand-mini {
+  display: none !important;
+}
+
+.ultra-layout-shell .ultra-brand {
+  width: 100%;
+  height: 100%;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #fff;
+}
+
+.ultra-layout-shell .ultra-brand__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.ultra-layout-shell .ultra-brand__logo img {
+  display: block;
+  object-fit: contain;
+}
+
+.ultra-layout-shell .ultra-brand__copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.ultra-layout-shell .ultra-brand--mini {
+  padding: 0;
+  justify-content: center;
+}
+
+.ultra-layout-shell .ultra-brand__title {
+  max-width: 186px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.ultra-layout-shell .ultra-brand__sub {
+  color: var(--ul-brand-sub);
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+.ultra-layout-shell .jp-navbar__menu,
+.ultra-layout-shell .jp-navbar__menu.el-menu {
+  border-bottom: 0;
+  background: transparent;
+}
+
+.ultra-layout-shell .jp-navbar__body > .jp-navbar__menu:not(.jp-navbar__menu--right):first-child {
+  margin-left: 14px;
+}
+
+.ultra-layout-shell .jp-navbar__body > .jp-navbar__menu:not(.jp-navbar__menu--right) {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.ultra-layout-shell .jp-navbar__menu--right {
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+.ultra-layout-shell .jp-sidebar {
+  top: var(--ul-nav-height);
+  height: calc(100vh - var(--ul-nav-height));
+  width: var(--ul-sidebar-width);
+  background: transparent;
+  padding: 8px 12px 16px;
+}
+
+.ultra-layout-shell .jp-sidebar__inner {
+  height: 100%;
+  border: 1px solid var(--ul-line);
+  border-radius: var(--ul-radius-lg);
+  background: var(--ul-panel);
+  box-shadow: var(--ul-shadow-sm);
+}
+
+.ultra-layout-shell .jp-sidebar__menu.el-menu {
+  height: 100%;
+  width: 100%;
+  border-right: 0;
+  background: transparent;
+  padding: 12px;
+}
+
+.ultra-layout-shell .jp-menu-category {
+  padding: 0 12px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  color: var(--ul-muted);
+  font-size: 12px;
+  line-height: 32px;
+  letter-spacing: 0.08em;
+}
+
+.ultra-layout-shell .jp-content__wrapper {
+  position: fixed;
+  top: var(--ul-nav-height);
+  right: 0;
+  bottom: 0;
+  left: var(--ul-sidebar-width);
+  display: flex;
+  flex-direction: column;
+  background: var(--ul-bg);
+  margin-left: 0;
+  padding-top: 0;
+  height: auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ultra-layout-shell .jp-container {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 0 16px 20px 8px;
+  overflow: hidden;
+}
+
+.ultra-layout-shell .jp-container.jp-container--with-tags {
+  padding-top: var(--ul-tags-height);
+}
+
+.ultra-layout-shell .jp-center {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  padding: 16px 20px 24px;
+  background: var(--ul-panel);
+  border: 1px solid var(--ul-line);
+  border-radius: var(--ul-radius-lg);
+  box-shadow: var(--ul-shadow-sm);
+  overflow: hidden;
+}
+
+.ultra-layout-shell .ultra-page-shell {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ultra-layout-shell .jp-center > .ultra-page-body {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.ultra-layout-shell .ultra-page-breadcrumbs {
+  margin-bottom: 16px;
+}
+
+.ultra-layout-shell .main-maximize-exit {
+  top: 26px;
+  right: 36px;
+  z-index: 5;
+}
+
+.ultra-layout-shell .jp-tags__contentmenu,
+.ultra-layout-shell .contextmenu {
+  border: 1px solid var(--ul-line);
+  border-radius: 14px;
+  background: var(--ul-panel);
+  box-shadow: var(--ul-shadow-md);
+}
+
+.ultra-layout-shell .contextmenu li:hover {
+  background: var(--ul-panel-soft);
+}
+
+.ultra-layout-shell .tags-view-container {
+  top: var(--ul-nav-height);
+  left: calc(var(--ul-sidebar-width) + 8px);
+  width: calc(100% - var(--ul-sidebar-width) - 24px);
+  background: transparent;
+  border-bottom: 0;
+  box-shadow: none;
+}
+
+.ultra-layout-shell.jp-sidebar--fold .jp-navbar__header,
+.ultra-layout-shell.jp-sidebar--fold .jp-navbar__brand,
+.ultra-layout-shell.jp-sidebar--fold .jp-sidebar,
+.ultra-layout-shell.jp-sidebar--fold .jp-sidebar__inner {
+  width: var(--ul-sidebar-fold-width);
+}
+
+.ultra-layout-shell.jp-sidebar--fold .jp-navbar__body {
+  margin-left: calc(var(--ul-sidebar-fold-width) + 12px);
+}
+
+.ultra-layout-shell.jp-sidebar--fold .jp-navbar__brand > .jp-navbar__brand-lg {
+  display: none !important;
+}
+
+.ultra-layout-shell.jp-sidebar--fold .jp-navbar__brand > .jp-navbar__brand-mini {
+  display: flex !important;
+}
+
+.ultra-layout-shell.jp-sidebar--fold .jp-sidebar__menu.el-menu {
+  width: 100%;
+}
+
+.ultra-layout-shell.jp-sidebar--fold .ultra-brand {
+  padding: 0;
+}
+
+.ultra-layout-shell.jp-sidebar--fold .jp-content__wrapper {
+  left: var(--ul-sidebar-fold-width);
+  margin-left: 0;
+}
+
+.ultra-layout-shell.main-maximize .jp-content__wrapper {
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.ultra-layout-shell.main-maximize .jp-container {
+  padding: 0;
+}
+
+.ultra-layout-shell.jp-sidebar--fold .tags-view-container {
+  left: calc(var(--ul-sidebar-fold-width) + 8px);
+  width: calc(100% - var(--ul-sidebar-fold-width) - 24px);
+}

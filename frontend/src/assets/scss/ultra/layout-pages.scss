@@ -1,0 +1,223 @@
+.ultra-page-body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ultra-page-body > * {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.ultra-page-body > .ultra-table-page,
+.ultra-page-body > .jp-common-layout {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ultra-page-body > .ultra-table-page {
+  flex-direction: column;
+}
+
+.ultra-page-body > .jp-common-layout.ultra-table-page {
+  flex-direction: row;
+  gap: 0;
+}
+
+.ultra-page-body .jp-common-layout,
+.ultra-page-body .jp-common-layout-center,
+.ultra-page-body .jp-flex-main,
+.ultra-page-body .ultra-table-page {
+  height: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ultra-page-body .jp-common-layout.ultra-table-page > .jp-common-layout-left,
+.ultra-page-body .jp-common-layout.ultra-table-page > .jp-common-layout-center {
+  min-height: 0;
+}
+
+.ultra-page-body .jp-common-layout.ultra-table-page > .jp-common-layout-left {
+  overflow: hidden;
+}
+
+.ultra-page-body .jp-common-layout.ultra-table-page > .jp-common-layout-center {
+  flex: 1 1 0;
+  width: 0;
+}
+
+.ultra-page-body .jp-common-layout.ultra-table-page .jp-common-el-tree-scrollbar,
+.ultra-page-body .jp-common-layout.ultra-table-page .el-scrollbar__wrap,
+.ultra-page-body .jp-common-layout.ultra-table-page .el-scrollbar__view,
+.ultra-page-body .jp-common-layout.ultra-table-page .jp-common-el-tree {
+  min-height: 0;
+}
+
+/* Compatibility for jeeplus-gencode-v2 list components.
+   Those package components still render the legacy .page > .bg-white.top shape,
+   so they need a bounded flex chain to keep vxe-table auto-resize stable. */
+.ultra-page-body > .page:not(.ultra-table-page) {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-direction: column !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.ultra-page-body > .page:not(.ultra-table-page) > .query-form,
+.ultra-page-body > .page:not(.ultra-table-page) > .ultra-query-form {
+  flex: 0 0 auto !important;
+}
+
+.ultra-page-body > .page:not(.ultra-table-page) > .bg-white.top {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-direction: column !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.ultra-page-body > .page:not(.ultra-table-page) > .bg-white.top > .vxe-toolbar,
+.ultra-page-body > .page:not(.ultra-table-page) > .bg-white.top > .vxe-pager {
+  flex: 0 0 auto !important;
+}
+
+.ultra-page-body > .page:not(.ultra-table-page) > .bg-white.top > div:not(.vxe-toolbar):not(.vxe-pager) {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-direction: column !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.ultra-page-body > .page:not(.ultra-table-page) > .bg-white.top .vxe-table--render-default {
+  flex: 1 1 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.ultra-page-body > .page:not(.ultra-table-page) > .bg-white.top .vxe-table--main-wrapper,
+.ultra-page-body > .page:not(.ultra-table-page) > .bg-white.top .vxe-table--body-wrapper {
+  min-height: 0 !important;
+}
+
+.ultra-table-page {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  height: 0;
+  min-height: 0;
+  overflow: hidden;
+  gap: 12px;
+}
+
+.ultra-table-panel {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  height: 0;
+  min-height: 0;
+  overflow: hidden;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--ul-line);
+  border-radius: var(--ul-radius-md);
+  background: var(--ul-panel);
+  box-shadow: var(--ul-shadow-sm);
+}
+
+.ultra-query-form {
+  --ul-query-control-height: 44px;
+  flex: 0 0 auto;
+  padding: 16px;
+  border: 1px solid var(--ul-line);
+  border-radius: var(--ul-radius-md);
+  background: var(--ul-panel);
+  box-shadow: var(--ul-shadow-sm);
+}
+
+.ultra-query-form .el-input--small .el-input__inner,
+.ultra-query-form .el-select .el-input--small .el-input__inner {
+  height: var(--ul-query-control-height);
+  line-height: calc(var(--ul-query-control-height) - 2px);
+  border-radius: calc(var(--ul-query-control-height) / 2);
+}
+
+.ultra-query-form .el-input--small .el-input__icon,
+.ultra-query-form .el-select .el-input__icon {
+  line-height: var(--ul-query-control-height);
+}
+
+.ultra-query-form .el-button--small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--ul-query-control-height);
+  padding: 0 22px;
+  line-height: calc(var(--ul-query-control-height) - 2px);
+  border-radius: calc(var(--ul-query-control-height) / 2);
+}
+
+.ultra-query-form .el-form-item:last-child {
+  margin-bottom: 0;
+}
+
+.ultra-query-form .el-form-item:last-child .el-form-item__content {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ultra-query-form .el-form-item__content .el-input-group {
+  vertical-align: middle !important;
+}
+
+.ultra-table-page > .ultra-query-form,
+.ultra-table-panel > .ultra-query-form,
+.ultra-table-panel > .vxe-toolbar,
+.ultra-table-panel > .vxe-pager {
+  flex: 0 0 auto;
+}
+
+.ultra-table-page > .vxe-pager,
+.ultra-table-panel > .vxe-pager {
+  margin-top: 0;
+}
+
+.ultra-table-stage {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  height: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ultra-table-stage .vxe-table--render-default,
+.ultra-table-stage .vxe-table--main-wrapper,
+.ultra-table-stage .vxe-table--body-wrapper {
+  min-height: 0 !important;
+}
+
+.ultra-table-stage > .vxe-table,
+.ultra-table-stage > .vxe-table--render-default,
+.ultra-table-stage .vxe-table--render-default {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.ultra-support-node {
+  flex: 0 0 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}

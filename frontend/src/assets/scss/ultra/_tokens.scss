@@ -1,0 +1,42 @@
+.ultra-layout-shell,
+.ultra-theme {
+  --ul-bg: #f1f5f9;
+  --ul-panel: #ffffff;
+  --ul-panel-soft: #f8fafc;
+  --ul-panel-muted: #eef2f7;
+  --ul-text: #0f172a;
+  --ul-muted: #64748b;
+  --ul-line: #e2e8f0;
+  --ul-line-strong: #cbd5e1;
+  --ul-primary: var(--defaultTheme, #0f172a);
+  --ul-primary-contrast: #ffffff;
+  --ul-sidebar-active-bg: var(--ul-primary);
+  --ul-sidebar-active-line: var(--ul-primary);
+  --ul-sidebar-active-shadow: 0 0 0 2px rgba(15, 23, 42, 0.18);
+  --ul-brand-start: var(--ul-primary);
+  --ul-brand-end: var(--ul-primary);
+  --ul-brand-sub: rgba(226, 232, 240, 0.9);
+  --ul-success-bg: #f0fdf4;
+  --ul-success-line: #bbf7d0;
+  --ul-danger-bg: #fef2f2;
+  --ul-danger-line: #fecaca;
+  --ul-radius-sm: 14px;
+  --ul-radius-md: 20px;
+  --ul-radius-lg: 24px;
+  --ul-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --ul-shadow-md: 0 12px 30px rgba(15, 23, 42, 0.08);
+  --ul-space-1: 8px;
+  --ul-space-2: 12px;
+  --ul-space-3: 16px;
+  --ul-space-4: 20px;
+  --ul-space-5: 24px;
+  --ul-title-lg: 28px;
+  --ul-title-md: 18px;
+  --ul-text-sm: 12px;
+  --ul-text-md: 14px;
+  --ul-nav-height: 68px;
+  --ul-nav-inner-height: 60px;
+  --ul-tags-height: 34px;
+  --ul-sidebar-width: 280px;
+  --ul-sidebar-fold-width: 76px;
+}
