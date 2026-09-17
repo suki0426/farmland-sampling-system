@@ -70,6 +70,15 @@ module.exports = {
       title: '',
       filename: 'aivideo.html',
       chunks: ['chunk-vendors', 'chunk-common', 'aivideo']
+    },
+    // 1号(前端GIS) 新增：独立 GIS 演示入口，无需登录/后端菜单即可访问
+    // 访问地址：http://localhost:3000/gis.html
+    gis: {
+      entry: 'src/gisdemo/main.js',
+      template: 'src/gisdemo/index.html',
+      title: '农田智能采样GIS演示',
+      filename: 'gis.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'gis']
     }
   },
   devServer: {

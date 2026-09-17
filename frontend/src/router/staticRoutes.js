@@ -35,6 +35,10 @@ export function createMainRoutes (_import) {
       { path: '/ureport/preview', component: null, name: 'ureport-preview', meta: { title: '预览报表', type: 'iframe', menuId: 'ureport-preview' } },
       { path: '/form/explorer', component: null, name: 'form-explorer', meta: { title: '浏览器', type: 'iframe' } },
       { path: '/database/datatable/TableForm', component: _import('modules/database/datatable/TableForm'), name: 'table-form', meta: { title: '数据库表详情' } },
+      // ↓ 1号(前端GIS) 新增：农田智能采样 GIS 页面
+      // 说明：这里注册为静态路由，保证后端菜单（sys_menu）尚未配置时页面也能直接访问。
+      // 若 5号 后续在菜单里配置 href = /farmland/FarmlandGis，dynamicRoutes 会检测到同名 path 而跳过，不会冲突。
+      { path: '/farmland/FarmlandGis', component: _import('modules/farmland/FarmlandGis'), name: 'farmland-gis', meta: { title: '农田智能采样GIS', singleTab: true } },
       { path: '/404', component: _import('common/404'), name: '404', meta: { title: '404未找到' } }
     ]
   }
