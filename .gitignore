@@ -41,3 +41,7 @@ Thumbs.db
 .env.*.local
 application-local.yml
 **/application-local.yml
+
+# Python
+__pycache__/
+*.py[cod]
