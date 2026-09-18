@@ -22,6 +22,14 @@ logging:
     #    org.flowable: DEBUG
     com.jeeplus: DEBUG
     org.apache.shiro.cache.ehcache.EhCacheManager: WARN
+integration:
+  device-udp:
+    # 开发联调默认开启；生产环境由部署配置显式决定。
+    enabled: true
+    port: 9000
+    max-track-size: 1000
+  algorithm:
+    mode: mock
 spring:
   servlet:
     multipart:
