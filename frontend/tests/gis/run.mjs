@@ -394,6 +394,63 @@ async function main () {
       `指标：${metricCodes.join(', ')}`)
   }
 
+  // ======================================================== 静态契约守卫
+  // 把「合并评审提出的收紧项」固化成可执行断言，防止以后被改回去。
+  // 这些是源码级检查（读文件 + 断言），不依赖运行环境。
+  {
+    // 去掉注释再匹配，允许源码里用注释解释历史原因而不触发误报
+    const stripComments = src => src
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .replace(/(^|[^:'"\\])\/\/[^\n]*/g, '$1')
+    const readSrc = rel => stripComments(fs.readFileSync(path.join(srcRoot, rel), 'utf8'))
+
+    // 守卫 1（评审 #1）：采样点 Service 必须完全只读
+    const spService = readSrc('api/samplingpoint/samplingPointService.js')
+    check('守卫：采样点 Service 只读，不含任何未冻结写端点',
+      !/method:\s*['"]post['"]/i.test(spService) &&
+      !/saveBatch/.test(spService) &&
+      !/updateStatus/.test(spService),
+      '未发现 save / saveBatch / updateStatus 与任何 POST')
+
+    // 守卫 1b：网关也不应保留写方法
+    const gateway = readSrc('api/gis/gisGateway.js')
+    check('守卫：GIS 网关不含 saveManualPoints 等写方法',
+      !/saveManualPoints/.test(gateway),
+      '未发现写方法')
+
+    // 守卫 2（评审 #7）：高德 Key 不得从浏览器端存储读取
+    const amapLoader = readSrc('utils/gis/amapLoader.js')
+    check('守卫：高德配置不从浏览器本地存储读取（Key 只走环境变量/部署注入）',
+      !/localStorage|sessionStorage/.test(amapLoader),
+      'amapLoader 中无 localStorage / sessionStorage 引用')
+
+    // 守卫 3（评审 #2）：权限判定不得以"权限列表为空"为放行条件
+    const permission = readSrc('utils/gis/gisPermission.js')
+    check('守卫：权限判定不读取浏览器权限列表，仅支持显式演示开关',
+      !/localStorage|sessionStorage/.test(permission),
+      'gisPermission 中无 localStorage / sessionStorage 引用')
+
+    // 守卫 4（评审 #4）：轨迹排序字段必须是数据库列名
+    const monitorService = readSrc('api/monitor/monitorGisService.js')
+    check('守卫：轨迹排序用数据库列名 collect_time，而非 collectTime',
+      /column:\s*['"]collect_time['"]/.test(monitorService) &&
+      !/column:\s*['"]collectTime['"]/.test(monitorService),
+      'orders.column = collect_time')
+
+    // 守卫 5（评审 #3）：独立演示入口只在非生产构建产出
+    const vueConfig = stripComments(fs.readFileSync(path.join(frontendRoot, 'vue.config.js'), 'utf8'))
+    check('守卫：独立演示入口 gis.html 仅在非生产构建产出',
+      /NODE_ENV\s*!==\s*['"]production['"]/.test(vueConfig) && /pages\.gis\s*=/.test(vueConfig),
+      'vue.config.js 中 pages.gis 被 NODE_ENV !== production 包住')
+
+    // 守卫 6（评审 #5）：边界视图模型不得接受坐标系兜底参数
+    const sceneModel = readSrc('utils/gis/sceneModel.js')
+    const boundaryFn = (sceneModel.match(/export function buildBoundaryModel[\s\S]{0,200}?\)\s*\{/) || [''])[0]
+    check('守卫：buildBoundaryModel 不接受任何坐标系兜底参数',
+      !!boundaryFn && !/fallback/i.test(boundaryFn),
+      boundaryFn ? boundaryFn.split('\n')[0].trim() : '未匹配到函数签名')
+  }
+
   // ======================================================== 输出
   const passed = rows.filter(r => r.pass).length
   const failed = rows.length - passed

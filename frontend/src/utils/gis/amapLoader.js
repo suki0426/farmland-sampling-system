@@ -19,21 +19,26 @@ const DEFAULT_PLUGINS = ['AMap.Scale', 'AMap.ToolBar', 'AMap.Geolocation']
 
 let loadingPromise = null
 
-/** 读取配置：window.SITE_CONFIG 优先，其次构建期环境变量，最后 localStorage（便于临时调试） */
+/**
+ * 读取高德配置。
+ *
+ * 来源只有两个，**刻意不支持 localStorage**：
+ *   1. `window.SITE_CONFIG.amapKey` —— 由部署方在运行时注入（推荐用于正式环境/密钥轮换）
+ *   2. 构建期环境变量 `VUE_APP_AMAP_KEY` / `VUE_APP_AMAP_SECURITY_CODE`
+ *
+ * ⚠️ 合并评审意见 #7：此前这里还有一条"从浏览器本地存储读取 Key"的兜底分支，
+ *    并在文档里引导"临时调试就写浏览器本地存储"。该分支已被**移除**，原因：
+ *      - 把 API Key 放进 localStorage 会被任意同源脚本读取（XSS 即可窃取），
+ *        而且会长久留在用户浏览器里，属于典型的凭据暴露反模式；
+ *      - Key 的配置应当走**构建期环境变量**或**部署期注入**，是可审计、可轮换的路径；
+ *      - 前端本来就不该承担"凭据分发"的职责。
+ *    现在若未配置 Key，页面会明确提示去配置环境变量，并自动降级到内置离线矢量地图。
+ */
 export function getAmapConfig () {
   const siteConfig = (typeof window !== 'undefined' && window.SITE_CONFIG) || {}
-  let localKey = ''
-  let localSecurity = ''
-  try {
-    localKey = window.localStorage.getItem('gisAmapKey') || ''
-    localSecurity = window.localStorage.getItem('gisAmapSecurityJsCode') || ''
-  } catch (e) {
-    localKey = ''
-    localSecurity = ''
-  }
   return {
-    key: siteConfig.amapKey || process.env.VUE_APP_AMAP_KEY || localKey || '',
-    securityJsCode: siteConfig.amapSecurityJsCode || process.env.VUE_APP_AMAP_SECURITY_CODE || localSecurity || '',
+    key: siteConfig.amapKey || process.env.VUE_APP_AMAP_KEY || '',
+    securityJsCode: siteConfig.amapSecurityJsCode || process.env.VUE_APP_AMAP_SECURITY_CODE || '',
     version: siteConfig.amapVersion || process.env.VUE_APP_AMAP_VERSION || '2.0'
   }
 }

@@ -10,6 +10,48 @@ function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
+/**
+ * 多页入口。
+ *
+ * ⚠️ 合并评审意见 #3 要求「限制独立演示入口」：
+ *   1号 的独立 GIS 演示入口（gis.html）**只在非生产构建产出**。
+ *   生产 `npm run build` 的 dist 里**根本不会出现 gis.html**，
+ *   因此正式部署不存在任何一个"绕过登录直接进 GIS 页面"的入口。
+ *   开发时用 `npm run serve` 访问 http://localhost:3000/gis.html 即可。
+ *
+ *   （第二道防线在 gisPermission.isGisDemoMode()：它同样在生产构建下一律返回 false，
+ *     所以即使有人手动把 gis.html 拷进生产环境，写操作也不会被放行。）
+ */
+function buildPages () {
+  const pages = {
+    index: {
+      entry: 'src/main.js',
+      template: 'public/index.html',
+      title: 'index.html',
+      filename: 'index.html'
+    },
+    aivideo: {
+      entry: 'src/aivideo/main.js',
+      template: 'src/aivideo/index.html',
+      title: '',
+      filename: 'aivideo.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'aivideo']
+    }
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    pages.gis = {
+      entry: 'src/gisdemo/main.js',
+      template: 'src/gisdemo/index.html',
+      title: '农田智能采样GIS演示',
+      filename: 'gis.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'gis']
+    }
+  }
+
+  return pages
+}
+
 module.exports = {
   publicPath: "./",
   runtimeCompiler: true,
@@ -57,30 +99,7 @@ module.exports = {
   },
 
   // 入口设置
-  pages: {
-    index: {
-      entry: 'src/main.js',
-      template: 'public/index.html',
-      title: 'index.html',
-      filename: 'index.html'
-    },
-    aivideo: {
-      entry: 'src/aivideo/main.js',
-      template: 'src/aivideo/index.html',
-      title: '',
-      filename: 'aivideo.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'aivideo']
-    },
-    // 1号(前端GIS) 新增：独立 GIS 演示入口，无需登录/后端菜单即可访问
-    // 访问地址：http://localhost:3000/gis.html
-    gis: {
-      entry: 'src/gisdemo/main.js',
-      template: 'src/gisdemo/index.html',
-      title: '农田智能采样GIS演示',
-      filename: 'gis.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'gis']
-    }
-  },
+  pages: buildPages(),
   devServer: {
     index: '/index.html', // 运行时，默认打开index页面
     port: 3000,
