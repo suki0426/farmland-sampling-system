@@ -23,8 +23,8 @@ public class IntegrationModuleTest {
         JsonDeviceMessageDecoder decoder = new JsonDeviceMessageDecoder(new ObjectMapper());
         DeviceTelemetryValidator validator = new DeviceTelemetryValidator();
         DeviceTelemetryDTO telemetry = decoder.decode((
-                "{\\"device_id\\":\\"DEVICE_001\\",\\"longitude\\":112.123456,"
-                        + "\\"latitude\\":37.123456,\\"timestamp\\":\\"2026-09-18 10:30:00\\"}").getBytes());
+                "{\"device_id\":\"DEVICE_001\",\"longitude\":112.123456,"
+                        + "\"latitude\":37.123456,\"timestamp\":\"2026-09-18 10:30:00\"}").getBytes());
         validator.validate(telemetry);
 
         DeviceUdpProperties properties = new DeviceUdpProperties();
