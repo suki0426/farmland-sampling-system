@@ -36,7 +36,9 @@
 
 import { pointInGeoJson, validatePointInBoundary, findNearestUnsampledPoint, haversine } from '@/utils/gis/geometry'
 import { wgs84ToGcj02, gcj02ToWgs84, normalizeCoordinateSystem, isValidCoordinateSystem } from '@/utils/gis/coordinate'
-import { buildBoundaryModel, buildSamplingPointModels, buildRouteModel, parseGeoJson } from '@/utils/gis/sceneModel'
+import {
+  buildBoundaryModel, buildSamplingPointModels, buildDeviceModels, buildRouteModel, buildTrackModel, parseGeoJson
+} from '@/utils/gis/sceneModel'
 import gisMock from '@/mock/gis'
 import { mockFarmlandBrief, mockSamplingPoints, mockNavigationRoute, mockChartData } from '@/mock/gis/scene'
 import { mockTrack, mockDevices } from '@/mock/gis/devices'
@@ -204,16 +206,39 @@ export default {
           keyMismatch ? '存在列名与行 key 不一致的记录' : `columns = [${chart.columns.join(', ')}]`)
 
         // ---------- 用例 12：边界视图模型可构建 ----------
-        const boundaryModel = buildBoundaryModel(farmland, 'GCJ02')
-        add('农田边界视图模型构建成功',
+        const boundaryModel = buildBoundaryModel(farmland)
+        add('农田边界视图模型构建成功（边界自带 coordinateSystem）',
           !!boundaryModel.geoJson && boundaryModel.ringCount >= 1 && !boundaryModel.error,
           boundaryModel.error || `成功构建 ${boundaryModel.ringCount} 个环，估算面积 ${boundaryModel.area.toFixed(0)} m²`)
+
+        // ---------- 用例 12b：边界缺坐标系必须拒绝渲染（评审意见 #5）----------
+        const boundaryNoCs = buildBoundaryModel({ farmlandId: 'F1', boundaryGeoJson: farmland.boundaryGeoJson })
+        add('边界缺 coordinateSystem 时拒绝渲染，不拿场景坐标系兜底',
+          !!boundaryNoCs.error && boundaryNoCs.geoJson === null && /coordinateSystem/.test(boundaryNoCs.error),
+          boundaryNoCs.error)
 
         // ---------- 用例 13：采样点视图模型保留全部字段 ----------
         const pointModels = buildSamplingPointModels(points, 'GCJ02')
         add('采样点视图模型字段完整',
           pointModels.points.length === points.length && pointModels.errors.length === 0,
           pointModels.errors.length ? pointModels.errors.join('; ') : `成功转换 ${pointModels.points.length} 个采样点`)
+
+        // ---------- 用例 14：设备只有 DeviceBriefDTO 字段时不产生坐标（评审意见 #3）----------
+        const briefOnly = buildDeviceModels([
+          { deviceId: 'D1', deviceCode: 'DEV001', deviceName: '一号', category: 'sampler', status: 'online' }
+        ])
+        const briefDevice = briefOnly.devices[0] || {}
+        add('设备缺位置字段时标记「位置未提供」而非画到 0,0',
+          briefOnly.devices.length === 1 && briefOnly.errors.length === 1 && !isFinite(briefDevice.longitude),
+          briefDevice.positionError || '（未标记）')
+
+        // ---------- 用例 15：轨迹缺坐标字段时明确报错（评审意见 #4）----------
+        const noCoord = buildTrackModel([
+          { deviceId: 'DV1', metricCode: 'soilMoisture', metricValue: 31, collectTime: '2026-09-17 10:00:00' }
+        ], 'GCJ02')
+        add('轨迹记录缺经纬度字段时明确报错，不静默为空',
+          noCoord.points.length === 0 && noCoord.missingCoordinateCount === 1 && !!noCoord.error,
+          noCoord.error)
       } catch (error) {
         add('自检执行异常', false, (error && error.message) || String(error))
       }

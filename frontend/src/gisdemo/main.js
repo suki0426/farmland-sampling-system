@@ -31,6 +31,19 @@ import FarmlandGis from '@/views/modules/farmland/FarmlandGis'
 
 Vue.config.productionTip = false
 
+/**
+ * ⚠️ 显式声明"这是演示入口"。
+ *
+ * 合并评审意见 #2 要求：演示放行**只能由显式开关触发**，不能以"权限列表为空"为条件。
+ * 这个入口就是那个显式开关：
+ *   - 只有走到 gis.html 才会设置它；
+ *   - gisPermission.isGisDemoMode() 在生产构建（NODE_ENV === 'production'）下
+ *     一律返回 false，所以**正式打包产物里的 gis.html 也不会放行写操作**；
+ *   - JeePlus 正式页面 /farmland/FarmlandGis 走的是主应用入口，永远不会设置这个标志，
+ *     因此永远严格校验权限。
+ */
+window.__GIS_DEMO__ = true
+
 // 页面里用到 $message / v-loading / el-* 组件，这里注册 ElementUI 与 v-charts（ECharts 封装）
 Vue.use(ElementUI, { size: 'small' })
 Vue.use(VCharts)

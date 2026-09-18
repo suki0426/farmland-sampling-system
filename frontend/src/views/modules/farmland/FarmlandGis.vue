@@ -113,15 +113,16 @@
               :pick-mode="pickMode"
               :pick-error="pickError"
               :loading="loading"
-              :saving="saving"
               :manual-count="manualPoints.length"
-              :can-edit="canEditPoints"
+              :can-pick="canPickPoints"
+              :demo-mode="isDemoMode"
               @toggle-pick="togglePickMode"
               @refresh="loadSamplingPoints"
               @select="onPointSelect"
               @view-data="onViewPointData"
               @remove-manual="removeManualPoint"
-              @save-manual="saveManualPoints"
+              @save-manual="onManualSaveBlocked"
+              @clear-manual-preview="clearManualPreview"
               @clear-pick-error="pickError = ''" />
           </el-tab-pane>
 
@@ -237,8 +238,8 @@ import {
   buildSamplingPointModels,
   buildDeviceModels,
   buildRouteModel,
-  resolveSceneCoordinateSystem,
-  renderableTrajectory
+  buildTrackModel,
+  resolveSceneCoordinateSystem
 } from '@/utils/gis/sceneModel'
 import {
   validatePointInBoundary,
@@ -248,11 +249,15 @@ import {
   bearing,
   formatDistance
 } from '@/utils/gis/geometry'
-import { checkPermission, GIS_PERMISSION } from '@/utils/gis/gisPermission'
+import { checkPermission, isGisDemoMode, GIS_PERMISSION } from '@/utils/gis/gisPermission'
 import { toMapCoordinate } from '@/utils/gis/coordinate'
 
-const ARRIVAL_RADIUS_METERS = 8
-const MAX_MANUAL_POINTS = 4
+/**
+ * 任务书 M1 要求采样点为 3~4 个，这里按**总点数**限制上限。
+ * （合并评审意见 #6：此前写成 manualPoints.length >= 4 && points.length >= 4，
+ *   已有 4 个远端点、手动点 0 个时仍能继续加，会超出 3~4 个的要求。）
+ */
+const MAX_SAMPLING_POINTS = 4
 
 export default {
   name: 'FarmlandGis',
@@ -305,6 +310,16 @@ export default {
       pickMode: false,
       pickError: '',
       manualPoints: [],
+
+      /**
+       * 地图实现选择：'' = 自动（优先高德） / 'amap' = 强制高德 / 'vector' = 强制内置离线地图。
+       *
+       * ⚠️ 这个字段之前漏写在 data() 里，但模板里用了两处（v-model 与 :force-provider），
+       *    导致 Vue 报 "Property or method forceProvider is not defined"，
+       *    而且「地图」那组单选按钮实际上**点不动**。生产构建会把 Vue warn 剥离，
+       *    所以只有在 development 构建/带 console 的浏览器里才看得出来。
+       */
+      forceProvider: '',
 
       // ---- 边界选中效果 ----
       boundarySelected: true,
@@ -399,10 +414,23 @@ export default {
     trajectoryPointCount () {
       return Object.keys(this.trajectories).reduce((total, key) => total + (this.trajectories[key] || []).length, 0)
     },
-    /** 是否允许手动选点/提交（权限 + 演示模式） */
-    canEditPoints () {
-      const result = checkPermission(GIS_PERMISSION.SAMPLING_POINT_EDIT, this.hasPermission)
-      return result.allowed
+    /**
+     * 是否允许手动选点。
+     *
+     * 权限规则（合并评审意见 #2 修复后）：
+     *   - 正式页面：严格按 samplingpoint:samplingPoint:add 校验，拿不到权限就一律拒绝；
+     *   - 只有显式声明演示模式的入口（gis.html，见 gisPermission.isGisDemoMode）才放行；
+     *   - **不再以"权限列表为空"作为放行条件**。
+     *
+     * 另外注意：允许"选点"只是允许这个 UI 交互（M1 要求的落点校验与展示），
+     * **不代表可以写库** —— v2.1 §3.2 没有冻结任何采样点写接口，所以提交按钮是禁用状态。
+     */
+    canPickPoints () {
+      return checkPermission(GIS_PERMISSION.SAMPLING_POINT_ADD, this.hasPermission).allowed
+    },
+    /** 演示模式标记，用于界面提示（不是放行条件本身） */
+    isDemoMode () {
+      return isGisDemoMode()
     }
   },
   mounted () {
@@ -448,17 +476,16 @@ export default {
     applyFarmland () {
       const farmland = this.farmlandList.filter(f => f.farmlandId === this.farmlandId)[0] || this.farmlandList[0] || {}
       this.farmland = farmland
-      // 场景坐标系：优先取采样点/路线声明的坐标系，边界未声明时按场景坐标系处理并给出提示
+      // 场景坐标系仅用于「采样点 / 路线」这类自身声明了坐标系的对象的缺省判断，
+      // 绝不用于解释农田边界 —— 边界必须自带 coordinateSystem（评审意见 #5）。
       const pointSystem = resolveSceneCoordinateSystem(this.points.map(p => p.coordinateSystem))
       const routeSystem = resolveSceneCoordinateSystem([this.route && this.route.coordinateSystem])
-      this.sceneCoordinateSystem = pointSystem || routeSystem || 'GCJ02'
-      this.boundaryModel = buildBoundaryModel(farmland, this.sceneCoordinateSystem)
+      this.sceneCoordinateSystem = pointSystem || routeSystem || ''
+      // 严格模式：边界自己没声明 coordinateSystem 就直接拒绝渲染并报错，不接受 fallback
+      this.boundaryModel = buildBoundaryModel(farmland)
       if (this.boundaryModel.error) {
         this.globalNotice = this.boundaryModel.error
         this.globalNoticeType = 'error'
-      } else if (this.boundaryModel.notice) {
-        this.globalNotice = this.boundaryModel.notice
-        this.globalNoticeType = 'warning'
       }
       this.rebuildScene(true)
     },
@@ -534,7 +561,8 @@ export default {
       try {
         const list = await gateway.loadDevices()
         const remote = Array.isArray(list) ? list : (list && list.records) || []
-        const models = buildDeviceModels(remote, this.sceneCoordinateSystem)
+        // 不传 fallback 坐标系：设备位置必须自带 coordinateSystem，否则判为位置无效（评审意见 #3）
+        const models = buildDeviceModels(remote)
         // 演示推进模式下保留内存中的实时位置，避免每次轮询把设备「拉回」接口返回值
         if (this.demoMode && this.devices.length === models.devices.length && this.devices.length) {
           const merged = models.devices.map(device => {
@@ -554,7 +582,8 @@ export default {
           this.devices = models.devices
         }
         if (models.errors.length) {
-          this.globalNotice = `${models.errors.length} 台设备位置无效：${models.errors[0]}`
+          // 设备位置不可用是**契约问题**，不是数据异常，用 warning 明确告诉使用者要等 5号 冻结 DTO
+          this.globalNotice = `设备位置暂不可用：${models.errors[0]}`
           this.globalNoticeType = 'warning'
         }
         if (!this.selectedDeviceId && this.devices.length) {
@@ -568,16 +597,30 @@ export default {
       }
     },
 
+    /**
+     * 加载设备历史轨迹
+     * @param {string} deviceId
+     * @returns {{points:Array, error:string}} 由调用方决定如何提示
+     */
+    async fetchTrajectory (deviceId) {
+      const records = await gateway.loadTrajectory(deviceId)
+      return buildTrackModel(records, this.sceneCoordinateSystem)
+    },
+
     /** 初始加载 3 台设备的历史轨迹：轨迹末点作为设备实时位置起点，演示推进从那里继续 */
     async loadHistoricalTracks () {
       if (!this.devices.length) {
         return
       }
+      let firstTrackError = ''
       for (let i = 0; i < this.devices.length; i++) {
         const device = this.devices[i]
         try {
-          const records = await gateway.loadTrajectory(device.deviceId)
-          const points = renderableTrajectory(records, this.sceneCoordinateSystem)
+          const track = await this.fetchTrajectory(device.deviceId)
+          if (track.error && !firstTrackError) {
+            firstTrackError = track.error
+          }
+          const points = track.points
           if (points.length) {
             this.$set(this.trajectories, device.deviceId, points)
             this.pushTrajectoryToMap(device.deviceId, points)
@@ -591,9 +634,14 @@ export default {
             device.status = 'online'
           }
         } catch (error) {
-          this.globalNotice = `轨迹接口调用失败：${(error && error.message) || error}`
-          this.globalNoticeType = 'warning'
+          if (!firstTrackError) {
+            firstTrackError = `轨迹接口调用失败：${(error && error.message) || error}`
+          }
         }
+      }
+      if (firstTrackError) {
+        this.globalNotice = `历史轨迹不可用：${firstTrackError}`
+        this.globalNoticeType = 'warning'
       }
       this.rebuildScene()
       this.refreshDiagnostics()
@@ -606,10 +654,15 @@ export default {
       }
       this.trackLoading = true
       try {
-        const records = await gateway.loadTrajectory(this.selectedDeviceId)
-        const points = renderableTrajectory(records, this.sceneCoordinateSystem)
-        this.$set(this.trajectories, this.selectedDeviceId, points)
-        this.pushTrajectoryToMap(this.selectedDeviceId, points)
+        const track = await this.fetchTrajectory(this.selectedDeviceId)
+        if (track.error) {
+          // 不静默画空轨迹：明确说明为什么画不出来
+          this.$message.warning(track.error)
+        }
+        if (track.points.length) {
+          this.$set(this.trajectories, this.selectedDeviceId, track.points)
+          this.pushTrajectoryToMap(this.selectedDeviceId, track.points)
+        }
         this.refreshDiagnostics()
       } catch (error) {
         this.$message.error(`轨迹加载失败：${(error && error.message) || error}`)
@@ -632,7 +685,7 @@ export default {
     // ================================================================ 场景刷新
     rebuildScene (fitView) {
       const pointModels = buildSamplingPointModels(this.points, this.sceneCoordinateSystem)
-      const deviceModels = buildDeviceModels(this.devices, this.sceneCoordinateSystem)
+      const deviceModels = buildDeviceModels(this.devices)
       this.scene = {
         // 只有「选中」时才让地图画高亮样式，用来体现边界选中效果
         farmlandId: this.boundarySelected ? this.farmland.farmlandId : '',
@@ -653,7 +706,7 @@ export default {
     /** 只更新设备位置（每秒推进时调用，避免整场景重建） */
     pushDevicesToMap () {
       if (this.$refs.gisMap && this.$refs.gisMap.updateDevices) {
-        const deviceModels = buildDeviceModels(this.devices, this.sceneCoordinateSystem)
+        const deviceModels = buildDeviceModels(this.devices)
         this.$refs.gisMap.updateDevices(deviceModels.devices)
       }
       if (this.$refs.gisMap && this.$refs.gisMap.setGuidance) {
@@ -760,9 +813,21 @@ export default {
       this.pickError = ''
     },
 
-    /** 地图点击：手动选点（做 PIP 校验，界外点直接拒绝） */
+    /**
+     * 地图点击：手动选点（做 PIP 校验，界外点直接拒绝）
+     *
+     * 上限按**总点数**判断（合并评审意见 #6）：
+     *   旧写法 `manualPoints.length >= 4 && points.length >= 4` 有漏洞 ——
+     *   已有 4 个远端点、手动点 0 个时两个条件都不同时成立，仍能继续加点。
+     *   现在只看 `points.length >= MAX_SAMPLING_POINTS`。
+     */
     onMapClick (lngLat) {
       if (!this.pickMode) {
+        return
+      }
+      if (this.points.length >= MAX_SAMPLING_POINTS) {
+        this.pickError = `老师任务书 M1 要求采样点为 3~4 个，当前已有 ${this.points.length} 个点，` +
+          '请先移除已有手动点后再选'
         return
       }
       const candidate = {
@@ -781,37 +846,40 @@ export default {
         this.pickError = `${check.message}（点击位置 ${lngLat.longitude.toFixed(6)}, ${lngLat.latitude.toFixed(6)}）`
         return
       }
-      if (this.manualPoints.length >= MAX_MANUAL_POINTS && this.points.length >= MAX_MANUAL_POINTS) {
-        this.pickError = `老师任务书要求 3~4 个采样点，当前已有 ${this.points.length} 个点，请先移除或提交后再选`
-        return
-      }
       this.pickError = ''
       this.manualPoints.push(candidate)
       this.points = this.points.concat([candidate])
       this.activeTab = 'point'
       this.rebuildScene()
-      this.$message.success(`已在农田内添加 ${candidate.pointCode}，别忘了点击「提交手动点」保存到后端`)
+      this.$message.success(
+        `已在农田内添加 ${candidate.pointCode}（共 ${this.points.length} 个点）。` +
+        '注意：写接口尚未冻结，该点仅在本页预览，不会写入后端。'
+      )
     },
 
-    async saveManualPoints () {
-      if (!this.manualPoints.length) {
-        return
-      }
-      if (this.points.length < 3) {
-        this.$message.warning(`老师任务书要求采样点为 3~4 个，当前只有 ${this.points.length} 个`)
-      }
-      this.saving = true
-      try {
-        await gateway.saveManualPoints(this.farmlandId, this.manualPoints, this.taskId)
-        this.$message.success(`已提交 ${this.manualPoints.length} 个手动采样点`)
-        this.manualPoints = []
-        await this.loadSamplingPoints()
-      } catch (error) {
-        // 不伪造成功：明确告诉用户没存进后端
-        this.$message.error(`手动选点保存失败（未写入后端）：${(error && error.message) || error}`)
-      } finally {
-        this.saving = false
-      }
+    /**
+     * ⚠️ 手动选点的**入库**操作已按合并评审意见 #1 移除。
+     *
+     * 原因：v2.1 §3.2 白名单里没有任何采样点写接口，此前调用的
+     * `/samplingPoint/saveBatch`、`/updateStatus` 都是自造端点，
+     * 且请求体信封写错（`{ list: { farmlandId, taskId, points } }` 而不是点位列表）。
+     * 在 5号 冻结端点 + DTO + 权限之前，前端不向任何未约定端点发请求，
+     * 也不伪造成"保存成功"。
+     */
+    onManualSaveBlocked () {
+      this.$message.warning(
+        '写接口尚未冻结：v2.1 §3.2 未约定采样点写接口，需 5号 补充并冻结端点/DTO/权限后再联调。' +
+        '当前手动点仅在本页预览、未写入后端。'
+      )
+    },
+
+    /** 清空本地预览的手动点（不影响后端数据） */
+    clearManualPreview () {
+      const ids = this.manualPoints.map(p => p.samplingPointId)
+      this.manualPoints = []
+      this.points = this.points.filter(p => ids.indexOf(p.samplingPointId) === -1)
+      this.rebuildScene()
+      this.$message.success('已清空本地预览的手动点（未影响后端数据）')
     },
 
     removeManualPoint (row) {

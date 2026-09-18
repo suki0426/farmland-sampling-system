@@ -33,13 +33,6 @@
       :closable="false"
       show-icon
       class="gis-farmland-info__alert" />
-    <el-alert
-      v-else-if="boundary.notice"
-      :title="boundary.notice"
-      type="warning"
-      :closable="false"
-      show-icon
-      class="gis-farmland-info__alert" />
   </div>
 </template>
 

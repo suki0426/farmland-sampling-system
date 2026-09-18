@@ -214,33 +214,25 @@ export function createGisGateway (options = {}) {
     },
 
     // ------------------------------------------------------------ 采样点
+    // 只读。v2.1 §3.2 白名单里没有采样点写接口，故本网关**不提供任何写方法**。
     loadSamplingPoints (farmlandId, status) {
       return call('samplingPoint',
         () => samplingPointService.mapData(farmlandId, status),
         () => gisMock.samplingPoints(farmlandId))
     },
 
-    /** 保存手动选点（失败时不伪造成功，明确告诉用户没存进后端） */
-    saveManualPoints (farmlandId, points, taskId) {
-      const payload = {
-        farmlandId,
-        taskId,
-        points: points.map(p => ({
-          farmlandId: p.farmlandId || farmlandId,
-          pointCode: p.pointCode,
-          pointName: p.pointName,
-          longitude: p.longitude,
-          latitude: p.latitude,
-          coordinateSystem: p.coordinateSystem,
-          status: p.status
-        }))
-      }
-      return call('samplingPoint',
-        () => samplingPointService.saveBatch(payload),
-        null)
-    },
-
     // ------------------------------------------------------------ 设备
+    /**
+     * 设备列表。
+     *
+     * ⚠️ 只消费已冻结的 DeviceBriefDTO 字段：
+     *    deviceId / deviceCode / deviceName / category / status
+     *
+     * 已冻结的 DeviceBriefDTO **不承诺** longitude / latitude / coordinateSystem，
+     * 所以这里**不能**假设本接口会返回设备坐标（合并评审意见 #3）。
+     * 真实接口接入后设备会没有位置，由 sceneModel.buildDeviceModels 标记为
+     * 「位置未提供」并提示等待监测模块的 DeviceLocationDTO，而不是把设备画到 (0,0)。
+     */
     loadDevices () {
       return call('device',
         () => dDeviceGisService.listUsable({}),

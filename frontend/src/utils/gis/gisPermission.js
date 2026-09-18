@@ -1,16 +1,24 @@
 /**
- * GIS 模块权限码（1号 前端GIS 岗位）
+ * GIS 模块权限码与权限判定（1号 前端GIS 岗位）
  *
  * 约束来源：字段与公共接口约束 V2.1 §2.2
  *  「权限：<module>:<CamelResource>:<action>，例如 ddevice:dDevice:list；Controller 与前端权限一致。」
  *
- * 这里只集中定义权限码字符串，避免在页面里散落硬编码的权限常量。
+ * ────────────────────────────────────────────────────────────────────────
+ * ⚠️ 合并评审意见 #2 的修复说明
  *
- * ⚠️ 演示/开发期的放行规则：
- *   平台权限列表来自登录后写入 localStorage 的 `permissions`。当前 5号 还没建菜单，
- *   该列表为空，如果直接按权限隐藏按钮，页面上所有写操作按钮都会消失、没法演示。
- *   因此规则是：**平台已下发权限 → 严格校验；平台尚未下发（列表为空）→ 放行并提示**。
- *   等 5号 配好菜单权限后，这里不需要改代码就会自动生效。
+ * 此前的实现是「localStorage.permissions 为空 → 直接放行」，这是错的：
+ * 权限列表为空可能意味着「菜单还没配好」，也可能意味着「这个账号真的没有任何权限」，
+ * 两者无法区分；更糟的是**生产环境**下若权限接口异常或延迟，就会把写操作入口暴露出来。
+ *
+ * 现在改成：
+ *   1. **生产构建（NODE_ENV === 'production'）一律严格校验**，不存在任何放行分支；
+ *   2. 放行只能由**显式开关**触发 —— 独立演示入口 `gis.html` 显式设置
+ *      `window.__GIS_DEMO__ = true`，或构建期显式打开 `VUE_APP_GIS_DEMO_MODE=true`；
+ *   3. 不再以「权限列表为空」作为任何判断条件。
+ *
+ * 也就是说：JeePlus 正式页面（/farmland/FarmlandGis）永远走严格校验；
+ * 只有显式声明的演示入口在非生产环境才放行。
  */
 
 export const GIS_PERMISSION = {
@@ -26,35 +34,44 @@ export const GIS_PERMISSION = {
   ANALYSIS_EXPORT: 'analysis:analysis:export'
 }
 
-/** 平台是否已经下发权限列表 */
-export function isPermissionConfigured () {
-  try {
-    const raw = window.localStorage.getItem('permissions')
-    const list = JSON.parse(raw || '[]')
-    return Array.isArray(list) && list.length > 0
-  } catch (e) {
+/**
+ * 是否为「显式声明的演示模式」。
+ * 生产构建永远返回 false —— 生产环境没有演示放行这回事。
+ */
+export function isGisDemoMode () {
+  if (process.env.NODE_ENV === 'production') {
     return false
   }
+  if (typeof window !== 'undefined' && window.__GIS_DEMO__ === true) {
+    return true
+  }
+  return String(process.env.VUE_APP_GIS_DEMO_MODE || '').toLowerCase() === 'true'
 }
 
 /**
- * 判断某个操作是否放行
+ * 判断某个操作是否放行。
+ *
+ * 注意：本函数**不再读取 localStorage.permissions 是否为空**。
+ * 权限列表为空时 `hasPermission()` 返回 false，即严格拒绝 —— 这才是正确行为：
+ * 拿不到权限就当作没有权限，而不是当作"演示模式"。
+ *
  * @param {string} key GIS_PERMISSION 中的权限码
  * @param {Function} hasPermissionFn 平台注入的 hasPermission（Vue.prototype.hasPermission）
- * @returns {{allowed:boolean, reason:string}}
+ * @returns {{allowed:boolean, reason:string, demo:boolean}}
  */
 export function checkPermission (key, hasPermissionFn) {
-  if (!isPermissionConfigured()) {
-    return { allowed: true, reason: '平台尚未下发权限列表（开发/演示模式），已放行' }
+  if (isGisDemoMode()) {
+    return { allowed: true, demo: true, reason: `演示模式（显式开关）放行：${key}` }
   }
   if (typeof hasPermissionFn !== 'function') {
-    return { allowed: false, reason: '缺少权限校验能力，已拒绝' }
+    return { allowed: false, demo: false, reason: '缺少权限校验能力，已按无权限处理' }
   }
   const allowed = !!hasPermissionFn(key)
   return {
     allowed,
-    reason: allowed ? '' : `当前账号缺少权限 ${key}`
+    demo: false,
+    reason: allowed ? '' : `当前账号没有权限 ${key}`
   }
 }
 
-export default { GIS_PERMISSION, isPermissionConfigured, checkPermission }
+export default { GIS_PERMISSION, isGisDemoMode, checkPermission }

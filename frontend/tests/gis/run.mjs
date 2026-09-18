@@ -85,7 +85,7 @@ async function main () {
 
   const {
     buildBoundaryModel, buildSamplingPointModels, buildDeviceModels,
-    buildRouteModel, renderableTrajectory, parseGeoJson, formatArea
+    buildRouteModel, buildTrackModel, renderableTrajectory, parseGeoJson, formatArea
   } = await importFrom('sceneModel.js')
 
   const {
@@ -260,6 +260,33 @@ async function main () {
 
     const models = renderableTrajectory(ids.map(id => mockTrack(id)[0]).filter(Boolean), 'GCJ02')
     check('轨迹视图模型可转换', models.length === 3, `成功转换 ${models.length} 条轨迹首点`)
+
+    // 评审意见 #4：既有 MonitorRecordDTO 未冻结经纬度字段，
+    // 真实历史记录可能一条坐标都没有 —— 必须明确报错，不能静默返回空数组
+    const noCoordRecords = [
+      { deviceId: 'DV1', metricCode: 'soilMoisture', metricValue: 31, collectTime: '2026-09-17 10:00:00' },
+      { deviceId: 'DV1', metricCode: 'soilMoisture', metricValue: 32, collectTime: '2026-09-17 10:01:00' }
+    ]
+    const noCoord = buildTrackModel(noCoordRecords, 'GCJ02')
+    check('轨迹记录缺经纬度字段时明确报错（不静默为空）',
+      noCoord.points.length === 0 &&
+      noCoord.missingCoordinateCount === 2 &&
+      /轨迹 DTO|Q2/.test(noCoord.error || ''),
+      noCoord.error || '（未报错）')
+
+    const mixedRecords = [
+      { deviceId: 'DV1', longitude: 112.4342, latitude: 38.0110, coordinateSystem: 'GCJ02', collectTime: '2026-09-17 10:00:00' },
+      { deviceId: 'DV1', metricCode: 'soilMoisture', metricValue: 31, collectTime: '2026-09-17 10:01:00' },
+      { deviceId: 'DV1', longitude: 112.4344, latitude: 38.0112, coordinateSystem: 'GCJ02', collectTime: '2026-09-17 10:02:00' }
+    ]
+    const mixed = buildTrackModel(mixedRecords, 'GCJ02')
+    check('轨迹部分记录缺坐标时统计跳过数并给出提示',
+      mixed.points.length === 2 && mixed.missingCoordinateCount === 1 && !!mixed.error,
+      mixed.error)
+
+    const emptyTrack = buildTrackModel([], 'GCJ02')
+    check('轨迹记录为空时给出可读原因',
+      emptyTrack.points.length === 0 && !!emptyTrack.error, emptyTrack.error)
   }
 
   // ======================================================== 路线
@@ -294,27 +321,58 @@ async function main () {
 
   // ======================================================== 视图模型 / 统计
   {
-    const boundaryModel = buildBoundaryModel(farmland, 'GCJ02')
-    check('农田边界视图模型构建成功',
+    const boundaryModel = buildBoundaryModel(farmland)
+    check('农田边界视图模型构建成功（边界自带 coordinateSystem）',
       !!boundaryModel.geoJson && boundaryModel.ringCount === 1 && !boundaryModel.error,
       boundaryModel.error || `${boundaryModel.ringCount} 个环，估算面积 ${formatArea(boundaryModel.area)}`)
 
-    const withoutCs = buildBoundaryModel({ farmlandId: 'F1', boundaryGeoJson: farmland.boundaryGeoJson }, '')
-    check('边界未声明坐标系且场景也未声明时拒绝绘制',
-      !!withoutCs.error && withoutCs.geoJson === null, withoutCs.error)
+    // 评审意见 #5：边界没有自己的 coordinateSystem 时，必须拒绝渲染，
+    // 绝不能拿采样点/路线的「场景坐标系」去兜底猜测
+    const withoutCs = buildBoundaryModel({ farmlandId: 'F1', boundaryGeoJson: farmland.boundaryGeoJson }, 'GCJ02')
+    check('边界缺 coordinateSystem 时拒绝渲染（不接受场景坐标系兜底）',
+      !!withoutCs.error && withoutCs.geoJson === null && /coordinateSystem/.test(withoutCs.error),
+      withoutCs.error)
+
+    const badCs = buildBoundaryModel({
+      farmlandId: 'F1',
+      boundaryGeoJson: farmland.boundaryGeoJson,
+      coordinateSystem: 'CGCS2000'
+    })
+    check('边界坐标系不在白名单内时拒绝渲染',
+      !!badCs.error && badCs.geoJson === null, badCs.error)
 
     const pointModels = buildSamplingPointModels(points, 'GCJ02')
     check('采样点视图模型字段完整',
       pointModels.points.length === 4 && pointModels.errors.length === 0,
       pointModels.errors.length ? pointModels.errors.join('; ') : `成功转换 ${pointModels.points.length} 个采样点`)
 
-    const deviceModels = buildDeviceModels(mockDevices(), 'GCJ02')
-    check('设备视图模型转换成功',
+    const deviceModels = buildDeviceModels(mockDevices())
+    check('设备视图模型转换成功（mock 自带坐标）',
       deviceModels.devices.length === 3 && deviceModels.errors.length === 0,
       deviceModels.errors.length ? deviceModels.errors.join('; ') : `${deviceModels.devices.length} 台设备，坐标均有效`)
 
+    // 评审意见 #3：DeviceBriefDTO 只承诺 deviceId/deviceCode/deviceName/category/status，
+    // 不承诺坐标。缺位置字段时必须标记为「位置未提供」，不得产生 (0,0)
+    const briefOnly = buildDeviceModels([
+      { deviceId: 'D1', deviceCode: 'DEV001', deviceName: '一号', category: 'sampler', status: 'online' }
+    ])
+    const briefDevice = briefOnly.devices[0] || {}
+    check('设备只有 DeviceBriefDTO 字段时不产生坐标、标记位置未提供',
+      briefOnly.devices.length === 1 &&
+      briefOnly.errors.length === 1 &&
+      !isFinite(briefDevice.longitude) &&
+      /DeviceLocationDTO/.test(briefDevice.positionError || ''),
+      briefDevice.positionError || '（未标记）')
+
+    const noCsDevice = buildDeviceModels([
+      { deviceId: 'D2', deviceCode: 'DEV002', longitude: 112.43, latitude: 38.01 }
+    ])
+    check('设备有坐标但缺 coordinateSystem 时拒绝推测',
+      !isFinite(noCsDevice.devices[0].longitude) && noCsDevice.errors.length === 1,
+      noCsDevice.errors[0] || '（未标记）')
+
     const broken = buildDeviceModels(
-      [{ deviceId: 'X', deviceCode: 'DEVX', longitude: null, latitude: null, coordinateSystem: 'GCJ02' }], 'GCJ02')
+      [{ deviceId: 'X', deviceCode: 'DEVX', longitude: null, latitude: null, coordinateSystem: 'GCJ02' }])
     check('单台设备位置无效时不影响整图加载',
       broken.devices.length === 1 && broken.errors.length === 1,
       broken.errors[0] || '（未记录错误）')
