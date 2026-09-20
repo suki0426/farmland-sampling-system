@@ -35,6 +35,13 @@ export function createMainRoutes (_import) {
       { path: '/ureport/preview', component: null, name: 'ureport-preview', meta: { title: '预览报表', type: 'iframe', menuId: 'ureport-preview' } },
       { path: '/form/explorer', component: null, name: 'form-explorer', meta: { title: '浏览器', type: 'iframe' } },
       { path: '/database/datatable/TableForm', component: _import('modules/database/datatable/TableForm'), name: 'table-form', meta: { title: '数据库表详情' } },
+      // ↓ 农业智能监测平台（首页大屏 / 地区监控 / 数据库管理 / 遥感分析）
+      // 注册为静态路由，保证后端菜单（sys_menu）尚未配置时页面也能直接访问。
+      // 若后续在菜单里配了同名 href，dynamicRoutes.js 会检测到同名 path 而跳过，不会冲突。
+      { path: '/agrimonitor/Dashboard', component: _import('modules/agrimonitor/Dashboard'), name: 'agri-dashboard', meta: { title: '监测大屏', singleTab: true } },
+      { path: '/agrimonitor/RegionMonitor', component: _import('modules/agrimonitor/RegionMonitor'), name: 'agri-region-monitor', meta: { title: '地区监控', singleTab: true } },
+      { path: '/agrimonitor/DatabaseManage', component: _import('modules/agrimonitor/DatabaseManage'), name: 'agri-database', meta: { title: '数据库管理', singleTab: true } },
+      { path: '/agrimonitor/RemoteSensing', component: _import('modules/agrimonitor/RemoteSensing'), name: 'agri-remote-sensing', meta: { title: '遥感分析', singleTab: true } },
       { path: '/404', component: _import('common/404'), name: '404', meta: { title: '404未找到' } }
     ]
   }

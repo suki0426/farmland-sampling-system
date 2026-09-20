@@ -10,6 +10,47 @@ function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
+/**
+ * 多页入口。
+ *
+ * ⚠️ 独立演示入口只在**非生产构建**产出：
+ *   农业智能监测平台的独立演示入口 monitor.html 由 `npm run serve`（NODE_ENV=development）
+ *   产出，生产 `npm run build` 的 dist 里**根本不会出现 monitor.html**，
+ *   因此正式部署不存在任何一个「绕过登录直接进监测大屏」的入口。
+ *
+ *   （第二道防线在 monitordemo/main.js 里显式声明的 window.__GIS_DEMO__：
+ *     它只在演示入口被置为 true，正式页面永远拿不到。）
+ */
+function buildPages () {
+  const pages = {
+    index: {
+      entry: 'src/main.js',
+      template: 'public/index.html',
+      title: 'index.html',
+      filename: 'index.html'
+    },
+    aivideo: {
+      entry: 'src/aivideo/main.js',
+      template: 'src/aivideo/index.html',
+      title: '',
+      filename: 'aivideo.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'aivideo']
+    }
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    pages.monitor = {
+      entry: 'src/monitordemo/main.js',
+      template: 'src/monitordemo/index.html',
+      title: '星穹耕界 · 农业智能监测平台',
+      filename: 'monitor.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'monitor']
+    }
+  }
+
+  return pages
+}
+
 module.exports = {
   publicPath: "./",
   runtimeCompiler: true,
@@ -57,21 +98,7 @@ module.exports = {
   },
 
   // 入口设置
-  pages: {
-    index: {
-      entry: 'src/main.js',
-      template: 'public/index.html',
-      title: 'index.html',
-      filename: 'index.html'
-    },
-    aivideo: {
-      entry: 'src/aivideo/main.js',
-      template: 'src/aivideo/index.html',
-      title: '',
-      filename: 'aivideo.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'aivideo']
-    }
-  },
+  pages: buildPages(),
   devServer: {
     index: '/index.html', // 运行时，默认打开index页面
     port: 3000,
