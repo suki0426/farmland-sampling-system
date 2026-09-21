@@ -13,13 +13,7 @@ function resolve (dir) {
 /**
  * 多页入口。
  *
- * ⚠️ 独立演示入口只在**非生产构建**产出：
- *   农业智能监测平台的独立演示入口 monitor.html 由 `npm run serve`（NODE_ENV=development）
- *   产出，生产 `npm run build` 的 dist 里**根本不会出现 monitor.html**，
- *   因此正式部署不存在任何一个「绕过登录直接进监测大屏」的入口。
- *
- *   （第二道防线在 monitordemo/main.js 里显式声明的 window.__GIS_DEMO__：
- *     它只在演示入口被置为 true，正式页面永远拿不到。）
+ * ⚠️ monitor.html 与 gis.html 都仅在非生产构建产出；生产构建不提供独立演示入口。
  */
 function buildPages () {
   const pages = {
@@ -45,6 +39,13 @@ function buildPages () {
       title: '星穹耕界 · 农业智能监测平台',
       filename: 'monitor.html',
       chunks: ['chunk-vendors', 'chunk-common', 'monitor']
+    }
+    pages.gis = {
+      entry: 'src/gisdemo/main.js',
+      template: 'src/gisdemo/index.html',
+      title: '农田智能采样GIS演示',
+      filename: 'gis.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'gis']
     }
   }
 
