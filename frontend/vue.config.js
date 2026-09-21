@@ -10,6 +10,48 @@ function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
+/**
+ * 多页入口。
+ *
+ * ⚠️ monitor.html 与 gis.html 都仅在非生产构建产出；生产构建不提供独立演示入口。
+ */
+function buildPages () {
+  const pages = {
+    index: {
+      entry: 'src/main.js',
+      template: 'public/index.html',
+      title: 'index.html',
+      filename: 'index.html'
+    },
+    aivideo: {
+      entry: 'src/aivideo/main.js',
+      template: 'src/aivideo/index.html',
+      title: '',
+      filename: 'aivideo.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'aivideo']
+    }
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    pages.monitor = {
+      entry: 'src/monitordemo/main.js',
+      template: 'src/monitordemo/index.html',
+      title: '星穹耕界 · 农业智能监测平台',
+      filename: 'monitor.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'monitor']
+    }
+    pages.gis = {
+      entry: 'src/gisdemo/main.js',
+      template: 'src/gisdemo/index.html',
+      title: '农田智能采样GIS演示',
+      filename: 'gis.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'gis']
+    }
+  }
+
+  return pages
+}
+
 module.exports = {
   publicPath: "./",
   runtimeCompiler: true,
@@ -57,21 +99,7 @@ module.exports = {
   },
 
   // 入口设置
-  pages: {
-    index: {
-      entry: 'src/main.js',
-      template: 'public/index.html',
-      title: 'index.html',
-      filename: 'index.html'
-    },
-    aivideo: {
-      entry: 'src/aivideo/main.js',
-      template: 'src/aivideo/index.html',
-      title: '',
-      filename: 'aivideo.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'aivideo']
-    }
-  },
+  pages: buildPages(),
   devServer: {
     index: '/index.html', // 运行时，默认打开index页面
     port: 3000,

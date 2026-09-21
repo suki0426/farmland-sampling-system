@@ -35,6 +35,12 @@ export function createMainRoutes (_import) {
       { path: '/ureport/preview', component: null, name: 'ureport-preview', meta: { title: '预览报表', type: 'iframe', menuId: 'ureport-preview' } },
       { path: '/form/explorer', component: null, name: 'form-explorer', meta: { title: '浏览器', type: 'iframe' } },
       { path: '/database/datatable/TableForm', component: _import('modules/database/datatable/TableForm'), name: 'table-form', meta: { title: '数据库表详情' } },
+      // 农业监测和农田 GIS 页面暂注册为静态路由；后续若配置同名后端菜单，动态路由会跳过重复 path。
+      { path: '/agrimonitor/Dashboard', component: _import('modules/agrimonitor/Dashboard'), name: 'agri-dashboard', meta: { title: '监测大屏', singleTab: true } },
+      { path: '/agrimonitor/RegionMonitor', component: _import('modules/agrimonitor/RegionMonitor'), name: 'agri-region-monitor', meta: { title: '地区监控', singleTab: true } },
+      { path: '/agrimonitor/DatabaseManage', component: _import('modules/agrimonitor/DatabaseManage'), name: 'agri-database', meta: { title: '数据库管理', singleTab: true } },
+      { path: '/agrimonitor/RemoteSensing', component: _import('modules/agrimonitor/RemoteSensing'), name: 'agri-remote-sensing', meta: { title: '遥感分析', singleTab: true } },
+      { path: '/farmland/FarmlandGis', component: _import('modules/farmland/FarmlandGis'), name: 'farmland-gis', meta: { title: '农田智能采样GIS', singleTab: true } },
       { path: '/404', component: _import('common/404'), name: '404', meta: { title: '404未找到' } }
     ]
   }

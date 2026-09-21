@@ -2,8 +2,10 @@ import struct
 from crc16_modbus import calc_crc16_modbus
 
 FRAME_HEADER = bytes([0xFF, 0x55])
+DEVICE_ID_SIZE = 16
 
 def build_sampling_frame(
+    device_id: str,
     point_code: int,
     lat: float,
     lon: float,
@@ -13,6 +15,11 @@ def build_sampling_frame(
     air_hum: int,
     soil_depth: int
 ) -> bytes:
+    if not isinstance(device_id, str) or not device_id.strip():
+        raise ValueError("device_id 不能为空")
+    device_id_bytes = device_id.strip().encode("ascii")
+    if len(device_id_bytes) > DEVICE_ID_SIZE:
+        raise ValueError(f"device_id 最多 {DEVICE_ID_SIZE} 个 ASCII 字节")
     # 经纬度放大1e7，用int存储
     lat_scaled = int(lat * 10_000_000)
     lon_scaled = int(lon * 10_000_000)
@@ -33,7 +40,9 @@ def build_sampling_frame(
         soil_depth,
         0
     )
-    full_body = FRAME_HEADER + payload_no_crc
+    # 固定 16 字节设备标识是后端按终端维护实时位置和轨迹的必要字段。
+    # 保持既有字段顺序和 CRC-16/MODBUS 计算方式不变。
+    full_body = FRAME_HEADER + payload_no_crc + device_id_bytes.ljust(DEVICE_ID_SIZE, b"\x00")
     crc_val = calc_crc16_modbus(full_body)
     crc_bytes = struct.pack("<H", crc_val)
     return full_body + crc_bytes
@@ -41,6 +50,7 @@ def build_sampling_frame(
 
 if __name__ == "__main__":
     frame = build_sampling_frame(
+        device_id="DEV001",
         point_code=1,
         lat=37.8123456,
         lon=112.5678901,

@@ -7,7 +7,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test:monitor": "node tests/monitor/run.mjs",
+    "test:gis": "node tests/gis/run.mjs"
   },
   "dependencies": {
     "@jiaminghi/data-view": "^2.10.0",
@@ -22,6 +24,7 @@
     "css-loader": "^3.4.1",
     "dayjs": "^1.10.5",
     "echarts": "^4.5.0",
+    "echarts-gl": "^1.1.2",
     "element-ui": "^2.15.10",
     "exceljs": "^4.3.0",
     "flv.js": "^1.6.2",
