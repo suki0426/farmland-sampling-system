@@ -19,7 +19,7 @@ $ErrorActionPreference = 'Stop'
 trap {
     Write-Host ''
     Write-Host "启动器失败：$($_.Exception.Message)" -ForegroundColor Red
-    Read-Host '请按 Enter 关闭此窗口'
+    if (-not $CheckOnly) { Read-Host '请按 Enter 关闭此窗口' }
     exit 1
 }
 $projectRoot = Split-Path -Parent $PSScriptRoot
@@ -28,6 +28,10 @@ $backendDir = Join-Path $projectRoot 'backend'
 
 function Test-ListeningPort([int]$Port) {
     return $null -ne (Get-NetTCPConnection -State Listen -LocalPort $Port -ErrorAction SilentlyContinue | Select-Object -First 1)
+}
+
+function Test-UdpListeningPort([int]$Port) {
+    return $null -ne (Get-NetUDPEndpoint -LocalPort $Port -ErrorAction SilentlyContinue | Select-Object -First 1)
 }
 
 function Get-LanIpv4 {
@@ -59,8 +63,11 @@ if (-not (Test-Path $frontendDir) -or -not (Test-Path $backendDir)) {
 }
 
 $backendAlreadyRunning = Test-ListeningPort $BackendPort
-$udpAlreadyListening = Test-ListeningPort $UdpPort
+$udpAlreadyListening = Test-UdpListeningPort $UdpPort
 if ($backendAlreadyRunning) {
+    if (-not $udpAlreadyListening) {
+        throw "端口 $BackendPort 的现有后端未监听 UDP $UdpPort，不能作为设备接收端。请先在原后端窗口按 Ctrl+C 停止它，再重新双击启动器。"
+    }
     Write-Host "后端端口 $BackendPort 已在监听，将复用现有后端。" -ForegroundColor Yellow
 } elseif ($udpAlreadyListening) {
     throw "UDP 端口 $UdpPort 已被其他程序占用。请先关闭该程序后重试。"
