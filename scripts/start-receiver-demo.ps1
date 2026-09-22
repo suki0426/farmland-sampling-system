@@ -1,4 +1,4 @@
-<#
+﻿<#
   星穹耕界接收端启动器
 
   启动范围：Redis、Vue 前端、Spring Boot 后端（含 UDP 9000 接收器）。
@@ -11,10 +11,17 @@ param(
     [int]$FrontendPort = 3006,
     [int]$BackendPort = 8087,
     [int]$UdpPort = 9000,
-    [string]$RedisServerPath = ''
+    [string]$RedisServerPath = '',
+    [switch]$CheckOnly
 )
 
 $ErrorActionPreference = 'Stop'
+trap {
+    Write-Host ''
+    Write-Host "启动器失败：$($_.Exception.Message)" -ForegroundColor Red
+    Read-Host '请按 Enter 关闭此窗口'
+    exit 1
+}
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $frontendDir = Join-Path $projectRoot 'frontend'
 $backendDir = Join-Path $projectRoot 'backend'
@@ -30,45 +37,88 @@ function Get-LanIpv4 {
     return $ip
 }
 
+function Find-Maven {
+    $command = Get-Command mvn.cmd -ErrorAction SilentlyContinue
+    if ($null -eq $command) { $command = Get-Command mvn -ErrorAction SilentlyContinue }
+    if ($null -ne $command) { return $command.Source }
+
+    if ($env:MAVEN_HOME) {
+        $fromEnvironment = Join-Path $env:MAVEN_HOME 'bin\mvn.cmd'
+        if (Test-Path $fromEnvironment) { return $fromEnvironment }
+    }
+
+    $temporaryMaven = Get-ChildItem -Path "$env:SystemDrive\temp\apache-maven-*\bin\mvn.cmd" -ErrorAction SilentlyContinue |
+        Select-Object -First 1 -ExpandProperty FullName
+    if ($temporaryMaven) { return $temporaryMaven }
+
+    return $null
+}
+
 if (-not (Test-Path $frontendDir) -or -not (Test-Path $backendDir)) {
     throw "未找到项目目录。请从仓库的 scripts 目录运行本脚本。"
 }
 
-if (Test-ListeningPort $BackendPort) {
-    throw "端口 $BackendPort 已被占用。请先确认已有后端是否就是本项目，再重新运行。"
-}
-if (Test-ListeningPort $UdpPort) {
-    throw "UDP 端口 $UdpPort 已被占用。接收端一次只能运行一个。"
+$backendAlreadyRunning = Test-ListeningPort $BackendPort
+$udpAlreadyListening = Test-ListeningPort $UdpPort
+if ($backendAlreadyRunning) {
+    Write-Host "后端端口 $BackendPort 已在监听，将复用现有后端。" -ForegroundColor Yellow
+} elseif ($udpAlreadyListening) {
+    throw "UDP 端口 $UdpPort 已被其他程序占用。请先关闭该程序后重试。"
 }
 
-$maven = Get-Command mvn.cmd -ErrorAction SilentlyContinue
-if ($null -eq $maven) { $maven = Get-Command mvn -ErrorAction SilentlyContinue }
-if ($null -eq $maven) { throw '未找到 Maven。请将 Maven bin 目录加入 PATH 后重试。' }
+$maven = Find-Maven
+if (-not $maven) { throw '未找到 Maven。请将 Maven bin 目录加入 PATH，或设置 MAVEN_HOME 后重试。' }
 if ($null -eq (Get-Command npm.cmd -ErrorAction SilentlyContinue)) { throw '未找到 Node.js/npm。请安装 Node.js 后重试。' }
 if (-not $env:JAVA_HOME -or -not (Test-Path (Join-Path $env:JAVA_HOME 'bin\java.exe'))) {
     throw 'JAVA_HOME 未指向可用 JDK。后端要求 JDK 8，请设置 JAVA_HOME 后重试。'
 }
 
-if ([version](((& (Join-Path $env:JAVA_HOME 'bin\java.exe') -version 2>&1 | Select-Object -First 1) -replace '.*"([^\"]+)".*','$1')) -lt [version]'1.8') {
-    throw 'JAVA_HOME 不是 JDK 8 或更高版本。请切换到 JDK 8。'
+$javaHomeName = Split-Path -Leaf $env:JAVA_HOME
+if ($javaHomeName -notmatch '(?i)jdk.*(1\.8|8)') {
+    throw "JAVA_HOME 当前为 $env:JAVA_HOME。本项目后端要求 JDK 8，请切换后重试。"
 }
 
+if (-not $RedisServerPath) {
+    $defaultRedis = Join-Path $env:USERPROFILE 'Desktop\Redis\Redis\redis-server.exe'
+    if (Test-Path $defaultRedis) { $RedisServerPath = $defaultRedis }
+}
 if (-not (Test-ListeningPort 6379)) {
-    if (-not $RedisServerPath) {
-        $defaultRedis = Join-Path $env:USERPROFILE 'Desktop\Redis\Redis\redis-server.exe'
-        if (Test-Path $defaultRedis) { $RedisServerPath = $defaultRedis }
-    }
     if (-not $RedisServerPath -or -not (Test-Path $RedisServerPath)) {
         throw 'Redis 未运行，且未找到 redis-server.exe。请传入 -RedisServerPath 后重试。'
     }
+    if ($CheckOnly) {
+        Write-Host "Redis 将使用：$RedisServerPath" -ForegroundColor Green
+    } else {
     Start-Process -FilePath $RedisServerPath -ArgumentList '--port 6379' -WindowStyle Minimized
     Start-Sleep -Seconds 2
     if (-not (Test-ListeningPort 6379)) { throw 'Redis 启动失败，端口 6379 未监听。' }
+    }
+}
+
+if ($CheckOnly) {
+    Write-Host '接收端预检通过。' -ForegroundColor Green
+    Write-Host "JDK: $env:JAVA_HOME"
+    Write-Host "Maven: $maven"
+    Write-Host "前端目录: $frontendDir"
+    Write-Host "后端目录: $backendDir"
+    Write-Host "端口: 前端 $FrontendPort、后端 $BackendPort、UDP $UdpPort、Redis 6379"
+    if ($backendAlreadyRunning) { Write-Host "后端状态: 已运行（端口 $BackendPort）" }
+    exit 0
 }
 
 if (-not (Test-ListeningPort $FrontendPort)) {
     $frontendCommand = "Set-Location -LiteralPath '$frontendDir'; npm.cmd run serve -- --port $FrontendPort"
     Start-Process powershell.exe -ArgumentList '-NoExit', '-NoProfile', '-Command', $frontendCommand
+}
+
+if ($backendAlreadyRunning) {
+    Write-Host ''
+    Write-Host '接收端后端已经在运行，无需重复启动。' -ForegroundColor Green
+    Write-Host "前端 GIS: http://localhost:$FrontendPort/gis.html#/"
+    Write-Host "后端 API: http://localhost:$BackendPort"
+    Write-Host "后端文档: http://localhost:$BackendPort/doc.html"
+    Write-Host "UDP 接收: 0.0.0.0:$UdpPort"
+    return
 }
 
 $plainPassword = ''
@@ -95,7 +145,7 @@ try {
     Write-Host '按 Ctrl+C 将停止后端；前端窗口可单独关闭。' -ForegroundColor Yellow
 
     Set-Location $backendDir
-    & $maven.Source '-pl' 'jeeplus-web' '-am' 'spring-boot:run'
+    & $maven '-pl' 'jeeplus-web' '-am' 'spring-boot:run'
 }
 finally {
     Remove-Item Env:MYSQL_PASSWORD -ErrorAction SilentlyContinue
