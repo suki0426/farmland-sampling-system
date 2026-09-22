@@ -12,7 +12,15 @@
 
 ## 启动
 
-在仓库根目录打开 PowerShell，执行：
+最简单的方式是双击：
+
+```text
+scripts\\start-receiver-demo.cmd
+```
+
+它会保留错误窗口，不会一闪而过。
+
+也可以在仓库根目录打开 PowerShell，执行：
 
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
@@ -20,6 +28,12 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 ```
 
 脚本会安全提示输入 MySQL 密码，仅传给当前后端进程，不会写入仓库或配置文件。
+
+只检查本机环境、不启动服务：
+
+```powershell
+.\scripts\start-receiver-demo.ps1 -CheckOnly
+```
 
 可按需指定数据库或 Redis 路径：
 
