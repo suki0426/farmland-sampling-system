@@ -74,6 +74,8 @@
         v-else-if="page === 'region'"
         :initial-province="drillProvince" />
 
+      <SamplingEntry v-else-if="page === 'entry'" />
+
       <DatabaseManage v-else-if="page === 'database'" />
 
       <RemoteSensing v-else-if="page === 'remote'" />
@@ -101,11 +103,13 @@
  */
 import AgriDashboard from '@/views/modules/agrimonitor/Dashboard'
 import RegionMonitor from '@/views/modules/agrimonitor/RegionMonitor'
+import SamplingEntry from '@/views/modules/agrimonitor/SamplingEntry'
 import DatabaseManage from '@/views/modules/agrimonitor/DatabaseManage'
 import RemoteSensing from '@/views/modules/agrimonitor/RemoteSensing'
 import {
   PERM_DASHBOARD,
   PERM_REGION_MONITOR,
+  PERM_SAMPLING_ENTRY,
   PERM_DATABASE_MANAGE,
   PERM_REMOTE_SENSING
 } from '@/views/modules/agrimonitor/permissions'
@@ -113,7 +117,7 @@ import { DEMO_ROLES, DEFAULT_ROLE, roleByKey, roleHasPermission } from './roles'
 
 export default {
   name: 'MonitorShell',
-  components: { AgriDashboard, RegionMonitor, DatabaseManage, RemoteSensing },
+  components: { AgriDashboard, RegionMonitor, SamplingEntry, DatabaseManage, RemoteSensing },
   data () {
     return {
       page: 'dashboard',
@@ -129,6 +133,13 @@ export default {
           icon: 'el-icon-s-data',
           desc: '天气图层 / 3D 地形双视图 · 三级下钻 · 任务书指标区',
           permission: PERM_DASHBOARD
+        },
+        {
+          key: 'entry',
+          label: '采样数据录入',
+          icon: 'el-icon-edit-outline',
+          desc: '采集员工作页：填数据 → 规则判定 → 封装回传帧',
+          permission: PERM_SAMPLING_ENTRY
         },
         {
           key: 'region',

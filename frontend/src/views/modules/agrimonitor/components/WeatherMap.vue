@@ -230,6 +230,8 @@ export default {
       activeGridPoints: [],
       activeGeoJson: null,
       activeGeoPlain: null,
+      /** 行政边界折线（用于在栅格之上重绘边界，见 borderSeries()） */
+      boundaryLines: [],
       regionIndex: { names: [], index: [] },
       stations: [],
       stationLabel: '地级市',
@@ -341,6 +343,7 @@ export default {
         this.setActiveGeo(geoJson)
         this.buildStations()
         this.buildLevelMask()
+        this.buildBoundaryLines()
         this.buildRegionIndex()
         this.applyGeoOption()
         this.renderFrame()
@@ -519,7 +522,12 @@ export default {
       this.chart.setOption({
         backgroundColor: 'transparent',
         tooltip: { show: false },
-        animationDuration: 300,
+        // ⚠️ 关掉全局动画。
+        //    之前这里是 animationDuration: 300，结果拖动地图时：
+        //    geo 的边框**瞬间**跳到新位置，而栅格是 custom 系列的 image 元素，
+        //    它的 x/y 还在做 300ms 的过渡动画 —— 看起来就是"边框和地图有拖动延迟"。
+        //    栅格图层本来也不需要过渡动画，直接关掉最干脆。
+        animation: false,
         geo: {
           map: this.activeMapName,
           roam: true,
@@ -527,8 +535,12 @@ export default {
           scaleLimit: { min: 0.7, max: 14 },
           itemStyle: {
             areaColor: '#0b2138',
-            borderColor: 'rgba(125, 205, 255, 0.6)',
-            borderWidth: 0.9
+            // ⚠️ 边框改由上面的 lines 系列绘制（borderSeries）。
+            //    原因：geo 是"组件"，它永远画在所有 series **下面**，
+            //    所以栅格一铺上去就把省界盖住了。这里把 geo 自己的描边关掉，
+            //    改在栅格之上重画一遍，既看得见又不会重复描边。
+            borderColor: 'transparent',
+            borderWidth: 0
           },
           emphasis: {
             itemStyle: { areaColor: 'rgba(21, 101, 192, 0.35)' }
@@ -548,6 +560,52 @@ export default {
     },
 
     /**
+     * 行政边界覆盖层。
+     *
+     * 用 `lines` + `coordinateSystem: 'geo'` 把当前层级每个行政区的**外环折线**重画一遍，
+     * 放在栅格之上（z 比栅格高）。这样：
+     *   · 每个环境图层都能看到省/市/区县分界线（原来被栅格盖住了）；
+     *   · 边界与底图共用同一个 geo 坐标系，缩放平移时始终严丝合缝；
+     *   · geo 自己的描边已关闭，不会重复描一遍。
+     */
+    borderSeries () {
+      return {
+        name: '行政边界',
+        type: 'lines',
+        coordinateSystem: 'geo',
+        polyline: true,
+        silent: true,
+        animation: false,
+        z: 5,
+        lineStyle: {
+          color: 'rgba(170, 226, 255, 0.85)',
+          width: 1,
+          opacity: 0.95
+        },
+        data: this.boundaryLines
+      }
+    },
+
+    /** 从当前层级的边界数据里抽出每个行政区的**外环**折线 */
+    buildBoundaryLines () {
+      const geoJson = this.activeGeoPlain
+      const out = []
+      if (!geoJson) {
+        this.boundaryLines = out
+        return
+      }
+      for (const f of (geoJson.features || [])) {
+        const rings = ringsOfGeometry(f.geometry)
+        for (const r of rings) {
+          if (r.ring && r.ring.length >= 4) {
+            out.push({ coords: r.ring })
+          }
+        }
+      }
+      this.boundaryLines = out
+    },
+
+    /**
      * 栅格图层系列。
      * `renderItem` 只负责把已经画好的 canvas 贴到 geo 上：
      * 用 `api.coord()` 把栅格左上/右下角的经纬度换算成像素，
@@ -560,6 +618,9 @@ export default {
         type: 'custom',
         coordinateSystem: 'geo',
         silent: true,
+        // ⚠️ 必须关掉动画：否则拖动/缩放时 image 的 x/y 会做过渡动画，
+        //    而 geo 边框是瞬时的，两者错位 → 看起来就是"拖动有延迟"。
+        animation: false,
         z: 2,
         data: [0],
         renderItem: (params, api) => {
@@ -632,12 +693,15 @@ export default {
         this.chart.setOption({
           series: [
             this.rasterSeries(),
+            // 边界画在栅格之上，保证每个环境图层都能看到行政区划
+            this.borderSeries(),
             {
               name: '观测站点',
               type: 'scatter',
               coordinateSystem: 'geo',
               data: stationPoints,
               symbolSize,
+              animation: false,
               itemStyle: { borderColor: 'rgba(255,255,255,0.9)', borderWidth: 1 },
               label: {
                 show: showLabel,
@@ -649,7 +713,7 @@ export default {
                 textBorderWidth: 2
               },
               emphasis: { scale: 1.8 },
-              z: 3,
+              z: 6,
               tooltip: { show: false }
             }
           ]
@@ -678,6 +742,8 @@ export default {
           rasterPixels: info.rasterPixels,
           maskInside: info.maskInside,
           rasterSize: this.maskInfo ? `${this.maskInfo.width}x${this.maskInfo.height}` : '',
+          boundaryLines: info.boundaryLines,
+          series: info.series,
           // 源数据（栅格缓冲区）的统计
           srcDistinctColors: stats ? stats.distinctColors : 0,
           srcStdevLuma: stats ? stats.stdevLuma : 0,
@@ -941,6 +1007,7 @@ export default {
         this.activeGridPoints = filterGridByGeoJson(this.grid.points, this.activeGeoPlain, adcode)
         this.buildStations()
         this.buildLevelMask()
+        this.buildBoundaryLines()
         this.buildRegionIndex()
         this.applyGeoOption()
         this.renderFrame()
@@ -991,6 +1058,7 @@ export default {
       } catch (e) { /* 已缓存，正常不会失败 */ }
       this.buildStations()
       this.buildLevelMask()
+      this.buildBoundaryLines()
       this.buildRegionIndex()
       this.applyGeoOption()
       this.renderFrame()
@@ -1054,13 +1122,19 @@ export default {
       })
     },
 
-    /** 供自动化验证：当前层级的区域索引规模 */
+    /** 供自动化验证：当前层级的区域索引规模 + 系列构成 */
     getRegionIndexInfo () {
+      let seriesInfo = []
+      try {
+        seriesInfo = (this.chart.getOption().series || []).map(s => `${s.name || s.type}:${s.type}`)
+      } catch (e) { /* 忽略 */ }
       return {
         regions: this.regionIndex.names.length,
         gridPoints: this.activeGridPoints.length,
         rasterPixels: this.rasterCount,
-        maskInside: this.maskInfo ? this.maskInfo.inside : 0
+        maskInside: this.maskInfo ? this.maskInfo.inside : 0,
+        boundaryLines: this.boundaryLines.length,
+        series: seriesInfo.join(' | ')
       }
     }
   }

@@ -17,6 +17,7 @@
 import {
   PERM_DASHBOARD,
   PERM_REGION_MONITOR,
+  PERM_SAMPLING_ENTRY,
   PERM_DATABASE_MANAGE,
   PERM_REMOTE_SENSING
 } from '@/views/modules/agrimonitor/permissions'
@@ -26,10 +27,11 @@ export const DEMO_ROLES = [
   {
     key: 'admin',
     label: '管理员',
-    desc: '全部功能：大屏 / 地区监控 / 数据库管理 / 遥感分析',
+    desc: '全部功能：大屏 / 地区监控 / 数据录入 / 数据库管理 / 遥感分析',
     permissions: [
       PERM_DASHBOARD,
       PERM_REGION_MONITOR,
+      PERM_SAMPLING_ENTRY,
       PERM_DATABASE_MANAGE,
       PERM_REMOTE_SENSING
     ]
@@ -37,15 +39,16 @@ export const DEMO_ROLES = [
   {
     key: 'collector',
     label: '采集员',
-    desc: '只给最必要的：监控大屏（含任务书指标区与算法实验）',
+    desc: '只给最必要的：监控大屏 + 采样数据录入',
     permissions: [
-      PERM_DASHBOARD
+      PERM_DASHBOARD,
+      PERM_SAMPLING_ENTRY
     ]
   },
   {
     key: 'analyst',
     label: '分析员',
-    desc: '大屏 + 地区监控 + 遥感分析，不含数据库管理',
+    desc: '大屏 + 地区监控 + 遥感分析，不含数据库管理与数据录入',
     permissions: [
       PERM_DASHBOARD,
       PERM_REGION_MONITOR,

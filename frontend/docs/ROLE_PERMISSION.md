@@ -28,16 +28,21 @@
 
 ## 二、本次前端做了什么（代码层面）
 
-### 2.1 新增 4 个权限码
+### 2.1 新增 5 个权限码
 
 命名遵循 `TEAM_DEVELOPMENT_STANDARD.md` §6 的 `<module>:<CamelResource>:<action>`：
 
 | 页面 | 路由 path | 权限码 | 建议给谁 |
 | --- | --- | --- | --- |
 | 首页监控大屏 | `/agrimonitor/Dashboard` | `agrimonitor:dashboard:view` | **所有角色** |
-| 地区监控 | `/agrimonitor/RegionMonitor` | `agrimonitor:regionMonitor:view` | 管理员、采集员、分析员 |
+| **采样数据录入** | `/agrimonitor/SamplingEntry` | `agrimonitor:samplingEntry:view` | **管理员、采集员** |
+| 地区监控 | `/agrimonitor/RegionMonitor` | `agrimonitor:regionMonitor:view` | 管理员、分析员 |
 | 数据库管理 | `/agrimonitor/DatabaseManage` | `agrimonitor:databaseManage:view` | **仅管理员** |
 | 遥感分析 | `/agrimonitor/RemoteSensing` | `agrimonitor:remoteSensing:view` | 管理员、分析员 |
+
+> **「采样数据录入」是采集员的核心工作页**：
+> 填现场数据 → 按农事规则逐项判定 → 封装回传帧 → 给出结论。
+> 采集员必须拥有这一条，这是"给他一个子页面专门录入信息"的落点。
 
 ### 2.2 路由级守卫
 
@@ -123,32 +128,34 @@ INSERT INTO sys_menu
   (id, parent_id, parent_ids, name, sort, href, target, icon, is_show, menu_type, permission, affix, remarks,
    create_by, create_date, update_by, update_date, del_flag)
 VALUES
-  ('agri-dashboard',  'agri-monitor', '0,agri-monitor,', '监测大屏',   1, '/agrimonitor/Dashboard',      '',
+  ('agri-dashboard',  'agri-monitor', '0,agri-monitor,', '监测大屏',     1, '/agrimonitor/Dashboard',      '',
    'el-icon-s-data',               @tpl_is_show, @tpl_menu_type, 'agrimonitor:dashboard:view',      '0', '天气图层/3D地形双视图、三级下钻、任务书指标区', @operator, @now, @operator, @now, 0),
-  ('agri-region',     'agri-monitor', '0,agri-monitor,', '地区监控',   2, '/agrimonitor/RegionMonitor',  '',
+  ('agri-entry',      'agri-monitor', '0,agri-monitor,', '采样数据录入', 2, '/agrimonitor/SamplingEntry',  '',
+   'el-icon-edit-outline',         @tpl_is_show, @tpl_menu_type, 'agrimonitor:samplingEntry:view',  '0', '采集员工作页：填数据 → 农事规则判定 → 封装回传帧', @operator, @now, @operator, @now, 0),
+  ('agri-region',     'agri-monitor', '0,agri-monitor,', '地区监控',     3, '/agrimonitor/RegionMonitor',  '',
    'el-icon-location-outline',     @tpl_is_show, @tpl_menu_type, 'agrimonitor:regionMonitor:view',  '0', '省市区三级选择、数据报表/路线/设备/预警',       @operator, @now, @operator, @now, 0),
-  ('agri-database',   'agri-monitor', '0,agri-monitor,', '数据库管理', 3, '/agrimonitor/DatabaseManage', '',
+  ('agri-database',   'agri-monitor', '0,agri-monitor,', '数据库管理',   4, '/agrimonitor/DatabaseManage', '',
    'el-icon-coin',                 @tpl_is_show, @tpl_menu_type, 'agrimonitor:databaseManage:view', '0', '备份与运维配置（纯界面，不动数据库）',          @operator, @now, @operator, @now, 0),
-  ('agri-remote',     'agri-monitor', '0,agri-monitor,', '遥感分析',   4, '/agrimonitor/RemoteSensing',  '',
+  ('agri-remote',     'agri-monitor', '0,agri-monitor,', '遥感分析',     5, '/agrimonitor/RemoteSensing',  '',
    'el-icon-guide',                @tpl_is_show, @tpl_menu_type, 'agrimonitor:remoteSensing:view',  '0', '北斗/GNSS 卫星星历、可见性与过境预报',          @operator, @now, @operator, @now, 0);
 
--- ④ 授权：管理员拿全部 4 个
+-- ④ 授权：管理员拿全部 5 个
 --    ⚠️ 把下面的 role id 换成第 3.1 节查出来的真实 id
 SET @role_admin = (SELECT id FROM sys_role WHERE del_flag = 0 AND (name LIKE '%管理员%' OR enname IN ('admin','administrator')) LIMIT 1);
 
 INSERT INTO sys_role_menu (id, role_id, menu_id)
 SELECT REPLACE(UUID(), '-', ''), @role_admin, m.id
 FROM sys_menu m
-WHERE m.id IN ('agri-monitor', 'agri-dashboard', 'agri-region', 'agri-database', 'agri-remote');
+WHERE m.id IN ('agri-monitor', 'agri-dashboard', 'agri-entry', 'agri-region', 'agri-database', 'agri-remote');
 
--- ⑤ 授权：采集员只拿「大屏」（父菜单也要给，否则菜单树挂不上）
+-- ⑤ 授权：采集员拿「大屏 + 采样数据录入」（父菜单也要给，否则菜单树挂不上）
 --    如果还没有"采集员"角色，先在「系统管理 → 角色管理」里建一个，再把 id 填进来
 SET @role_collector = (SELECT id FROM sys_role WHERE del_flag = 0 AND (name LIKE '%采集%' OR enname LIKE '%collect%') LIMIT 1);
 
 INSERT INTO sys_role_menu (id, role_id, menu_id)
 SELECT REPLACE(UUID(), '-', ''), @role_collector, m.id
 FROM sys_menu m
-WHERE m.id IN ('agri-monitor', 'agri-dashboard');
+WHERE m.id IN ('agri-monitor', 'agri-dashboard', 'agri-entry');
 
 -- 确认无误后提交；有问题就 ROLLBACK
 -- COMMIT;
@@ -166,13 +173,14 @@ WHERE m.id IN ('agri-monitor', 'agri-dashboard');
 | 功能 | 管理员 | 采集员 | 分析员 |
 | --- | :---: | :---: | :---: |
 | 监测大屏 `agrimonitor:dashboard:view` | ✅ | ✅ | ✅ |
+| **采样数据录入 `agrimonitor:samplingEntry:view`** | ✅ | ✅ | ❌ |
 | 地区监控 `agrimonitor:regionMonitor:view` | ✅ | ➖（按需） | ✅ |
 | 数据库管理 `agrimonitor:databaseManage:view` | ✅ | ❌ | ❌ |
 | 遥感分析 `agrimonitor:remoteSensing:view` | ✅ | ❌ | ✅ |
 
-> 采集员"只需要监控大屏"就够 —— 大屏底部已经包含任务书的
-> M1~M4 / E1~E4 / T1~T5 对照、19 字节回传帧、E1 布点策略、E2 路线算法对比，
-> 所以算法相关的展示不需要单独再开一个页面给采集员。
+> **采集员 = 监控大屏 + 采样数据录入**，这两条就是他的全部工作：
+> 在大屏上看全局态势，在录入页填现场数据、拿到判定结果与回传帧。
+> 其余的（地区监控 / 数据库管理 / 遥感分析）都不下放。
 
 ---
 

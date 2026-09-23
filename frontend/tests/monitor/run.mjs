@@ -40,7 +40,10 @@ const FILE_MAP = [
   ['utils/udpFrame.js', 'udpFrame.js'],
   ['utils/geo/geojson.js', 'geojson.js'],
   ['mock/agrimonitor/geoData.js', 'geoData.js'],
+  ['mock/agrimonitor/thresholds.js', 'thresholds.js'],
+  ['mock/agrimonitor/monitorData.js', 'monitorData.js'],
   ['mock/agrimonitor/weatherField.js', 'weatherField.js'],
+  ['mock/agrimonitor/samplingRule.js', 'samplingRule.js'],
   ['mock/agrimonitor/experiments.js', 'experiments.js'],
   ['mock/agrimonitor/frameStream.js', 'frameStream.js'],
   ['mock/agrimonitor/taskData.js', 'taskData.js'],
@@ -65,7 +68,10 @@ function prepareSources () {
     }
     let text = fs.readFileSync(source, 'utf8')
     // 省略扩展名的相对导入 → 补 .js
-    text = text.replace(/from '\.\/(geoData|udpFrame|experiments|frameStream|taskData)'/g, "from './$1.js'")
+    text = text.replace(
+      /from '\.\/(geoData|udpFrame|experiments|frameStream|taskData|thresholds|samplingRule|monitorData)'/g,
+      "from './$1.js'"
+    )
     // webpack 别名
     text = text.replace(/from '@\/utils\/udpFrame'/g, "from './udpFrame.js'")
     text = text.replace(/from '@\/views\/modules\/agrimonitor\/permissions'/g, "from './permissions.js'")
@@ -94,6 +100,8 @@ async function main () {
   const field = await importFrom('weatherField.js')
   const perms = await importFrom('permissions.js')
   const demoRoles = await importFrom('roles.js')
+  const rule = await importFrom('samplingRule.js')
+  const thresholds = await importFrom('thresholds.js')
 
   const rows = []
   const check = (name, pass, detail) => rows.push({ name, pass: !!pass, detail: String(detail) })
@@ -602,12 +610,12 @@ async function main () {
     const setPerms = list => { store.permissions = JSON.stringify(list) }
 
     check('权限码命名符合 <module>:<CamelResource>:<action> 规范',
-      perms.AGRI_PERMISSIONS.length === 4 &&
+      perms.AGRI_PERMISSIONS.length === 5 &&
         perms.AGRI_PERMISSIONS.every(p => /^agrimonitor:[a-zA-Z]+:view$/.test(p)),
       perms.AGRI_PERMISSIONS.join(', '))
 
-    check('4 个权限码互不相同',
-      new Set(perms.AGRI_PERMISSIONS).size === 4,
+    check('5 个权限码互不相同',
+      new Set(perms.AGRI_PERMISSIONS).size === 5,
       perms.AGRI_PERMISSIONS.join(', '))
 
     // ── 严格拒绝：这是 GIS 模块合并评审里被点名的「权限默认放行」问题，必须有防线 ──
@@ -634,19 +642,20 @@ async function main () {
 
     // ── 正常授权 ──
     const adminPerms = [perms.PERM_DASHBOARD, perms.PERM_REGION_MONITOR,
-      perms.PERM_DATABASE_MANAGE, perms.PERM_REMOTE_SENSING]
+      perms.PERM_SAMPLING_ENTRY, perms.PERM_DATABASE_MANAGE, perms.PERM_REMOTE_SENSING]
     setPerms(adminPerms)
-    check('管理员权限下 4 个页面全部放行',
+    check('管理员权限下 5 个页面全部放行',
       perms.AGRI_PERMISSIONS.every(p => perms.hasAgriPermission(p)),
       perms.AGRI_PERMISSIONS.length + ' 个权限码全部命中')
 
-    setPerms([perms.PERM_DASHBOARD])
-    check('★采集员只有大屏权限时，其他 3 个页面被拒绝',
+    setPerms([perms.PERM_DASHBOARD, perms.PERM_SAMPLING_ENTRY])
+    check('★采集员只有大屏 + 数据录入时，其余 3 个页面被拒绝',
       perms.hasAgriPermission(perms.PERM_DASHBOARD) === true &&
+        perms.hasAgriPermission(perms.PERM_SAMPLING_ENTRY) === true &&
         perms.hasAgriPermission(perms.PERM_REGION_MONITOR) === false &&
         perms.hasAgriPermission(perms.PERM_DATABASE_MANAGE) === false &&
         perms.hasAgriPermission(perms.PERM_REMOTE_SENSING) === false,
-      '只有 dashboard 命中')
+      '只有 dashboard / samplingEntry 命中')
 
     void adminPerms
 
@@ -677,8 +686,8 @@ async function main () {
       '注释以外无角色名判断')
 
     const routeSrc = fs.readFileSync(path.join(srcRoot, 'router/staticRoutes.js'), 'utf8')
-    check('★4 条监测路由都挂了 beforeEnter 权限守卫',
-      (routeSrc.match(/beforeEnter:\s*requirePermission\(/g) || []).length === 4,
+    check('★5 条监测路由都挂了 beforeEnter 权限守卫',
+      (routeSrc.match(/beforeEnter:\s*requirePermission\(/g) || []).length === 5,
       (routeSrc.match(/beforeEnter:\s*requirePermission\(/g) || []).length + ' 条')
 
     check('★staticRoutes.js 没有 import @/utils（避免 staticRoutes→utils→router 循环依赖白屏）',
@@ -693,14 +702,16 @@ async function main () {
       roleKeys.join(', '))
 
     const collector = demoRoles.roleByKey('collector')
-    check('★演示角色「采集员」只能看到监测大屏（与后端配置口径一致）',
+    check('★演示角色「采集员」= 监控大屏 + 采样数据录入，不含管理类功能',
       demoRoles.roleHasPermission(collector, perms.PERM_DASHBOARD) === true &&
+        demoRoles.roleHasPermission(collector, perms.PERM_SAMPLING_ENTRY) === true &&
         demoRoles.roleHasPermission(collector, perms.PERM_DATABASE_MANAGE) === false &&
-        collector.permissions.length === 1,
+        demoRoles.roleHasPermission(collector, perms.PERM_REMOTE_SENSING) === false &&
+        collector.permissions.length === 2,
       `采集员权限数 ${collector.permissions.length}`)
 
     const admin = demoRoles.roleByKey('admin')
-    check('演示角色「管理员」拥有全部 4 个权限',
+    check('演示角色「管理员」拥有全部 5 个权限',
       perms.AGRI_PERMISSIONS.every(p => demoRoles.roleHasPermission(admin, p)),
       `管理员权限数 ${admin.permissions.length}`)
 
@@ -709,6 +720,141 @@ async function main () {
       demoRoles.roleByKey('不存在的角色').key)
 
     delete global.window
+  }
+
+  /* ══════════════════ I. 采样数据录入（规则引擎） ══════════════════ */
+
+  {
+    check('阈值定义齐全：5 项，顺序与回传帧内的顺序一致',
+      thresholds.AGRI_THRESHOLD_KEYS.length === 5 &&
+        thresholds.AGRI_THRESHOLD_KEYS.join(',') ===
+          'soilTemperature,soilMoisture,airTemperature,airHumidity,soilDepth',
+      thresholds.AGRI_THRESHOLD_KEYS.join(' → '))
+
+    check('每项阈值都有 label/unit/min/max 且 min < max',
+      thresholds.AGRI_THRESHOLD_KEYS.every(k => {
+        const t = thresholds.AGRI_THRESHOLDS[k]
+        return t && t.label && t.unit && t.min < t.max
+      }),
+      thresholds.AGRI_THRESHOLD_KEYS.map(k => {
+        const t = thresholds.AGRI_THRESHOLDS[k]
+        return `${t.label} ${t.min}~${t.max}${t.unit}`
+      }).join(' / '))
+
+    // ── 数值解析：绝不能把"没填"当成 0 ──
+    check('★空串 / null / undefined 解析为 null，不当作 0',
+      rule.toNumberOrNull('') === null && rule.toNumberOrNull(null) === null &&
+        rule.toNumberOrNull(undefined) === null,
+      '三种空值都是 null')
+
+    check('非数字字符串解析为 null（"abc" 不会变成 NaN 到处传播）',
+      rule.toNumberOrNull('abc') === null, 'abc → null')
+
+    check('合法数字正常解析（含 0）',
+      rule.toNumberOrNull('12.5') === 12.5 && rule.toNumberOrNull(0) === 0,
+      '12.5 与 0 都正确')
+
+    // ── 示例样本：应判定为全部正常 ──
+    const demo = rule.evaluateSample(rule.DEFAULT_SAMPLE)
+    check('示例样本 5 项全部判定为正常',
+      demo.indicators.length === 5 && demo.indicators.every(i => i.status.key === 'ok'),
+      demo.indicators.map(i => `${i.label}=${i.value}(${i.status.label})`).join(' '))
+
+    check('示例样本评分 100、结论为"可直接提交"、等级为提示级',
+      demo.conclusion.score === 100 && demo.conclusion.tone === 'ok' &&
+        demo.conclusion.level.code === 'low',
+      `${demo.conclusion.score} 分 / ${demo.conclusion.title} / ${demo.conclusion.level.label}`)
+
+    check('★示例样本能成功封装成 19 字节回传帧，且反解值自洽',
+      demo.frame.ok && demo.frame.length === 19 &&
+        demo.frame.decoded.samplingPointId === rule.DEFAULT_SAMPLE.samplingPointId,
+      `${demo.frame.length} 字节  hex=${demo.frame.hex}`)
+
+    // ── 逐项判定方向 ──
+    const low = rule.evaluateIndicators({ ...rule.DEFAULT_SAMPLE, soilMoisture: 5 })
+    check('低于下限判为"偏低"并给出下限提示',
+      low[1].status.key === 'low' && /低于适宜下限/.test(low[1].advice),
+      `${low[1].label} ${low[1].value}${low[1].unit} → ${low[1].status.label}（${low[1].advice}）`)
+
+    const high = rule.evaluateIndicators({ ...rule.DEFAULT_SAMPLE, soilTemperature: 60 })
+    check('高于上限判为"偏高"并给出上限提示',
+      high[0].status.key === 'high' && /高于适宜上限/.test(high[0].advice),
+      `${high[0].label} ${high[0].value}${high[0].unit} → ${high[0].status.label}（${high[0].advice}）`)
+
+    const missing = rule.evaluateIndicators({ ...rule.DEFAULT_SAMPLE, airHumidity: '' })
+    check('★未填写的指标判为"不可编码"，而不是当作 0 混过去',
+      missing[3].value === null && missing[3].status.key === 'bad' &&
+        /未填写/.test(missing[3].advice),
+      `${missing[3].label} → ${missing[3].status.label}（${missing[3].advice}）`)
+
+    const tooBig = rule.evaluateIndicators({ ...rule.DEFAULT_SAMPLE, soilDepth: 300 })
+    check('★超出 1 字节可编码范围（>255）判为"不可编码"',
+      tooBig[4].status.key === 'bad' && /1 字节/.test(tooBig[4].advice),
+      `${tooBig[4].label} ${tooBig[4].value} → ${tooBig[4].status.label}`)
+
+    // ── 硬性校验 ──
+    const badCoord = rule.validateSample({ ...rule.DEFAULT_SAMPLE, latitude: '' })
+    check('★坐标缺失属于硬性错误（不允许猜测默认值）',
+      badCoord.ok === false && badCoord.errors.some(e => /经纬度必须都填写/.test(e)),
+      badCoord.errors.join('；'))
+
+    const badId = rule.validateSample({ ...rule.DEFAULT_SAMPLE, samplingPointId: 70000 })
+    check('采样点 ID 越界（>65535）属于硬性错误',
+      badId.ok === false && badId.errors.some(e => /0~65535/.test(e)),
+      badId.errors.join('；'))
+
+    const outOfChina = rule.validateSample({ ...rule.DEFAULT_SAMPLE, longitude: 10, latitude: 10 })
+    check('坐标不在中国境内只给"提示"而不是硬性错误',
+      outOfChina.ok === true && outOfChina.warnings.some(w => /不在中国境内/.test(w)),
+      outOfChina.warnings.join('；'))
+
+    // ── 封装失败时不吞异常 ──
+    const frameFail = rule.buildFrame({ ...rule.DEFAULT_SAMPLE, longitude: '' })
+    check('★坐标缺失时封装失败，且把原因原样带出来（不吞异常）',
+      frameFail.ok === false && frameFail.hex === '' && /不是有效数字/.test(frameFail.error),
+      frameFail.error)
+
+    const invalid = rule.evaluateSample({ ...rule.DEFAULT_SAMPLE, latitude: null })
+    check('★存在硬性错误时：评分 0、结论"不可提交"、且不允许提交',
+      invalid.validation.ok === false && invalid.conclusion.score === 0 &&
+        invalid.conclusion.title === '不可提交' && invalid.conclusion.tone === 'bad',
+      `${invalid.conclusion.score} 分 / ${invalid.conclusion.title}`)
+
+    // ── 结论等级随偏离项数变化 ──
+    const oneOff = rule.evaluateSample({ ...rule.DEFAULT_SAMPLE, soilMoisture: 5 })
+    check('1 项偏离 → 等级 medium（重要）、结论里点出是哪一项',
+      oneOff.conclusion.level.code === 'medium' &&
+        oneOff.conclusion.score === 80 &&
+        /土壤湿度/.test(oneOff.conclusion.detail),
+      `${oneOff.conclusion.score} 分 / ${oneOff.conclusion.level.label} / ${oneOff.conclusion.detail}`)
+
+    const threeOff = rule.evaluateSample({
+      ...rule.DEFAULT_SAMPLE, soilMoisture: 5, airHumidity: 95, soilDepth: 60
+    })
+    check('≥3 项偏离 → 等级 high（紧急）',
+      threeOff.conclusion.level.code === 'high' && threeOff.conclusion.score === 40 &&
+        threeOff.conclusion.tone === 'bad',
+      `${threeOff.conclusion.score} 分 / ${threeOff.conclusion.level.label}`)
+
+    check('同输入两次评估结果完全一致（可复现）',
+      JSON.stringify(rule.evaluateSample(rule.DEFAULT_SAMPLE)) ===
+        JSON.stringify(rule.evaluateSample(rule.DEFAULT_SAMPLE)),
+      '逐字段一致')
+
+    // ── 页面接线 ──
+    const entryRouteSrc = fs.readFileSync(path.join(srcRoot, 'router/staticRoutes.js'), 'utf8')
+    check('★「采样数据录入」页面已接线：路由 + 权限守卫 + 权限码',
+      /\/agrimonitor\/SamplingEntry/.test(entryRouteSrc) &&
+        /PERM_SAMPLING_ENTRY/.test(entryRouteSrc) &&
+        perms.AGRI_PERMISSIONS.indexOf(perms.PERM_SAMPLING_ENTRY) >= 0,
+      'SamplingEntry 路由与权限码都在')
+
+    const entrySrc = fs.readFileSync(
+      path.join(srcRoot, 'views/modules/agrimonitor/SamplingEntry.vue'), 'utf8')
+    check('★录入页不调用任何写接口、不碰数据库（只在本页内存记录）',
+      !/httpRequest|axios|\$http|request\(/.test(entrySrc) &&
+        /不写数据库|不调接口/.test(entrySrc),
+      '无网络请求代码')
   }
 
   /* ══════════════════ 输出 ══════════════════ */

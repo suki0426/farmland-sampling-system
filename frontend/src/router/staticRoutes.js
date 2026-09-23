@@ -6,6 +6,7 @@
 import {
   PERM_DASHBOARD,
   PERM_REGION_MONITOR,
+  PERM_SAMPLING_ENTRY,
   PERM_DATABASE_MANAGE,
   PERM_REMOTE_SENSING,
   requirePermission
@@ -59,6 +60,8 @@ export function createMainRoutes (_import) {
       //    配置 SQL 与角色对照表见 docs/ROLE_PERMISSION.md。
       { path: '/agrimonitor/Dashboard', component: _import('modules/agrimonitor/Dashboard'), name: 'agri-dashboard', meta: { title: '监测大屏', singleTab: true, permission: PERM_DASHBOARD }, beforeEnter: requirePermission(PERM_DASHBOARD) },
       { path: '/agrimonitor/RegionMonitor', component: _import('modules/agrimonitor/RegionMonitor'), name: 'agri-region-monitor', meta: { title: '地区监控', singleTab: true, permission: PERM_REGION_MONITOR }, beforeEnter: requirePermission(PERM_REGION_MONITOR) },
+      // 采集员的核心工作页：录入现场数据 → 按农事规则判定 → 封装回传帧 → 给出结论
+      { path: '/agrimonitor/SamplingEntry', component: _import('modules/agrimonitor/SamplingEntry'), name: 'agri-sampling-entry', meta: { title: '采样数据录入', singleTab: true, permission: PERM_SAMPLING_ENTRY }, beforeEnter: requirePermission(PERM_SAMPLING_ENTRY) },
       { path: '/agrimonitor/DatabaseManage', component: _import('modules/agrimonitor/DatabaseManage'), name: 'agri-database', meta: { title: '数据库管理', singleTab: true, permission: PERM_DATABASE_MANAGE }, beforeEnter: requirePermission(PERM_DATABASE_MANAGE) },
       { path: '/agrimonitor/RemoteSensing', component: _import('modules/agrimonitor/RemoteSensing'), name: 'agri-remote-sensing', meta: { title: '遥感分析', singleTab: true, permission: PERM_REMOTE_SENSING }, beforeEnter: requirePermission(PERM_REMOTE_SENSING) },
       // 被权限拦截后的落地页。**本身不校验权限**，否则会出现「拦截页也被拦截」的死循环。

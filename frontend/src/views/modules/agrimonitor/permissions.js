@@ -25,6 +25,13 @@ export const PERM_DASHBOARD = 'agrimonitor:dashboard:view'
 /** 地区监控 —— 采集员/值班人员需要 */
 export const PERM_REGION_MONITOR = 'agrimonitor:regionMonitor:view'
 
+/**
+ * 采样数据录入 —— 采集员的核心工作页：
+ * 填现场数据 → 按农事规则判定 → 封装回传帧 → 给出结论。
+ * 采集员必须拥有这一条。
+ */
+export const PERM_SAMPLING_ENTRY = 'agrimonitor:samplingEntry:view'
+
 /** 数据库管理 —— 仅管理员，纯界面但含运维信息，不应下放 */
 export const PERM_DATABASE_MANAGE = 'agrimonitor:databaseManage:view'
 
@@ -35,6 +42,7 @@ export const PERM_REMOTE_SENSING = 'agrimonitor:remoteSensing:view'
 export const AGRI_PERMISSIONS = [
   PERM_DASHBOARD,
   PERM_REGION_MONITOR,
+  PERM_SAMPLING_ENTRY,
   PERM_DATABASE_MANAGE,
   PERM_REMOTE_SENSING
 ]
@@ -106,6 +114,7 @@ export function requirePermission (permission) {
 export default {
   PERM_DASHBOARD,
   PERM_REGION_MONITOR,
+  PERM_SAMPLING_ENTRY,
   PERM_DATABASE_MANAGE,
   PERM_REMOTE_SENSING,
   AGRI_PERMISSIONS,
