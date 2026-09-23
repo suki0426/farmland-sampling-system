@@ -1,3 +1,15 @@
+const StandaloneRedirect = {
+  name: 'StandaloneRedirect',
+  render: h => h('div')
+}
+
+function redirectToStandalone (target) {
+  return (to, from, next) => {
+    window.location.replace(`${window.location.origin}${target}`)
+    next(false)
+  }
+}
+
 export function createGlobalRoutes (_import) {
   return [
     { path: '/login', component: _import('modules/sys/login/login'), name: 'login', meta: { title: '登录' } },
@@ -14,7 +26,7 @@ export function createMainRoutes (_import) {
     meta: { title: '整体布局' },
     children: [
       { path: '/redirect/:path(.*)', component: _import('modules/redirect/index') },
-      { path: '/home', redirect: '/sys/dashboard/analysis/index', name: 'home' },
+      { path: '/home', component: StandaloneRedirect, beforeEnter: redirectToStandalone('/monitor.html?page=dashboard'), name: 'home' },
       { path: '/flowable/task/TaskForm', component: _import('modules/flowable/task/TaskForm'), name: 'task-form', meta: { title: '流程表单' } },
       { path: '/flowable/task/TaskFormEdit', component: _import('modules/flowable/task/TaskFormEdit'), name: 'task-form-edit', meta: { title: '流程表单' } },
       { path: '/flowable/task/TaskFormDetail', component: _import('modules/flowable/task/TaskFormDetail'), name: 'task-form-detail', meta: { title: '流程表单详情' } },
@@ -35,6 +47,13 @@ export function createMainRoutes (_import) {
       { path: '/ureport/preview', component: null, name: 'ureport-preview', meta: { title: '预览报表', type: 'iframe', menuId: 'ureport-preview' } },
       { path: '/form/explorer', component: null, name: 'form-explorer', meta: { title: '浏览器', type: 'iframe' } },
       { path: '/database/datatable/TableForm', component: _import('modules/database/datatable/TableForm'), name: 'table-form', meta: { title: '数据库表详情' } },
+      // 不再把农业页面嵌进 JeePlus 白色主框架。保留旧地址仅用于兼容菜单和书签，
+      // 访问后立即切到独立入口，页面只保留一套，避免出现两种外观。
+      { path: '/agrimonitor/Dashboard', component: StandaloneRedirect, beforeEnter: redirectToStandalone('/monitor.html?page=dashboard'), name: 'agri-dashboard', meta: { title: '监测大屏', singleTab: true } },
+      { path: '/agrimonitor/RegionMonitor', component: StandaloneRedirect, beforeEnter: redirectToStandalone('/monitor.html?page=region'), name: 'agri-region-monitor', meta: { title: '地区监控', singleTab: true } },
+      { path: '/agrimonitor/DatabaseManage', component: StandaloneRedirect, beforeEnter: redirectToStandalone('/monitor.html?page=database'), name: 'agri-database', meta: { title: '数据库管理', singleTab: true } },
+      { path: '/agrimonitor/RemoteSensing', component: StandaloneRedirect, beforeEnter: redirectToStandalone('/monitor.html?page=remote'), name: 'agri-remote-sensing', meta: { title: '遥感分析', singleTab: true } },
+      { path: '/farmland/FarmlandGis', component: StandaloneRedirect, beforeEnter: redirectToStandalone('/monitor.html?page=dashboard'), name: 'farmland-gis', meta: { title: '监测大屏', singleTab: true } },
       { path: '/404', component: _import('common/404'), name: '404', meta: { title: '404未找到' } }
     ]
   }
