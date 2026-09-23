@@ -13,7 +13,7 @@ logging.basicConfig(
 CFG = {
     "udp": {
         "target_host": "127.0.0.1",
-        "target_port": 8888,
+        "target_port": 9000,
         "send_interval_ms": 800
     },
     "simulator": {
@@ -91,6 +91,7 @@ def main():
             sensor = dev.get_sensor(is_abnormal=is_abn)
 
             frame = build_sampling_frame(
+                device_id=dev.dev_code,
                 point_code=point_code,
                 lat=dev.lat,
                 lon=dev.lon,

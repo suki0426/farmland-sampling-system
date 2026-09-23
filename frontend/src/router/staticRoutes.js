@@ -49,7 +49,7 @@ export function createMainRoutes (_import) {
       { path: '/ureport/preview', component: null, name: 'ureport-preview', meta: { title: '预览报表', type: 'iframe', menuId: 'ureport-preview' } },
       { path: '/form/explorer', component: null, name: 'form-explorer', meta: { title: '浏览器', type: 'iframe' } },
       { path: '/database/datatable/TableForm', component: _import('modules/database/datatable/TableForm'), name: 'table-form', meta: { title: '数据库表详情' } },
-      // ↓ 农业智能监测平台（首页大屏 / 地区监控 / 数据库管理 / 遥感分析）
+      // ↓ 农业智能监测平台（首页大屏 / 采样数据录入 / 地区监控 / 数据库管理 / 遥感分析）
       // 注册为静态路由，保证后端菜单（sys_menu）尚未配置时页面也能直接访问。
       // 若后续在菜单里配了同名 href，dynamicRoutes.js 会检测到同名 path 而跳过，不会冲突。
       //
@@ -66,6 +66,8 @@ export function createMainRoutes (_import) {
       { path: '/agrimonitor/RemoteSensing', component: _import('modules/agrimonitor/RemoteSensing'), name: 'agri-remote-sensing', meta: { title: '遥感分析', singleTab: true, permission: PERM_REMOTE_SENSING }, beforeEnter: requirePermission(PERM_REMOTE_SENSING) },
       // 被权限拦截后的落地页。**本身不校验权限**，否则会出现「拦截页也被拦截」的死循环。
       { path: '/agrimonitor/NoPermission', component: _import('modules/agrimonitor/NoPermission'), name: 'agri-no-permission', meta: { title: '无访问权限', singleTab: true } },
+      // ↓ 农田 GIS 采样页（来自 develop 上的 feature/frontend-gis 模块，保留）
+      { path: '/farmland/FarmlandGis', component: _import('modules/farmland/FarmlandGis'), name: 'farmland-gis', meta: { title: '农田智能采样GIS', singleTab: true } },
       { path: '/404', component: _import('common/404'), name: '404', meta: { title: '404未找到' } }
     ]
   }

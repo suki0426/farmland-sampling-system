@@ -8,7 +8,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:monitor": "node tests/monitor/run.mjs"
+    "test:monitor": "node tests/monitor/run.mjs",
+    "test:gis": "node tests/gis/run.mjs"
   },
   "dependencies": {
     "@jiaminghi/data-view": "^2.10.0",
