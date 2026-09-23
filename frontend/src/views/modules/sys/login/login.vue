@@ -168,7 +168,8 @@ export default {
                 duration: 10000,
                 type: 'success'
               })
-              this.$router.push({ name: 'home' })
+              // 登录后直接进入唯一保留的独立监控大屏，不再先挂载旧 JeePlus 首页。
+              window.location.replace(`${window.location.origin}/monitor.html?page=dashboard`)
             })
             .catch(e => {
               if (this.isCaptchaError(e)) {

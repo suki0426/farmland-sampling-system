@@ -50,7 +50,7 @@ spring:
         master:
           username: ${MYSQL_USERNAME:root}
           password: ${MYSQL_PASSWORD:}
-          url: jdbc:p6spy:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:farmland_sampling_db}?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+          url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:farm_monitor}?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
           driver-class-name: com.mysql.cj.jdbc.Driver
 
           #线上库

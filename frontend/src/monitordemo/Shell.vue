@@ -30,9 +30,6 @@
       <div class="monitor-shell__side-foot">
         <el-tag size="mini" type="warning" effect="plain">演示数据</el-tag>
         <p>全部数据为前端 mock，<b>不连数据库、不写任何数据</b></p>
-        <el-button size="mini" plain icon="el-icon-map-location" @click="openGis">
-          打开农田 GIS 采样演示
-        </el-button>
       </div>
     </aside>
 
@@ -150,10 +147,6 @@ export default {
       this.drillProvince = province.name
       this.page = 'region'
       this.$message.success(`已下钻到 ${province.name} 的地区监控`)
-    },
-
-    openGis () {
-      window.open('./gis.html', '_blank')
     }
   }
 }

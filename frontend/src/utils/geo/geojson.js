@@ -52,7 +52,21 @@ function decodeRing (encoded, offsets) {
 
 /** 该几何体是否是 echarts 压缩格式 */
 export function isEncodedGeometry (geometry) {
-  return !!(geometry && geometry.encodeOffsets && geometry.coordinates)
+  if (!geometry || !geometry.encodeOffsets || !Array.isArray(geometry.coordinates)) {
+    return false
+  }
+  // ECharts 4 会原地解码传给 registerMap() 的 GeoJSON：coordinates 已经
+  // 变成数组，但 encodeOffsets 仍保留。仅凭 encodeOffsets 判断会导致二次
+  // 解码，并在数组上调用 charCodeAt。必须以实际坐标类型作为最终依据。
+  if (geometry.type === 'Polygon') {
+    return geometry.coordinates.some(ring => typeof ring === 'string')
+  }
+  if (geometry.type === 'MultiPolygon') {
+    return geometry.coordinates.some(poly => (
+      Array.isArray(poly) && poly.some(ring => typeof ring === 'string')
+    ))
+  }
+  return false
 }
 
 /** 解码单个几何体；已经是普通坐标时**原样返回** */
@@ -65,13 +79,17 @@ export function decodeGeometry (geometry) {
   if (geometry.type === 'Polygon') {
     return {
       type: 'Polygon',
-      coordinates: coords.map((ring, i) => decodeRing(ring, offs[i]))
+      coordinates: coords.map((ring, i) => (
+        typeof ring === 'string' ? decodeRing(ring, offs[i]) : ring
+      ))
     }
   }
   if (geometry.type === 'MultiPolygon') {
     return {
       type: 'MultiPolygon',
-      coordinates: coords.map((poly, i) => poly.map((ring, j) => decodeRing(ring, offs[i][j])))
+      coordinates: coords.map((poly, i) => poly.map((ring, j) => (
+        typeof ring === 'string' ? decodeRing(ring, offs[i][j]) : ring
+      )))
     }
   }
   return geometry

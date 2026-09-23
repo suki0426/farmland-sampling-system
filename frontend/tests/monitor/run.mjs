@@ -430,6 +430,19 @@ async function main () {
     check('已是普通坐标的数据不做拷贝（零开销直通）',
       G.ensurePlainGeoJson(alreadyPlain) === alreadyPlain,
       '返回同一对象')
+
+    // ECharts 4 的 registerMap 会原地把 coordinates 解成数组，却保留
+    // encodeOffsets。旧判断会把这种对象再次解码并在数组上调用 charCodeAt。
+    const echartsMutated = JSON.parse(JSON.stringify(rawChina))
+    echartsMutated.features.forEach((f, i) => {
+      f.geometry.coordinates = plain.features[i].geometry.coordinates
+    })
+    echartsMutated.UTF8Encoding = false
+    const reused = G.ensurePlainGeoJson(echartsMutated)
+    check('★回归：ECharts 原地解码后即使残留 encodeOffsets，也不会二次解码',
+      reused === echartsMutated &&
+        Array.isArray(reused.features[0].geometry.coordinates[0][0]),
+      '返回同一对象，坐标保持数值数组')
   }
 
   /* ══════════════════ F. 栅格掩膜 ══════════════════ */
