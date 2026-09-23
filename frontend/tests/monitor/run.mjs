@@ -43,7 +43,9 @@ const FILE_MAP = [
   ['mock/agrimonitor/weatherField.js', 'weatherField.js'],
   ['mock/agrimonitor/experiments.js', 'experiments.js'],
   ['mock/agrimonitor/frameStream.js', 'frameStream.js'],
-  ['mock/agrimonitor/taskData.js', 'taskData.js']
+  ['mock/agrimonitor/taskData.js', 'taskData.js'],
+  ['views/modules/agrimonitor/permissions.js', 'permissions.js'],
+  ['monitordemo/roles.js', 'roles.js']
 ]
 
 /** 被测的静态数据（真实仓库里的文件，不是副本） */
@@ -66,6 +68,7 @@ function prepareSources () {
     text = text.replace(/from '\.\/(geoData|udpFrame|experiments|frameStream|taskData)'/g, "from './$1.js'")
     // webpack 别名
     text = text.replace(/from '@\/utils\/udpFrame'/g, "from './udpFrame.js'")
+    text = text.replace(/from '@\/views\/modules\/agrimonitor\/permissions'/g, "from './permissions.js'")
     fs.writeFileSync(path.join(workDir, flat), text)
   })
 }
@@ -89,6 +92,8 @@ async function main () {
   const taskData = await importFrom('taskData.js')
   const G = await importFrom('geojson.js')
   const field = await importFrom('weatherField.js')
+  const perms = await importFrom('permissions.js')
+  const demoRoles = await importFrom('roles.js')
 
   const rows = []
   const check = (name, pass, detail) => rows.push({ name, pass: !!pass, detail: String(detail) })
@@ -580,6 +585,130 @@ async function main () {
     check('★全部 10 个图层都有足够色彩层次（无一层是纯色）',
       flatLayers === 0,
       layStats.join('  '))
+  }
+
+  /* ══════════════════ H. 角色赋权（路由级权限） ══════════════════ */
+
+  {
+    // 造一个最小的 localStorage / window 环境（permissions.js 读取 localStorage.permissions）
+    const store = {}
+    global.window = {
+      localStorage: {
+        getItem: k => (k in store ? store[k] : null),
+        setItem: (k, v) => { store[k] = String(v) },
+        removeItem: k => { delete store[k] }
+      }
+    }
+    const setPerms = list => { store.permissions = JSON.stringify(list) }
+
+    check('权限码命名符合 <module>:<CamelResource>:<action> 规范',
+      perms.AGRI_PERMISSIONS.length === 4 &&
+        perms.AGRI_PERMISSIONS.every(p => /^agrimonitor:[a-zA-Z]+:view$/.test(p)),
+      perms.AGRI_PERMISSIONS.join(', '))
+
+    check('4 个权限码互不相同',
+      new Set(perms.AGRI_PERMISSIONS).size === 4,
+      perms.AGRI_PERMISSIONS.join(', '))
+
+    // ── 严格拒绝：这是 GIS 模块合并评审里被点名的「权限默认放行」问题，必须有防线 ──
+    delete store.permissions
+    check('★权限列表缺失时一律拒绝（不做"取不到就放行"的兜底）',
+      perms.currentPermissions().length === 0 &&
+        perms.hasAgriPermission(perms.PERM_DASHBOARD) === false,
+      'localStorage.permissions 不存在 → hasAgriPermission = false')
+
+    setPerms([])
+    check('★权限列表为空数组时同样拒绝',
+      perms.hasAgriPermission(perms.PERM_DASHBOARD) === false,
+      'permissions = [] → false')
+
+    store.permissions = '{ 这不是合法 JSON'
+    check('权限内容损坏时不抛错，按"无权限"处理',
+      perms.currentPermissions().length === 0,
+      '坏 JSON → []')
+
+    store.permissions = '{"a":1}'
+    check('权限内容不是数组时按"无权限"处理',
+      perms.currentPermissions().length === 0,
+      '对象 → []')
+
+    // ── 正常授权 ──
+    const adminPerms = [perms.PERM_DASHBOARD, perms.PERM_REGION_MONITOR,
+      perms.PERM_DATABASE_MANAGE, perms.PERM_REMOTE_SENSING]
+    setPerms(adminPerms)
+    check('管理员权限下 4 个页面全部放行',
+      perms.AGRI_PERMISSIONS.every(p => perms.hasAgriPermission(p)),
+      perms.AGRI_PERMISSIONS.length + ' 个权限码全部命中')
+
+    setPerms([perms.PERM_DASHBOARD])
+    check('★采集员只有大屏权限时，其他 3 个页面被拒绝',
+      perms.hasAgriPermission(perms.PERM_DASHBOARD) === true &&
+        perms.hasAgriPermission(perms.PERM_REGION_MONITOR) === false &&
+        perms.hasAgriPermission(perms.PERM_DATABASE_MANAGE) === false &&
+        perms.hasAgriPermission(perms.PERM_REMOTE_SENSING) === false,
+      '只有 dashboard 命中')
+
+    void adminPerms
+
+    // ── 守卫 next() 的行为 ──
+    const runGuard = (guard, to = { path: '/agrimonitor/DatabaseManage' }) => {
+      let called = null
+      guard(to, {}, arg => { called = arg })
+      return called
+    }
+
+    setPerms([perms.PERM_DASHBOARD])
+    const denied = runGuard(perms.requirePermission(perms.PERM_DATABASE_MANAGE))
+    check('★无权限时守卫跳转到「无访问权限」页，并带上被拦截路径与缺失权限码',
+      denied && denied.name === 'agri-no-permission' &&
+        denied.query && denied.query.from === '/agrimonitor/DatabaseManage' &&
+        denied.query.need === perms.PERM_DATABASE_MANAGE,
+      JSON.stringify(denied))
+
+    setPerms([perms.PERM_DATABASE_MANAGE])
+    const allowed = runGuard(perms.requirePermission(perms.PERM_DATABASE_MANAGE))
+    check('有权限时守卫放行（next() 不带参数）',
+      allowed === undefined, 'next() 被无参调用')
+
+    // ── 前端不写死角色判断 ──
+    const permSrc = fs.readFileSync(path.join(srcRoot, 'views/modules/agrimonitor/permissions.js'), 'utf8')
+    check('★前端权限模块里没有"是不是管理员"这类写死的角色判断',
+      !/管理员|isAdmin|admin\b/i.test(permSrc.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*/g, '')),
+      '注释以外无角色名判断')
+
+    const routeSrc = fs.readFileSync(path.join(srcRoot, 'router/staticRoutes.js'), 'utf8')
+    check('★4 条监测路由都挂了 beforeEnter 权限守卫',
+      (routeSrc.match(/beforeEnter:\s*requirePermission\(/g) || []).length === 4,
+      (routeSrc.match(/beforeEnter:\s*requirePermission\(/g) || []).length + ' 条')
+
+    check('★staticRoutes.js 没有 import @/utils（避免 staticRoutes→utils→router 循环依赖白屏）',
+      !/from '@\/utils'/.test(routeSrc) && !/from '@\/utils\//.test(routeSrc),
+      '未引用 @/utils')
+
+    // ── 演示用角色映射 ──
+    const roleKeys = demoRoles.DEMO_ROLES.map(r => r.key)
+    check('演示角色含 admin / collector，且默认是 admin',
+      roleKeys.indexOf('admin') >= 0 && roleKeys.indexOf('collector') >= 0 &&
+        demoRoles.DEFAULT_ROLE === 'admin',
+      roleKeys.join(', '))
+
+    const collector = demoRoles.roleByKey('collector')
+    check('★演示角色「采集员」只能看到监测大屏（与后端配置口径一致）',
+      demoRoles.roleHasPermission(collector, perms.PERM_DASHBOARD) === true &&
+        demoRoles.roleHasPermission(collector, perms.PERM_DATABASE_MANAGE) === false &&
+        collector.permissions.length === 1,
+      `采集员权限数 ${collector.permissions.length}`)
+
+    const admin = demoRoles.roleByKey('admin')
+    check('演示角色「管理员」拥有全部 4 个权限',
+      perms.AGRI_PERMISSIONS.every(p => demoRoles.roleHasPermission(admin, p)),
+      `管理员权限数 ${admin.permissions.length}`)
+
+    check('roleByKey 对未知 key 会退回默认角色，不会返回 undefined',
+      demoRoles.roleByKey('不存在的角色') === demoRoles.roleByKey(demoRoles.DEFAULT_ROLE),
+      demoRoles.roleByKey('不存在的角色').key)
+
+    delete global.window
   }
 
   /* ══════════════════ 输出 ══════════════════ */
