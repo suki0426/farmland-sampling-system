@@ -84,13 +84,32 @@ function buildPages () {
 **解决方式：两个脚本都保留。** 另外本 PR 新增了一个依赖 `"echarts-gl": "^1.1.2"`（3D 地形视图用），
 `package-lock.json` 已同步，与 GIS PR 不冲突。
 
-### 1.4 推荐的合并顺序
+### 1.4 合并顺序：已经不需要组长操心了 ✅
 
-**先合 `feature/frontend-gis`，再合本 PR。**
-先合 GIS 之后，本 PR 只需在 `buildPages()` 里追加一个 `pages.monitor` 块，冲突面会小很多。
-如果顺序反过来，解决方式完全一样（两边都保留），只是要手工删一次冲突标记。
+**原计划**是「先合 `feature/frontend-gis`，再合本 PR」，以缩小冲突面。
 
-> 两个 PR 合并后**都要跑一次**：`npm run build`（确认 dist 里**既没有** `gis.html` **也没有** `monitor.html`）、
+**现状已直接绕过这一步**：GIS 模块（`feature/frontend-gis`）的内容**已经全部在 `develop` 里**
+（核实：该分支相对 `develop` 差异 = **0 个文件**），所以本分支已经把 `develop`
+合并了进来（提交 `86a4a34`），**唯一冲突 `src/router/staticRoutes.js` 已按「两边都保留」解决**：
+
+```js
+// 合并后的 src/router/staticRoutes.js：两边都保留（5 条 agrimonitor 路由 + 1 条 GIS 路由，都在 /404 之前）
+{ path: '/agrimonitor/Dashboard',      beforeEnter: requirePermission(PERM_DASHBOARD) },
+{ path: '/agrimonitor/RegionMonitor',  beforeEnter: requirePermission(PERM_REGION_MONITOR) },
+{ path: '/agrimonitor/SamplingEntry',  beforeEnter: requirePermission(PERM_SAMPLING_ENTRY) },
+{ path: '/agrimonitor/DatabaseManage', beforeEnter: requirePermission(PERM_DATABASE_MANAGE) },
+{ path: '/agrimonitor/RemoteSensing',  beforeEnter: requirePermission(PERM_REMOTE_SENSING) },
+{ path: '/agrimonitor/NoPermission',   /* 不校验权限，否则会死循环 */ },
+{ path: '/farmland/FarmlandGis',       /* ← GIS 模块的，原样保留，没有删 */ },
+{ path: '/404', ... }
+```
+
+`vue.config.js` 的 `buildPages()` 里 `pages.gis` 与 `pages.monitor` 同时存在，
+`package.json` 的 `test:gis` 与 `test:monitor` 也同时存在。
+
+**PR #12 因此是 `mergeable: clean`**，组长直接合并即可，不会再弹冲突。
+
+> 合并后**跑一次**：`npm run build`（确认 dist 里**既没有** `gis.html` **也没有** `monitor.html`）、
 > `npm run test:gis`、`npm run test:monitor`。
 
 ---

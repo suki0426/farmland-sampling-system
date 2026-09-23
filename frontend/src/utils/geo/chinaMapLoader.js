@@ -14,6 +14,7 @@
  */
 
 import * as echarts from 'echarts'
+import { ensurePlainGeoJson } from './geojson'
 
 export const CHINA_MAP_NAME = 'china'
 
@@ -33,7 +34,15 @@ export const PROVINCE_NAMES = [
 
 /**
  * 加载中国 GeoJSON（带内存缓存 + 并发去重）
- * @returns {Promise<object>} FeatureCollection
+ *
+ * ⚠️ 缓存的是**已经把压缩坐标解好的普通坐标版本**，理由见下方注释：
+ *    `echarts.registerMap()` 会在首次解析地图时**就地改写我们传进去的那个对象**
+ *    （把 coordinates 换成普通数组、顶层 UTF8Encoding 置 false，但保留 encodeOffsets）。
+ *    如果把它同时当作自己的缓存反复使用，就会读到"半解码"状态，
+ *    再解一次就会对数组调 charCodeAt → `encoded.charCodeAt is not a function`。
+ *    先在缓存时解干净，之后不论谁先谁后都不会踩到。
+ *
+ * @returns {Promise<object>} FeatureCollection（坐标为普通 [lng, lat]）
  */
 export function loadChinaGeoJson () {
   if (cache) {
@@ -53,9 +62,10 @@ export function loadChinaGeoJson () {
       if (!json || json.type !== 'FeatureCollection' || !Array.isArray(json.features)) {
         throw new Error('地图数据格式不正确：需要 GeoJSON FeatureCollection')
       }
-      cache = json
+      // 统一成普通坐标再缓存（本身就是普通坐标时零拷贝直通）
+      cache = ensurePlainGeoJson(json)
       pending = null
-      return json
+      return cache
     })
     .catch(error => {
       pending = null
@@ -68,6 +78,11 @@ let registered = false
 
 /**
  * 把中国地图注册进 echarts（map / geo / map3D 系列都依赖这一步）
+ *
+ * 传进去的是**普通坐标**版本：它没有 `UTF8Encoding` 标记，
+ * 所以 echarts 的 `decode()` 会直接跳过（不会就地改写我们的缓存对象），
+ * 我们自己的解码器也不会再把它当成压缩格式。两边都不会踩到"半解码"状态。
+ *
  * @param {object} [echartsInstance] 可选，默认用项目已安装的 echarts
  * @returns {Promise<string>} 注册后的地图名
  */

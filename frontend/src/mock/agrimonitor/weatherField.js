@@ -201,14 +201,13 @@ export const HOOK_TEXT = {
   warningDensity: '预警密度偏高：优先复核该区域回传数据'
 }
 
-/** 采样/农事阈值（用于界面提示，数值口径与任务书的 5 项指标一致） */
-export const AGRI_THRESHOLDS = {
-  soilTemperature: { min: 5, max: 30, unit: '°C', label: '土壤温度' },
-  soilMoisture: { min: 20, max: 35, unit: '%', label: '土壤湿度' },
-  airTemperature: { min: 5, max: 35, unit: '°C', label: '空气温度' },
-  airHumidity: { min: 30, max: 80, unit: '%', label: '空气湿度' },
-  soilDepth: { min: 5, max: 30, unit: 'cm', label: '土壤深度' }
-}
+/**
+ * 5 项采样指标的农事阈值。
+ * 定义已抽到 `./thresholds`（叶子模块）；这里 import 进来供本文件默认导出使用，
+ * 同时原样转出，保持既有引用路径 `@/mock/agrimonitor/weatherField` 可用。
+ */
+import { AGRI_THRESHOLDS } from './thresholds'
+export { AGRI_THRESHOLDS, AGRI_THRESHOLD_KEYS } from './thresholds'
 
 export function layerByKey (key) {
   return WEATHER_LAYERS.filter(l => l.key === key)[0] || WEATHER_LAYERS[0]

@@ -5,6 +5,32 @@ body {
   padding: 0;
 }
 
+/*
+ * 登录页主题
+ *
+ * 配色与「农业智能监测平台」的页面（Dashboard / RegionMonitor / DatabaseManage /
+ * RemoteSensing）保持一致，避免从登录页跳进大屏时风格割裂：
+ *   页面底色  #041224 → #061a32 → #04101f
+ *   面板底色  rgba(6, 26, 50, 0.82)
+ *   主青色    #4fc3f7     浅青 #81d4fa
+ *   正文      #cfe8ff     次要文字 #8fb8d8
+ *   分隔线    rgba(79, 195, 247, 0.24)
+ *
+ * 只改颜色 / 阴影 / 背景，**不动任何尺寸、间距与断点**，因此布局不会变化。
+ */
+$login-bg-deep: #041224;
+$login-bg-mid: #061a32;
+$login-bg-bottom: #04101f;
+$login-panel: rgba(6, 26, 50, 0.82);
+$login-field: rgba(4, 18, 36, 0.72);
+$login-line: rgba(79, 195, 247, 0.24);
+$login-line-strong: rgba(79, 195, 247, 0.55);
+$login-accent: #4fc3f7;
+$login-accent-soft: #81d4fa;
+$login-text: #cfe8ff;
+$login-text-dim: #8fb8d8;
+$login-text-faint: #6d90ad;
+
 .login-container {
   min-height: 100vh;
   display: flex;
@@ -15,9 +41,9 @@ body {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.85), transparent 34%),
-    radial-gradient(circle at bottom right, rgba(148, 163, 184, 0.16), transparent 26%),
-    linear-gradient(135deg, #f8fafc 0%, #e2e8f0 55%, #dbeafe 100%);
+    radial-gradient(1200px 600px at 50% -10%, rgba(21, 101, 192, 0.38), transparent 70%),
+    radial-gradient(circle at bottom right, rgba(79, 195, 247, 0.12), transparent 34%),
+    linear-gradient(180deg, $login-bg-deep 0%, $login-bg-mid 55%, $login-bg-bottom 100%);
 }
 
 .login-container::before,
@@ -33,7 +59,7 @@ body {
   height: 420px;
   top: -160px;
   right: -100px;
-  background: rgba(191, 219, 254, 0.45);
+  background: radial-gradient(circle, rgba(79, 195, 247, 0.20), transparent 68%);
   filter: blur(10px);
 }
 
@@ -42,7 +68,7 @@ body {
   height: 320px;
   left: -120px;
   bottom: -120px;
-  background: rgba(226, 232, 240, 0.85);
+  background: radial-gradient(circle, rgba(21, 101, 192, 0.26), transparent 70%);
 }
 
 .login-weaper {
@@ -55,14 +81,15 @@ body {
 .login-branding {
   margin-bottom: 18px;
   text-align: left;
-  color: #0f172a;
+  color: $login-text;
 }
 
 .login-kicker {
   margin: 0 0 10px;
   font-size: 13px;
-  color: #64748b;
+  color: $login-text-faint;
   letter-spacing: 0.04em;
+  font-family: Consolas, Monaco, monospace;
 }
 
 .login-brand {
@@ -71,21 +98,25 @@ body {
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #0f172a;
+  /* 与大屏标题同一套青色渐变字 */
+  background: linear-gradient(90deg, #4fc3f7, #81d4fa, #4fc3f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .login-brand-subtitle {
   margin: 8px 0 0;
   font-size: 14px;
   line-height: 1.7;
-  color: #64748b;
+  color: $login-text-dim;
 }
 
 .login-border {
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(226, 232, 240, 0.95);
+  background: $login-panel;
+  border: 1px solid $login-line;
   border-radius: 24px;
-  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(79, 195, 247, 0.10);
   backdrop-filter: blur(14px);
 }
 
@@ -100,7 +131,7 @@ body {
 
 .login-title {
   margin: 0;
-  color: #0f172a;
+  color: $login-text;
   font-weight: 700;
   font-size: 28px;
   line-height: 1.2;
@@ -108,7 +139,7 @@ body {
 
 .login-sub-title {
   margin: 8px 0 0;
-  color: #64748b;
+  color: $login-text-dim;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.7;
@@ -135,29 +166,55 @@ body {
     height: 46px;
     line-height: 46px;
     border-radius: 14px;
-    border: 1px solid #dbe3ee;
-    background: #fff;
-    color: #0f172a;
+    border: 1px solid $login-line;
+    background: $login-field;
+    color: $login-text;
     padding-top: 0;
     padding-bottom: 0;
     box-shadow: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   }
 
+  /* 深色输入框必须单独设置占位符颜色，否则继承的是 Element 的浅灰、几乎看不见 */
+  .el-input__inner::placeholder,
+  .el-input--small .el-input__inner::placeholder {
+    color: $login-text-faint;
+  }
+
+  .el-input__inner:hover,
+  .el-input--small .el-input__inner:hover {
+    border-color: rgba(79, 195, 247, 0.40);
+  }
+
   .el-input__inner:focus,
   .el-input--small .el-input__inner:focus {
-    border-color: var(--defaultTheme, #0f172a);
-    box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.12);
+    border-color: $login-accent;
+    box-shadow: 0 0 0 4px rgba(79, 195, 247, 0.16);
+  }
+
+  /* 浏览器自动填充会把输入框刷成浅黄底，深色主题下非常突兀，这里压掉 */
+  .el-input__inner:-webkit-autofill,
+  .el-input__inner:-webkit-autofill:hover,
+  .el-input__inner:-webkit-autofill:focus {
+    -webkit-text-fill-color: $login-text;
+    -webkit-box-shadow: 0 0 0 1000px #071b32 inset;
+    caret-color: $login-text;
+    transition: background-color 9999s ease-in-out 0s;
   }
 
   .el-input__prefix {
     left: 12px;
-    color: #94a3b8;
+    color: $login-text-faint;
   }
 
   .el-input__icon,
   .el-input--small .el-input__icon {
     line-height: 46px;
+  }
+
+  /* 深色底上的校验错误文案要提亮，否则对比度不足看不清 */
+  .el-form-item__error {
+    color: #ffab91;
   }
 }
 
@@ -178,7 +235,7 @@ body {
 
 .login-captcha-preview {
   height: 46px;
-  border: 1px solid #dbe3ee;
+  border: 1px solid $login-line;
   border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
@@ -186,7 +243,7 @@ body {
   transition: border-color 0.2s ease, transform 0.2s ease;
 
   &:hover {
-    border-color: #93c5fd;
+    border-color: $login-line-strong;
     transform: translateY(-1px);
   }
 
@@ -240,14 +297,15 @@ body {
   justify-content: center;
   padding: 0 !important;
   line-height: 1 !important;
-  border: 1px solid var(--defaultTheme, #0f172a) !important;
+  border: 1px solid $login-accent !important;
   border-radius: 14px !important;
-  background: var(--defaultTheme, #0f172a) !important;
+  /* 与大屏的图层胶囊/主按钮同一套青蓝渐变，不再跟随 --defaultTheme（深色底上会看不清） */
+  background: linear-gradient(90deg, rgba(21, 101, 192, 0.95), rgba(79, 195, 247, 0.75)) !important;
   color: #ffffff !important;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.22);
+  box-shadow: 0 10px 24px rgba(21, 101, 192, 0.35);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
@@ -260,17 +318,17 @@ body {
 
 .login-submit:hover,
 .login-submit:focus {
-  background: #1e293b !important;
-  border-color: #1e293b !important;
+  background: linear-gradient(90deg, rgba(25, 118, 210, 1), rgba(79, 195, 247, 0.95)) !important;
+  border-color: #81d4fa !important;
   transform: translateY(-1px);
-  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.24);
+  box-shadow: 0 14px 28px rgba(79, 195, 247, 0.38);
 }
 
 .login-note {
   margin-top: 10px;
   font-size: 13px;
   line-height: 1.7;
-  color: #64748b;
+  color: $login-text-faint;
 }
 
 @media screen and (max-width: 767px) {
