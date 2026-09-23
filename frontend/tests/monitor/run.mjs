@@ -20,6 +20,13 @@
  *      - 4 种算法都在同一组点集上，2-opt/SA/GA 不劣于最近邻
  *      - 收敛曲线单调不增；结果可复现
  *   D. 任务书条目对照表完整性
+ *   E. echarts 压缩坐标解码（真实 bug 的回归防线）
+ *      - china.json 确实是压缩坐标；解码后环收集/PIP 正常
+ *      - ★**半解码混合状态**：echarts 就地解码后会留下 encodeOffsets，
+ *        此时不能再判为"压缩格式"，否则会抛 `encoded.charCodeAt is not a function`
+ *        （真实事故：切换图层/返回全国时报「图层渲染失败」）
+ *      - ★`loadChinaGeoJson()` 交付的必须是普通坐标，echarts 不会就地改写我们的缓存
+ *   F. 栅格掩膜  G. 栅格着色  H. 角色赋权  I. 录入规则引擎
  *
  * 实现说明（沿用 tests/gis/run.mjs 的做法）：
  *   被测源码使用 webpack 的 `@/` 别名和省略扩展名的相对导入，Node ESM 不接受。
@@ -39,6 +46,7 @@ const srcRoot = path.join(frontendRoot, 'src')
 const FILE_MAP = [
   ['utils/udpFrame.js', 'udpFrame.js'],
   ['utils/geo/geojson.js', 'geojson.js'],
+  ['utils/geo/chinaMapLoader.js', 'chinaMapLoader.js'],
   ['mock/agrimonitor/geoData.js', 'geoData.js'],
   ['mock/agrimonitor/thresholds.js', 'thresholds.js'],
   ['mock/agrimonitor/monitorData.js', 'monitorData.js'],
@@ -69,14 +77,48 @@ function prepareSources () {
     let text = fs.readFileSync(source, 'utf8')
     // 省略扩展名的相对导入 → 补 .js
     text = text.replace(
-      /from '\.\/(geoData|udpFrame|experiments|frameStream|taskData|thresholds|samplingRule|monitorData)'/g,
+      /from '\.\/(geoData|geojson|udpFrame|experiments|frameStream|taskData|thresholds|samplingRule|monitorData)'/g,
       "from './$1.js'"
     )
     // webpack 别名
     text = text.replace(/from '@\/utils\/udpFrame'/g, "from './udpFrame.js'")
     text = text.replace(/from '@\/views\/modules\/agrimonitor\/permissions'/g, "from './permissions.js'")
+    // 第三方依赖换成桩：本测试脚本要在"没装依赖"的机器上也能跑
+    text = text.replace(/import \* as echarts from 'echarts'/g, "import * as echarts from './echarts-stub.js'")
     fs.writeFileSync(path.join(workDir, flat), text)
   })
+
+  // echarts 桩：只复刻 registerMap 的**就地解码**行为（这正是事故的根源）
+  fs.writeFileSync(path.join(workDir, 'echarts-stub.js'), `
+let decodeCount = 0
+export function reset () { decodeCount = 0 }
+export function decodedCount () { return decodeCount }
+/** 复刻 echarts/lib/coord/geo/parseGeoJson.js 的 decode() */
+function decode (json) {
+  if (!json || !json.UTF8Encoding) return json
+  decodeCount++
+  for (const f of json.features) {
+    const geometry = f.geometry
+    const offsets = geometry.encodeOffsets
+    const coords = geometry.coordinates
+    for (let c = 0; c < coords.length; c++) {
+      const poly = coords[c]
+      coords[c] = typeof poly === 'string' ? String(poly).split('').map(Number) : poly
+    }
+    void offsets
+  }
+  json.UTF8Encoding = false
+  return json
+}
+export function registerMap (name, geoJson) { decode(geoJson) }
+export function getMap () { return null }
+export function init () { return { setOption () {}, resize () {}, dispose () {}, on () {}, getOption () { return { series: [] } } } }
+export default { registerMap, getMap, init }
+`, 'utf8')
+
+  // fetch 桩：把 GEO_URL 指到仓库里真实的那份 china.json
+  const rawGeo = fs.readFileSync(path.join(GEO_DIR, 'china.json'), 'utf8')
+  globalThis.fetch = async () => ({ ok: true, status: 200, json: async () => JSON.parse(rawGeo) })
 }
 
 const importFrom = name => import(pathToFileURL(path.join(workDir, name)).href)
@@ -443,6 +485,85 @@ async function main () {
     check('已是普通坐标的数据不做拷贝（零开销直通）',
       G.ensurePlainGeoJson(alreadyPlain) === alreadyPlain,
       '返回同一对象')
+  }
+
+  /* ── 半解码混合状态的回归（真实事故：图层渲染失败：encoded.charCodeAt is not a function）── */
+
+  {
+    // 复刻事故现场：echarts 的 parseGeoJson.decode() 会**就地**把 coordinates 换成数组、
+    // 把顶层 UTF8Encoding 置 false，但**保留 geometry.encodeOffsets**。
+    const half = JSON.parse(fs.readFileSync(path.join(GEO_DIR, 'china.json'), 'utf8'))
+    const halfPlain = G.ensurePlainGeoJson(half)
+    half.features.forEach((f, i) => {
+      f.geometry.coordinates = halfPlain.features[i].geometry.coordinates
+    })
+    half.UTF8Encoding = false
+
+    const halfGeo = half.features[0].geometry
+    check('测试数据前提：造出"encodeOffsets 还在、坐标却已是数组"的半解码状态',
+      !!halfGeo.encodeOffsets && Array.isArray(halfGeo.coordinates[0]) &&
+        typeof halfGeo.coordinates[0].charCodeAt === 'undefined',
+      `encodeOffsets 存在=${!!halfGeo.encodeOffsets}，坐标类型=${Object.prototype.toString.call(halfGeo.coordinates[0])}，charCodeAt=${typeof halfGeo.coordinates[0].charCodeAt}`)
+
+    check('★回归：半解码状态不能再被判为"压缩格式"（旧版会误判 → charCodeAt 报错）',
+      G.isEncodedGeometry(halfGeo) === false,
+      `isEncodedGeometry=${G.isEncodedGeometry(halfGeo)}`)
+
+    let halfErr = ''
+    let halfOut = null
+    try {
+      halfOut = G.ensurePlainGeoJson(half)
+    } catch (e) {
+      halfErr = (e && e.message) || String(e)
+    }
+    check('★回归：对半解码数据调用 ensurePlainGeoJson 不抛异常',
+      halfErr === '' && halfOut === half,
+      halfErr ? `抛错：${halfErr}` : '未抛错，且零拷贝直通')
+
+    const halfSx = half.features.filter(f => f.properties.name === '山西')[0]
+    const halfRings = G.ringsOfGeometry(halfSx.geometry)
+    check('★回归：半解码数据仍能收集到山西外环，且太原判为境内',
+      halfRings.length === 1 && halfRings.some(r => G.pointInRing(112.5489, 37.8712, r.ring)),
+      `${halfRings.length} 个环`)
+  }
+
+  /* ── 交给 echarts 的缓存必须是"普通坐标"，否则会被就地改写 ── */
+
+  {
+    const loader = await importFrom('chinaMapLoader.js')
+    const stub = await importFrom('echarts-stub.js')
+    stub.reset()
+
+    const registered = await loader.registerChinaMap(stub)
+    check('注册给 echarts 的地图名正确',
+      registered === 'china', `返回 ${registered}`)
+
+    const cached = await loader.loadChinaGeoJson()
+    check('★回归：loadChinaGeoJson 交付的是普通坐标（无 UTF8Encoding / encodeOffsets）',
+      cached.UTF8Encoding === undefined &&
+        cached.features.every(f => f.geometry.encodeOffsets === undefined) &&
+        Array.isArray(cached.features[0].geometry.coordinates[0]),
+      `UTF8Encoding=${cached.UTF8Encoding}，feature0.encodeOffsets=${cached.features[0].geometry.encodeOffsets}`)
+
+    check('★回归：echarts 不会就地改写我们缓存的对象（stub 复刻了它的 decode）',
+      stub.decodedCount() === 0,
+      `stub 尝试解码 ${stub.decodedCount()} 次（0 = 因为它没有 UTF8Encoding 标记而直接跳过）`)
+
+    const again = await loader.loadChinaGeoJson()
+    let err2 = ''
+    try {
+      G.collectRings(G.ensurePlainGeoJson(again))
+    } catch (e) {
+      err2 = (e && e.message) || String(e)
+    }
+    check('★回归：反复取缓存并解码不再报 encoded.charCodeAt（原先 100% 复现）',
+      err2 === '' && again.features.length === 34,
+      err2 ? `抛错：${err2}` : `34 个省级要素正常`)
+
+    const sx = again.features.filter(f => f.properties.name === '山西')[0]
+    check('★回归：缓存里的山西坐标仍然可用（太原判为境内）',
+      G.ringsOfGeometry(sx.geometry).some(r => G.pointInRing(112.5489, 37.8712, r.ring)),
+      '太原在山西境内')
   }
 
   /* ══════════════════ F. 栅格掩膜 ══════════════════ */

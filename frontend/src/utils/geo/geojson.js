@@ -16,6 +16,11 @@
  *   因此这里提供 `ensurePlainGeoJson()`，把压缩格式还原成普通坐标；
  *   对本来就是普通坐标的数据是**零成本直通**（不复制、不改动入参）。
  *
+ *   ⚠️ 另一个坑（真实事故）：echarts 自己也会就地解码我们交给它的同一个对象，
+ *   而且**只清 UTF8Encoding、不清 encodeOffsets**，于是留下"半解码"混合状态。
+ *   判据因此必须看坐标本身是不是字符串，见 `isEncodedGeometry()` 里的说明。
+ *   `chinaMapLoader` 现在会在缓存前先统一成普通坐标，从源头上避免这种状态被共享出去。
+ *
  * ── 栅格掩膜 ────────────────────────────────────────────────────────
  *   要把"连续色彩场"画成一张贴在地图上的栅格图（而不是会糊成一团的散点热力），
  *   就需要知道**每个栅格像素是否落在国境/省境之内**，否则颜色会溢出到海上。
@@ -52,7 +57,41 @@ function decodeRing (encoded, offsets) {
 
 /** 该几何体是否是 echarts 压缩格式 */
 export function isEncodedGeometry (geometry) {
-  return !!(geometry && geometry.encodeOffsets && geometry.coordinates)
+  if (!geometry || !geometry.encodeOffsets || !geometry.coordinates) {
+    return false
+  }
+  // ⚠️⚠️ 这里**不能只看 encodeOffsets 是否存在** —— 这是踩过的真实事故：
+  //
+  //   `echarts.registerMap()` 收到我们交给它的对象后，会在**首次解析地图时就地改写它**
+  //   （echarts/lib/coord/geo/parseGeoJson.js 的 decode()：把 coordinates 换成普通数组、
+  //    把顶层 UTF8Encoding 置为 false，但**不会删除 geometry.encodeOffsets**）。
+  //
+  //   于是会出现一种"半解码"混合状态：encodeOffsets 还在、坐标却已经是数组。
+  //   只看 encodeOffsets 会把它误判成"还是压缩格式"，于是再解一次，
+  //   对数组调 charCodeAt → `encoded.charCodeAt is not a function`，
+  //   表现就是地图报「图层渲染失败」/「返回全国后边界还是省的」。
+  //
+  //   所以判据必须是：**坐标本身真的是编码字符串**。
+  const probe = firstCoordValue(geometry)
+  return typeof probe === 'string'
+}
+
+/**
+ * 取几何体里"最内层"的第一个坐标值，用于判断坐标到底是编码字符串还是普通数字。
+ *
+ * 两种形态：
+ *   压缩格式（echarts 旧版）：Polygon 是 `[ "编码串", ... ]`，MultiPolygon 是 `[ [ "编码串" ], ... ]`
+ *                              → 一直往第一层走，最后拿到的是 **字符串**
+ *   普通格式（GeoJSON 标准）：最内层是 `[lng, lat]` → 最后拿到的是 **数字**
+ * 所以判据就是 `typeof 最内层值 === 'string'`。
+ */
+function firstCoordValue (geometry) {
+  let node = geometry && geometry.coordinates
+  let guard = 0
+  while (Array.isArray(node) && node.length && guard++ < 8) {
+    node = node[0]
+  }
+  return node
 }
 
 /** 解码单个几何体；已经是普通坐标时**原样返回** */

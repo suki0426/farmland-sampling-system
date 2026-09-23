@@ -1055,7 +1055,14 @@ export default {
       this.activeGridPoints = this.grid.points
       try {
         this.setActiveGeo(await loadChinaGeoJson())
-      } catch (e) { /* 已缓存，正常不会失败 */ }
+      } catch (e) {
+        // ⚠️ 这里以前是空 catch，会把"地图数据解码失败"咽掉：
+        //    返回全国后 level 已经变成 nation，但 activeGeoPlain 还是省的那份，
+        //    于是边界、掩膜、站点全都停在省级 —— 看起来就是"点了返回全国没反应"。
+        //    现在明确报出来并中止，不用错的数据继续画。
+        this.error = `返回全国视图失败：${(e && e.message) || e}`
+        return
+      }
       this.buildStations()
       this.buildLevelMask()
       this.buildBoundaryLines()
